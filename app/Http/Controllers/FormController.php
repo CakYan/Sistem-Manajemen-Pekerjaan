@@ -49,7 +49,9 @@ class FormController extends Controller
 
     public function edit_proyek($nama_proyek)
     {
-        $proyek = DB::table('proyeks')->where('nama_proyek', $nama_proyek)->get();
+        // dd($nama_proyek);
+        $proyek = DB::table('proyeks')->where('nama_proyek', $nama_proyek)->first();
+        // dd($proyek);
         return view('/edit_proyek', ['proyeks' => $proyek]);
     }
 

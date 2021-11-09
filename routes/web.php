@@ -33,10 +33,10 @@ Route::get('/edit_profile', [ProfileController::class, 'edit']);
 
 Route::get('/form', [FormController::class, 'index']);
 Route::post('/add_proyek', [FormController::class, 'add_proyek']);
-Route::get("/delete_proyek{nama_proyek}", [FormController::class, 'delete_proyek']);
+Route::get("/delete_proyek/{nama_proyek}", [FormController::class, 'delete_proyek']);
 
-Route::get('/edit_proyek{nama_proyek}', [FormController::class, 'edit_proyek']);
-Route::post('/update_proyek{nama_proyek}', [FormController::class, 'update_proyek']);
+Route::get('/edit_proyek/{nama_proyek}', [FormController::class, 'edit_proyek']);
+Route::post('/update_proyek/{nama_proyek}', [FormController::class, 'update_proyek']);
 
 Route::get('/inbox', [InboxController::class, 'index']);
 

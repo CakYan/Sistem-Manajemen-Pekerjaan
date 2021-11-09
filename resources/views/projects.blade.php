@@ -47,8 +47,8 @@
                 <th style="width: 20%">Edit</th>
                 </tr>
               </thead>
-              @foreach ($proyeks as $proyek)
-                <tbody>
+              <tbody>
+                @foreach ($proyeks as $proyek)
                   <tr>
                     <td></td>
                     <td>
@@ -100,13 +100,13 @@
                     <td>
                       <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View
                       </a>
-                      <a href="/edit_proyek {{ $proyek->nama_proyek }}"
+                      <a href="/edit_proyek/{{ $proyek->nama_proyek }}"
                         class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                      <a href="/delete_proyek{{ $proyek->nama_proyek }}"
+                      <a href="/delete_proyek/{{ $proyek->nama_proyek }}"
                         class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                     </td>
                   </tr>
-              @endforeach
+                @endforeach
               </tbody>
             </table>
             <!-- end project list -->
