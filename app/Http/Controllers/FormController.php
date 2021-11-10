@@ -10,7 +10,6 @@ class FormController extends Controller
 {
     public function index()
     {
-        $proyek = Proyek::get();
         return view('form');
     }
 
@@ -55,10 +54,26 @@ class FormController extends Controller
         return view('/edit_proyek', ['proyeks' => $proyek]);
     }
 
-    // public function update_proyek($nama_proyek, Request $request)
-    // {
-    //     $this->validate($request[
+    public function update_proyek($nama_proyek, Request $request)
+    {
+        $request->validate([
+            'nama_proyek' => 'required|unique:proyeks',
+            'ketua_tim' => 'required',
+            'anggota' => 'required',
+            'deskripsi' => 'required',
+            'tgl_mulai' => 'required',
+            'tgl_akhir' => 'required'
+        ]);
 
-    //     ]);
-    // }
+        $proyek = Proyek::find($nama_proyek);
+        $proyek->nama_proyek = $request->nama_proyek;
+        $proyek->ketua_tim = $request->ketua_tim;
+        $proyek->anggota = $request->anggota;
+        $proyek->deskripsi = $request->deskripsi;
+        $proyek->tgl_mulai = $request->tgl_mulai;
+        $proyek->tgl_akhir = $request->tgl_akhir;
+        $proyek->save();
+        $proyek = Proyek::get();
+        return view('/projects', ['proyeks' => $proyek]);
+    }
 }

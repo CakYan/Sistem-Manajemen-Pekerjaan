@@ -48,8 +48,8 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($proyeks as $proyek)
-                  <tr>
+                <tr>
+                  @foreach ($proyeks as $proyek)
                     <td></td>
                     <td>
                       <a href="/project_detail">{{ $proyek->nama_proyek }}</a>
@@ -105,7 +105,7 @@
                       <a href="/delete_proyek/{{ $proyek->nama_proyek }}"
                         class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                     </td>
-                  </tr>
+                </tr>
                 @endforeach
               </tbody>
             </table>
