@@ -32,7 +32,7 @@
             aria-labelledby="navbarDropdown1">
             <li class="nav-item">
               <a class="dropdown-item" href="inbox.html">
-                <span class="image"><img src="images/foto.jpg"
+                <span class="image"><img src="{{ asset('images/foto.jpg') }}"
                     alt="Profile Image" /></span>
                 <span>
                   <span><b>Febry</b></span>
@@ -46,7 +46,7 @@
             </li>
             <li class="nav-item">
               <a class="dropdown-item" href="inbox.html">
-                <span class="image"><img src="images/foto.jpg"
+                <span class="image"><img src="{{ asset('images/foto.jpg') }}"
                     alt="Profile Image" /></span>
                 <span>
                   <span> <b>Danu</b>r</span>
@@ -59,7 +59,7 @@
             </li>
             <li class="nav-item">
               <a class="dropdown-item" href="inbox.html">
-                <span class="image"><img src="images/foto.jpg"
+                <span class="image"><img src="{{ asset('images/foto.jpg') }}"
                     alt="Profile Image" /></span>
                 <span>
                   <span><b>Febri</b></span>
@@ -72,7 +72,7 @@
             </li>
             <li class="nav-item">
               <a class="dropdown-item" href="inbox.html">
-                <span class="image"><img src="images/foto.jpg"
+                <span class="image"><img src="{{ asset('images/foto.jpg') }}"
                     alt="Profile Image" /></span>
                 <span>
                   <span> <b>Danur</b></span>

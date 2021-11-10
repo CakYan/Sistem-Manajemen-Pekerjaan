@@ -45,6 +45,8 @@
             <form action="/update_proyek/{{ $proyeks->nama_proyek ?? '' }}" method="POST"
               id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
+              @csrf
+
               <input type="hidden" name="nama_proyek" value="{{ $proyeks->nama_proyek ?? '' }}">
 
               <div class="item form-group">

@@ -15,8 +15,7 @@ class CreateProyeksTable extends Migration
     {
         Schema::create('proyeks', function (Blueprint $table) {
             $table->id();
-            $table->integer('no');
-            $table->string('nama_proyek');
+            $table->string('nama_proyek')->unique();
             $table->string('ketua_tim');
             $table->string('anggota')->nullable();
             $table->text('deskripsi');

@@ -73,7 +73,16 @@ class FormController extends Controller
         $proyek->tgl_mulai = $request->tgl_mulai;
         $proyek->tgl_akhir = $request->tgl_akhir;
         $proyek->save();
-        $proyek = Proyek::get();
-        return view('/projects', ['proyeks' => $proyek]);
+        return redirect('/projects');
+        
+        // $query = DB::table('proyeks')
+        // ->where('nama_proyek', $nama_proyek)->update(['nama_proyek' => $request->nama_proyek]);
+        // dd($query);
+        
+        // if($query){
+        //     return redirect('/projects');
+        // }else{
+        //     return back()->with('fail', 'Ada sesuatu yang salah');
+        // }
     }
 }
