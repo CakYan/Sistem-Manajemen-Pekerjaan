@@ -9,6 +9,6 @@ class ProdetController extends Controller
     //
     public function index()
     {
-        return view('project_detail');
+        return view('projects_detail');
     }
 }

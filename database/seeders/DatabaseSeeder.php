@@ -58,6 +58,6 @@ class DatabaseSeeder extends Seeder
             'jabatan' => 'Kabag'
         ]);
 
-        Karyawan::factory(10)->create();
+        Karyawan::factory(100)->create();
     }
 }

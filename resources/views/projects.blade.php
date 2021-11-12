@@ -89,10 +89,10 @@
                     </td>
                     <td class="project_progress">
                       <div class="progress progress_sm">
-                        <div class="progress-bar bg-green" role="progressbar"
-                          data-transitiongoal="57"></div>
+                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="0">
+                        </div>
                       </div>
-                      <small>57% Complete</small>
+                      <small>0% Complete</small>
                     </td>
                     <td>
                       <button type="button" class="btn btn-success btn-xs">Success</button>

@@ -73,7 +73,13 @@ class FormController extends Controller
         $proyek->tgl_mulai = $request->tgl_mulai;
         $proyek->tgl_akhir = $request->tgl_akhir;
         $proyek->save();
-        return redirect('/projects');
+
+        if($proyek->save()){
+            return redirect()->route('/projects')->with('message', 'Data telah diperbarui');
+        }else{
+            return redirect()->back()->with('message', 'Gagal memperbarui data');
+        }
+        
         
         // $query = DB::table('proyeks')
         // ->where('nama_proyek', $nama_proyek)->update(['nama_proyek' => $request->nama_proyek]);

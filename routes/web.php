@@ -27,7 +27,8 @@ Route::post('/login_cek', [LoginController::class, 'authenticate']);
 
 Route::get('/home', [KaryawanController::class, 'index']);
 Route::post('/add', [KaryawanController::class, 'add']);
-Route::get('/daftar_karyawan', [KaryawanController::class, 'index']);
+Route::get('/daftar_karyawan', [KaryawanController::class, 'daftar_karyawan']);
+Route::get('/cari_karyawan', [KaryawanController::class, 'cari_karyawan']);
 
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::get('/edit_profile', [ProfileController::class, 'edit']);

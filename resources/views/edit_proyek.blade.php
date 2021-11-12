@@ -87,10 +87,7 @@
                   {{-- <label for="desr"><span class="required">:</span></label> --}}
                   {{-- <input type="text" id="project-name" name="leader" required="required" class="form-control"> --}}
                   <textarea id="descr" required="required" value="{{ $proyek->deskripsi ?? '' }}"
-                    class="form-control" name="descr data-parsley-trigger=" keyup"
-                    data-parsley-minlength="20" data-parsley-maxlength="100"
-                    data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
-                    data-parsley-validation-threshold="10"></textarea>
+                    class="form-control" name="deskripsi"></textarea>
                 </div>
               </div>
 

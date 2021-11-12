@@ -14,11 +14,18 @@ class KaryawanController extends Controller
         return view('index', compact('karyawans'));
     }
 
-    // public function show()
-    // {
-    //     $karyawans = Karyawan::get();
-    //     return view('index', compact('karyawans'));
-    // }
+    public function daftar_karyawan()
+    {
+        $karyawans = Karyawan::paginate(10);
+        return view('karyawans', compact('karyawans'));
+    }
+
+    public function cari_karyawan(Request $request){
+        $cari = $request->cari;
+
+        $karyawans = DB::table('karyawans')->where('nama','like',"%".$cari."%")->paginate(10);
+        return view('karyawans', ['karyawans'=>$karyawans]);
+    }
 
     public function add(Request $request)
     {

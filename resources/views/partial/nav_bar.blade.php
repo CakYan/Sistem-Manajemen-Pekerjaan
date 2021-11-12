@@ -43,7 +43,6 @@
           <li><a><i class="fa fa-table"></i> TIM <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="/projects">Proyek</a></li>
-              <li><a href="/project_detail">Detail Proyek</a></li>
             </ul>
           </li>
         </ul>
