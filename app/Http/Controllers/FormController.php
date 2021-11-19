@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proyek;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,10 +16,13 @@ class FormController extends Controller
 
     public function add_proyek(Request $request)
     {
+        $karyawans = Karyawan::all();
+
         $request->validate([
             'nama_proyek' => 'required|unique:proyeks',
             'ketua_tim' => 'required',
             'anggota' => 'required',
+            'unit_pengaju' => 'required',
             'deskripsi' => 'required',
             'tgl_mulai' => 'required',
             'tgl_akhir' => 'required'
@@ -28,9 +32,12 @@ class FormController extends Controller
             'nama_proyek' => $request->input('nama_proyek'),
             'ketua_tim' => $request->input('ketua_tim'),
             'anggota' => $request->input('anggota'),
+            'unit_pengaju' => $request->input('unit_pengaju'),
             'deskripsi' => $request->input('deskripsi'),
             'tgl_mulai' => $request->input('tgl_mulai'),
-            'tgl_akhir' => $request->input('tgl_akhir')
+            'tgl_akhir' => $request->input('tgl_akhir'),
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
 
         if ($query) {
@@ -40,44 +47,46 @@ class FormController extends Controller
         }
     }
 
-    public function delete_proyek($nama_proyek)
+    public function delete_proyek($id)
     {
-        DB::table('proyeks')->where('nama_proyek', $nama_proyek)->delete();
+        DB::table('proyeks')->where('id', $id)->delete();
         return redirect('/projects');
     }
 
-    public function edit_proyek($nama_proyek)
+    public function edit_proyek($id)
     {
-        // dd($nama_proyek);
-        $proyek = DB::table('proyeks')->where('nama_proyek', $nama_proyek)->first();
-        // dd($proyek);
-        return view('/edit_proyek', ['proyeks' => $proyek]);
+        $proyek = DB::table('proyeks')->where('id', $id)->first();
+        $karyawans = Karyawan::first();
+        return view('/edit_proyek', ['proyeks' => $proyek], compact('karyawans'));
     }
 
-    public function update_proyek($nama_proyek, Request $request)
+    public function update_proyek($id, Request $request)
     {
         $request->validate([
             'nama_proyek' => 'required|unique:proyeks',
             'ketua_tim' => 'required',
             'anggota' => 'required',
+            'unit_pengaju' => 'required',
             'deskripsi' => 'required',
             'tgl_mulai' => 'required',
             'tgl_akhir' => 'required'
         ]);
 
-        $proyek = Proyek::find($nama_proyek);
-        $proyek->nama_proyek = $request->nama_proyek;
-        $proyek->ketua_tim = $request->ketua_tim;
-        $proyek->anggota = $request->anggota;
-        $proyek->deskripsi = $request->deskripsi;
-        $proyek->tgl_mulai = $request->tgl_mulai;
-        $proyek->tgl_akhir = $request->tgl_akhir;
-        $proyek->save();
+        $proyek = Proyek::where('id', $id)->update([
+            'nama_proyek' => $request->input('nama_proyek'),
+            'ketua_tim' => $request->input('ketua_tim'),
+            'anggota' => $request->input('anggota'),
+            'unit_pengaju' => $request->input('unit_pengaju'),
+            'deskripsi' => $request->input('deskripsi'),
+            'tgl_mulai' => $request->input('tgl_mulai'),
+            'tgl_akhir' => $request->input('tgl_akhir'),
+            'updated_at' => now()
+        ]);
 
-        if($proyek->save()){
-            return redirect()->route('/projects')->with('message', 'Data telah diperbarui');
-        }else{
-            return redirect()->back()->with('message', 'Gagal memperbarui data');
+        if ($proyek) {
+            return view('/projects')->with('success', 'Data telah diperbarui');
+        } else {
+            return back()->with('fail', 'Gagal memperbarui data');
         }
         
         

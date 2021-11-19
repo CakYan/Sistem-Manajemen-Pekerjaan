@@ -53,68 +53,59 @@
                   </div>
 
                   <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="member">Ketua
-                      TIM<span class="required">:</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="nama-proyek">Unit
+                      yang Mengajukan <span class="required"></span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
-                      <input type="text" id="first-name" name="ketua_tim" required="required"
+                      <input type="text" id="first-name" name="unit_pengaju" required="required"
                         class="form-control ">
-                      <span style="color:red">@error('ketua_tim'){{ $message }}@enderror</span>
+                      <span style="color:red">@error('unit_pengaju'){{ $message }}@enderror</span>
                       </div>
                     </div>
 
                     <div class="item form-group">
-                      <label class="col-form-label col-md-3 col-sm-3 label-align" for="leader">Anggota
+                      <label class="col-form-label col-md-3 col-sm-3 label-align" for="member">Ketua
                         TIM<span class="required">:</span>
                       </label>
                       <div class="col-md-6 col-sm-6 ">
-                        <input type="text" id="project-name" name="anggota" required="required"
-                          class="form-control">
-                        <span style="color:red">@error('anggota'){{ $message }}@enderror</span>
+                        <input type="text" id="first-name" name="ketua_tim" required="required"
+                          class="form-control" value="">
+                        <span style="color:red">@error('ketua_tim'){{ $message }}@enderror</span>
                         </div>
                       </div>
 
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="leader">Deskripsi
-                          Proyek<span class="required">:</span>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="leader">Anggota
+                          TIM<span class="required">:</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                          <textarea id="descr" required="required" class="form-control"
-                            name="deskripsi"></textarea>
-                        </div>
-                      </div>
-
-
-                      <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Tanggal Mulai <span
-                            class="required">:</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input id="date" class="date-picker form-control" name="tgl_mulai" placeholder=""
-                            type="text" required="required" type="text" onfocus="this.type='date'"
-                            onmouseover="this.type='date'" onclick="this.type='date'"
-                            onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
-                          <span style="color:red">@error('tgl_mulai'){{ $message }}@enderror</span>
-                            <script>
-                              function timeFunctionLong(input) {
-                                setTimeout(function() {
-                                  input.type = 'text';
-                                }, 60000);
-                              }
-                            </script>
+                          <input type="text" id="project-name" name="anggota" required="required"
+                            class="form-control">
+                          <span style="color:red">@error('anggota'){{ $message }}@enderror</span>
                           </div>
                         </div>
 
                         <div class="item form-group">
-                          <label class="col-form-label col-md-3 col-sm-3 label-align">Tanggal Selesai <span
+                          <label class="col-form-label col-md-3 col-sm-3 label-align" for="leader">Deskripsi
+                            Proyek<span class="required">:</span>
+                          </label>
+                          <div class="col-md-6 col-sm-6 ">
+                            <textarea id="descr" required="required" class="form-control"
+                              name="deskripsi"></textarea>
+                          </div>
+                        </div>
+
+
+                        <div class="item form-group">
+                          <label class="col-form-label col-md-3 col-sm-3 label-align">Tanggal Mulai <span
                               class="required">:</span>
                           </label>
                           <div class="col-md-6 col-sm-6 ">
-                            <input id="date" class="date-picker form-control" name="tgl_akhir" placeholder=""
+                            <input id="date" class="date-picker form-control" name="tgl_mulai" placeholder=""
                               type="text" required="required" type="text" onfocus="this.type='date'"
                               onmouseover="this.type='date'" onclick="this.type='date'"
                               onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
-                            <span style="color:red">@error('tgl_akhir'){{ $message }}@enderror</span>
+                            <span style="color:red">@error('tgl_mulai'){{ $message }}@enderror</span>
                               <script>
                                 function timeFunctionLong(input) {
                                   setTimeout(function() {
@@ -125,19 +116,39 @@
                             </div>
                           </div>
 
-                          <div class="ln_solid"></div>
                           <div class="item form-group">
-                            <div class="col-md-6 col-sm-6 offset-md-3">
-                              <button class="btn btn-primary" type="reset">Reset</button>
-                              <button type="submit" class="btn btn-success">Submit</button>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Tanggal Selesai <span
+                                class="required">:</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                              <input id="date" class="date-picker form-control" name="tgl_akhir" placeholder=""
+                                type="text" required="required" type="text" onfocus="this.type='date'"
+                                onmouseover="this.type='date'" onclick="this.type='date'"
+                                onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                              <span style="color:red">@error('tgl_akhir'){{ $message }}@enderror</span>
+                                <script>
+                                  function timeFunctionLong(input) {
+                                    setTimeout(function() {
+                                      input.type = 'text';
+                                    }, 60000);
+                                  }
+                                </script>
+                              </div>
                             </div>
-                          </div>
-                        </form>
+
+                            <div class="ln_solid"></div>
+                            <div class="item form-group">
+                              <div class="col-md-6 col-sm-6 offset-md-3">
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- /page content -->
-          @endsection
+              <!-- /page content -->
+            @endsection

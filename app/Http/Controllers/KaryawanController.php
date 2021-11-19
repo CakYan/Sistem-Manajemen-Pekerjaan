@@ -16,30 +16,27 @@ class KaryawanController extends Controller
 
     public function daftar_karyawan()
     {
-        $karyawans = Karyawan::paginate(10);
+        $karyawans = Karyawan::all();
         return view('karyawans', compact('karyawans'));
     }
 
-    public function cari_karyawan(Request $request){
-        $cari = $request->cari;
-
-        $karyawans = DB::table('karyawans')->where('nama','like',"%".$cari."%")->paginate(10);
-        return view('karyawans', ['karyawans'=>$karyawans]);
+    public function add_karyawan(){
+        return view('add_karyawan');
     }
 
     public function add(Request $request)
     {
         $request->validate([
-            'id' => 'required',
+            'nik' => 'required|unique:karyawans',
             'nama' => 'required',
             'username' => 'required|unique:karyawans',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:karyawans',
             'unit' => 'required',
             'jabatan' => 'required'
         ]);
 
         $query = DB::table('karyawans')->insert([
-            'id' => $request->input('id'),
+            'nik' => $request->input('nik'),
             'nama' => $request->input('nama'),
             'username' => $request->input('username'),
             'unit' => $request->input('unit'),

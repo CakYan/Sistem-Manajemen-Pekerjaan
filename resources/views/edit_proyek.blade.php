@@ -42,12 +42,13 @@
           <div class="x_content">
             <br />
             {{-- FORM --}}
-            <form action="/update_proyek/{{ $proyeks->nama_proyek ?? '' }}" method="POST"
-              id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+            <form action="/update_proyek/{{ $proyeks->id ?? '' }}" method="POST" id="demo-form2"
+              data-parsley-validate class="form-horizontal form-label-left">
 
               @csrf
+              {{ method_field('PUT') }}
 
-              <input type="hidden" name="nama_proyek" value="{{ $proyeks->nama_proyek ?? '' }}">
+              <input type="hidden" name="id" value="{{ $proyeks->id ?? '' }}">
 
               <div class="item form-group">
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="nama-proyek">Nama
@@ -60,12 +61,12 @@
               </div>
 
               <div class="item form-group">
-                <label class="col-form-label col-md-3 col-sm-3 label-align" for="member">Ketua
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="ketua_tim">Ketua
                   Tim<span class="required">:</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
                   <input type="text" name="ketua_tim" value="{{ $proyeks->ketua_tim ?? '' }}"
-                    id="first-name" required="required" class="form-control ">
+                    id="ketua_tim" required="required" class="form-control ">
                 </div>
               </div>
 
@@ -79,15 +80,23 @@
                 </div>
               </div>
 
+              {{-- <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align"
+                  for="nama-proyek">Deskripsi<span class="required">:</span>
+                </label>
+                <div class="col-md-6 col-sm-61 ">
+                  <input type="text" name="deskripsi" value="{{ $proyeks->deskripsi ?? '' }}"
+                    id="first-name" required="required" class="form-control ">
+                </div>
+              </div> --}}
+
               <div class="item form-group">
                 <label class="col-form-label col-md-3 col-sm-3 label-align"
                   for="leader">Deskripsi<span class="required">:</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                  {{-- <label for="desr"><span class="required">:</span></label> --}}
-                  {{-- <input type="text" id="project-name" name="leader" required="required" class="form-control"> --}}
-                  <textarea id="descr" required="required" value="{{ $proyek->deskripsi ?? '' }}"
-                    class="form-control" name="deskripsi"></textarea>
+                  <textarea id="descr" required="required" class="form-control"
+                    name="deskripsi">{{ $proyeks->deskripsi }}</textarea>
                 </div>
               </div>
 

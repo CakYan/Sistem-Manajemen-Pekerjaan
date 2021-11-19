@@ -23,12 +23,15 @@ class KaryawanFactory extends Factory
     public function definition()
     {
         return [
+            'nik' => $this->faker->unique()->numerify('##########'),
             'nama' => $this->faker->name(),
             'username' => $this->faker->unique()->userName(),
+            'alamat' => $this->faker->address(),
+            'no_telp' => $this->faker->phoneNumber(),
             'email' => $this->faker->unique()->email(),
             'password' => 'admin',
             'hak_akses' => '1',
-            'unit' => 'SIRS',
+            'unit' => 'IGD',
             'jabatan' => 'Magang'
         ];
     }

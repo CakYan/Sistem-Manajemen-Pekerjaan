@@ -15,8 +15,11 @@ class CreateKaryawansTable extends Migration
     {
         Schema::create('karyawans', function (Blueprint $table) {
             $table->id();
+            $table->string('nik')->unique();
             $table->string('nama');
             $table->string('username')->unique();
+            $table->string('alamat');
+            $table->string('no_telp')->unique();
             $table->string('email')->unique();
             $table->string('password')->nullable();
             $table->foreignId('hak_akses')->nullable();

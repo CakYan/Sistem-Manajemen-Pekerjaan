@@ -26,24 +26,25 @@ Route::get('/', [LoginController::class, 'index']);
 Route::post('/login_cek', [LoginController::class, 'authenticate']);
 
 Route::get('/home', [KaryawanController::class, 'index']);
+Route::get('/add_karyawan', [KaryawanController::class, 'add_karyawan']);
 Route::post('/add', [KaryawanController::class, 'add']);
 Route::get('/daftar_karyawan', [KaryawanController::class, 'daftar_karyawan']);
-Route::get('/cari_karyawan', [KaryawanController::class, 'cari_karyawan']);
 
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::get('/edit_profile', [ProfileController::class, 'edit']);
 
 Route::get('/form', [FormController::class, 'index']);
 Route::post('/add_proyek', [FormController::class, 'add_proyek']);
-Route::get("/delete_proyek/{nama_proyek}", [FormController::class, 'delete_proyek']);
+Route::get('/delete_proyek/{id}', [FormController::class, 'delete_proyek']);
 
-Route::get('/edit_proyek/{nama_proyek}', [FormController::class, 'edit_proyek']);
-Route::post('/update_proyek/{nama_proyek}', [FormController::class, 'update_proyek']);
+Route::get('/edit_proyek/{id}', [FormController::class, 'edit_proyek']);
+Route::put('/update_proyek/{id}', [FormController::class, 'update_proyek']);
 
 Route::get('/inbox', [InboxController::class, 'index']);
 
 Route::get('/projects', [ProjectsController::class, 'index']);
+Route::get('/detail_tugas', [ProjectsController::class, 'detail_tugas']);
 
 Route::get('/calendar', [KalenderController::class, 'index']);
 
-Route::get('/project_detail', [ProdetController::class, 'index']);
+Route::get('/projects_detail', [ProdetController::class, 'index']);

@@ -44,7 +44,7 @@
                 <th>Tgl_Selesai</th>
                 <th>Progres</th>
                 <th>Status</th>
-                <th style="width: 20%">Edit</th>
+                <th>Edit</th>
                 </tr>
               </thead>
               <tbody>
@@ -52,7 +52,7 @@
                   @foreach ($proyeks as $proyek)
                     <td></td>
                     <td>
-                      <a href="/project_detail">{{ $proyek->nama_proyek }}</a>
+                      <a href="/projects_detail">{{ $proyek->nama_proyek }}</a>
                       <br />
                       <br>
                       <br>
@@ -98,16 +98,19 @@
                       <button type="button" class="btn btn-success btn-xs">Success</button>
                     </td>
                     <td>
-                      <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View
+                      <a href="/projects_detail" class="btn btn-primary btn-xs"><i
+                          class="fa fa-folder"></i> View
                       </a>
-                      <a href="/edit_proyek/{{ $proyek->nama_proyek }}"
-                        class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                      <a href="/delete_proyek/{{ $proyek->nama_proyek }}"
-                        class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?')"><i
-                          class="fa fa-trash-o"></i> Delete </a>
+                      <br>
+                      <a href="/edit_proyek/{{ $proyek->id }}" class="btn btn-info btn-xs"
+                        style="width: 95%"><i class="fa fa-pencil"></i> Edit </a>
+                      <br>
+                      <a href="/delete_proyek/{{ $proyek->id }}" class="btn btn-danger btn-xs"
+                        onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i>
+                        Delete </a>
                     </td>
+                  @endforeach
                 </tr>
-                @endforeach
               </tbody>
             </table>
             <!-- end project list -->
@@ -115,7 +118,6 @@
         </div>
       </div>
     </div>
-  </div>
   </div>
   <!-- /page content -->
 @endsection
