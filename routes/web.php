@@ -29,6 +29,7 @@ Route::get('/home', [KaryawanController::class, 'index']);
 Route::get('/add_karyawan', [KaryawanController::class, 'add_karyawan']);
 Route::post('/add', [KaryawanController::class, 'add']);
 Route::get('/daftar_karyawan', [KaryawanController::class, 'daftar_karyawan']);
+Route::post('/update_karyawan/{id}', [KaryawanController::class, 'update']);
 
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::get('/edit_profile', [ProfileController::class, 'edit']);
@@ -38,7 +39,7 @@ Route::post('/add_proyek', [FormController::class, 'add_proyek']);
 Route::get('/delete_proyek/{id}', [FormController::class, 'delete_proyek']);
 
 Route::get('/edit_proyek/{id}', [FormController::class, 'edit_proyek']);
-Route::put('/update_proyek/{id}', [FormController::class, 'update_proyek']);
+Route::post('/update_proyek', [FormController::class, 'update_proyek'])->name('update_proyek');
 
 Route::get('/inbox', [InboxController::class, 'index']);
 

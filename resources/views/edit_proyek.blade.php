@@ -42,20 +42,21 @@
           <div class="x_content">
             <br />
             {{-- FORM --}}
-            <form action="/update_proyek/{{ $proyeks->id ?? '' }}" method="POST" id="demo-form2"
-              data-parsley-validate class="form-horizontal form-label-left">
+            <form action="{{ route('update_proyek') }}" method="POST" id="demo-form2">
+              {{-- data-parsley-validate
+              class="form-horizontal form-label-left" --}}
 
               @csrf
-              {{ method_field('PUT') }}
+              {{-- {{ method_field('PUT') }} --}}
 
-              <input type="hidden" name="id" value="{{ $proyeks->id ?? '' }}">
+              <input type="hidden" name="id" value="{{ $proyeks->id }}">
 
               <div class="item form-group">
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="nama-proyek">Nama
                   Proyek<span class="required">:</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                  <input type="text" name="nama_proyek" value="{{ $proyeks->nama_proyek ?? '' }}"
+                  <input type="text" name="nama_proyek" value="{{ $proyeks->nama_proyek }}"
                     id="first-name" required="required" class="form-control ">
                 </div>
               </div>
@@ -65,7 +66,7 @@
                   Tim<span class="required">:</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                  <input type="text" name="ketua_tim" value="{{ $proyeks->ketua_tim ?? '' }}"
+                  <input type="text" name="ketua_tim" value="{{ $proyeks->ketua_tim }}"
                     id="ketua_tim" required="required" class="form-control ">
                 </div>
               </div>
@@ -75,20 +76,20 @@
                   tim<span class="required">:</span>
                 </label>
                 <div class="col-md-6 col-sm-61 ">
-                  <input type="text" name="anggota" value="{{ $proyeks->anggota ?? '' }}"
-                    id="first-name" required="required" class="form-control ">
+                  <input type="text" name="anggota" value="{{ $proyeks->anggota }}" id="first-name"
+                    required="required" class="form-control ">
                 </div>
               </div>
 
-              {{-- <div class="item form-group">
-                <label class="col-form-label col-md-3 col-sm-3 label-align"
-                  for="nama-proyek">Deskripsi<span class="required">:</span>
+              <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="nama-proyek">Unit
+                  Pengaju<span class="required">:</span>
                 </label>
                 <div class="col-md-6 col-sm-61 ">
-                  <input type="text" name="deskripsi" value="{{ $proyeks->deskripsi ?? '' }}"
+                  <input type="text" name="unit_pengaju" value="{{ $proyeks->unit_pengaju }}"
                     id="first-name" required="required" class="form-control ">
                 </div>
-              </div> --}}
+              </div>
 
               <div class="item form-group">
                 <label class="col-form-label col-md-3 col-sm-3 label-align"
@@ -106,10 +107,10 @@
                 </label>
                 <div class="col-md-6 col-sm-6 ">
                   <input id="date" class="date-picker form-control" name="tgl_mulai" placeholder=""
-                    value="{{ $proyeks->tgl_mulai ?? '' }}" type="text" required="required"
-                    type="text" onfocus="this.type='date'" onmouseover="this.type='date'"
+                    value="{{ $proyeks->tgl_mulai }}" type="text" required="required" type="text"
+                    {{-- onfocus="this.type='date'" onmouseover="this.type='date'"
                     onclick="this.type='date'" onblur="this.type='text'"
-                    onmouseout="timeFunctionLong(this)">
+                    onmouseout="timeFunctionLong(this)" --}}>
                   <span style="color:red">@error('tgl_mulai'){{ $message }}@enderror</span>
                     <script>
                       function timeFunctionLong(input) {
@@ -127,10 +128,10 @@
                   </label>
                   <div class="col-md-6 col-sm-6 ">
                     <input id="date" class="date-picker form-control" name="tgl_akhir" placeholder=""
-                      value="{{ $proyeks->tgl_akhir ?? '' }}" type="text" required="required"
-                      type="text" onfocus="this.type='date'" onmouseover="this.type='date'"
+                      value="{{ $proyeks->tgl_akhir }}" type="text" required="required" type="text"
+                      {{-- onfocus="this.type='date'" onmouseover="this.type='date'"
                       onclick="this.type='date'" onblur="this.type='text'"
-                      onmouseout="timeFunctionLong(this)">
+                      onmouseout="timeFunctionLong(this)" --}}>
                     <span style="color:red">@error('tgl_akhir'){{ $message }}@enderror</span>
                       <script>
                         function timeFunctionLong(input) {
@@ -145,8 +146,8 @@
                   <div class="ln_solid"></div>
                   <div class="item form-group">
                     <div class="col-md-6 col-sm-6 offset-md-3">
-                      <a href="/projects" class="btn btn-primary" type="reset">Kembali</a>
-                      <input type="submit" class="btn btn-success" value="Update">
+                      {{-- <a href="/projects" class="btn btn-primary" type="reset">Kembali</a> --}}
+                      <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                   </div>
                 </form>

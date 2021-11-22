@@ -30,7 +30,9 @@ class KaryawanController extends Controller
             'nik' => 'required|unique:karyawans',
             'nama' => 'required',
             'username' => 'required|unique:karyawans',
+            'alamat' => 'required',
             'email' => 'required|email|unique:karyawans',
+            'no_telp' => 'required',
             'unit' => 'required',
             'jabatan' => 'required'
         ]);
@@ -39,9 +41,11 @@ class KaryawanController extends Controller
             'nik' => $request->input('nik'),
             'nama' => $request->input('nama'),
             'username' => $request->input('username'),
+            'alamat' => $request->input('alamat'),
+            'email' => $request->input('email'),
             'unit' => $request->input('unit'),
-            'jabatan' => $request->input('jabatan'),
-            'email' => $request->input('email')
+            'no_telp' => $request->input('no_telp'),
+            'jabatan' => $request->input('jabatan')
         ]);
 
         if ($query) {
@@ -49,6 +53,40 @@ class KaryawanController extends Controller
         } else {
             return back()->with('fail', 'Ada sesuatu yang salah');
         }
+    }
+
+    public function update(Request $request, $id){
+        $karyawan = Karyawan::find($id);
+        $karyawan->update($request->all());
+        return redirect('/daftar_karyawan')->with('success', 'Data berhasil diupdate');
+        
+        // $request->validate([
+        //     'nik' => 'required|unique:karyawans',
+        //     'nama' => 'required',
+        //     'username' => 'required|unique:karyawans',
+        //     'alamat' => 'required',
+        //     'email' => 'required|email|unique:karyawans',
+        //     'no_telp' => 'required',
+        //     'unit' => 'required',
+        //     'jabatan' => 'required'
+        // ]);
+
+        // $query = DB::table('karyawans')->where('id', $id)->update([
+        //     'nik' => $request->input('nik'),
+        //     'nama' => $request->input('nama'),
+        //     'username' => $request->input('username'),
+        //     'alamat' => $request->input('alamat'),
+        //     'email' => $request->input('email'),
+        //     'unit' => $request->input('unit'),
+        //     'no_telp' => $request->input('no_telp'),
+        //     'jabatan' => $request->input('jabatan')
+        // ]);
+
+        // if ($query) {
+        //     return back()->with('success', 'Data telah ditambahkan');
+        // } else {
+        //     return back()->with('fail', 'Ada sesuatu yang salah');
+        // }
     }
 }
 
