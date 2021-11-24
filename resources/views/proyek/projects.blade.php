@@ -48,11 +48,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  @foreach ($proyeks as $proyek)
+                @foreach ($proyeks as $proyek)
+                  <tr>
                     <td></td>
                     <td>
-                      <a href="/projects_detail">{{ $proyek->nama_proyek }}</a>
+                      <a
+                        href="/projects/projects_detail/{{ $proyek->id }}">{{ $proyek->nama_proyek }}</a>
                       <br />
                       <br>
                       <br>
@@ -98,8 +99,8 @@
                       <button type="button" class="btn btn-success btn-xs">Success</button>
                     </td>
                     <td>
-                      <a href="/projects_detail" class="btn btn-primary btn-xs"><i
-                          class="fa fa-folder"></i> View
+                      <a href="/projects/projects_detail/{{ $proyek->id }}"
+                        class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View
                       </a>
                       <br>
                       <a href="/edit_proyek/{{ $proyek->id }}" class="btn btn-info btn-xs"
@@ -109,8 +110,8 @@
                         onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i>
                         Delete </a>
                     </td>
-                  @endforeach
-                </tr>
+                  </tr>
+                @endforeach
               </tbody>
             </table>
             <!-- end project list -->

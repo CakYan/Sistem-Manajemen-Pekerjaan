@@ -5,11 +5,14 @@
     <div class="">
       <div class="page-title">
         <div class="title_right">
-          <a href="" class="btn btn-primary btn-md ml-3 mb-3">Detail Proyek</a>
+          <input type="hidden" name="id" value="{{ $proyeks->id }}">
+          <h3>{{ $proyeks->nama_proyek }}</h3>
         </div>
       </div>
       <div class="clearfix"></div>
       <div class="row ml-2">
+
+        {{-- TUGAS --}}
         <div class="col-md-4">
           <div class="x_panel tile fixed_320">
             <div class="x_title">
@@ -35,40 +38,49 @@
                   <div class="card-box table-responsive">
                     <table id="datatable" class="table table-striped" style="width:100%">
                       <tbody>
-                        <tr>
-                          <!-- <td><input type="checkbox" name="pilih"></td> -->
-                          <td><input type="checkbox" name="pilih"> Klinik</td>
-                        </tr>
-                        <tr>
-                          <!-- <td><input type="checkbox" name="pilih"></td> -->
-                          <td><input type="checkbox" name="pilih"> SIRS</td>
-                        </tr>
+                        @foreach ($tugas as $item)
+                          <tr>
+                            <!-- <td><input type="checkbox" name="pilih"></td> -->
+                            <td><input type="checkbox" name="pilih">
+                              <a href="" data-toggle="modal"
+                                data-target="#modal-card">{{ $item->card }}</a>
+                            </td>
+                          </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
               <div class="card-composer">
-                <div class="list-card">
-                  <div class="list-card-details">
-                    <div class="list-card-labels">
-                      <textarea class="list-card-composer" placeholder="Tuliskan tugas.."
-                        style=" resize: none;"></textarea>
-                      <div class="list-card-members"></div>
+                <form action="{{ route('add_card') }}" method="POST">
+                  @csrf
+                  <div class="list-card">
+                    <div class="list-card-details">
+                      <div class="list-card-labels">
+                        <textarea class="list-card-composer" placeholder="Tuliskan tugas.."
+                          style=" resize: none;" name="card"></textarea>
+                        <div class="list-card-members"></div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="cc-controls">
-                  <div class="add bg-light mt-2">
-                    <a class="btn btn-light mr-5" href="#"><i class="fa fa-plus-square-o"></i> Tambah
-                      Tugas</a>
-                    <a class="btn btn-light ml-3" href="#"><i class="fa fa-trash"></i></a>
+                  <div class="cc-controls">
+                    <div class="add bg-light mt-2">
+                      <button class="btn btn-light mr-5" href="#"><i class="fa fa-plus-square-o"></i>
+                        Tambah
+                        Tugas</button>
+                      <button class="btn btn-light ml-3" href="#"><i
+                          class="fa fa-trash"></i></button>
+                    </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
+        {{-- END of TUGAS --}}
+
+        {{-- PROSES --}}
         <div class="col-md-4">
           <div class="x_panel tile fixed_320">
             <div class="x_title">
@@ -96,11 +108,8 @@
                       <tbody>
                         <tr>
                           <!-- <td><input type="checkbox" name="pilih"></td> -->
-                          <td><input type="checkbox" name="pilih"> Klinik</td>
-                        </tr>
-                        <tr>
-                          <!-- <td><input type="checkbox" name="pilih"></td> -->
-                          <td><input type="checkbox" name="pilih"> SIRS</td>
+                          <td><input type="checkbox" name="pilih"><a href="" data-toggle="modal"
+                              data-target="#modal-card"> Klinik</a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -128,6 +137,9 @@
             </div>
           </div>
         </div>
+        {{-- END of PROSES --}}
+
+        {{-- SELESAI --}}
         <div class="col-md-4">
           <div class="x_panel tile fixed_320">
             <div class="x_title">
@@ -155,11 +167,8 @@
                       <tbody>
                         <tr>
                           <!-- <td><input type="checkbox" name="pilih"></td> -->
-                          <td><input type="checkbox" name="pilih"> Klinik</td>
-                        </tr>
-                        <tr>
-                          <!-- <td><input type="checkbox" name="pilih"></td> -->
-                          <td><input type="checkbox" name="pilih"> SIRS</td>
+                          <td><input type="checkbox" name="pilih"><a href="" data-toggle="modal"
+                              data-target="#modal-card"> Klinik</a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -187,7 +196,10 @@
             </div>
           </div>
         </div>
+        {{-- END of SELESAI --}}
       </div>
     </div>
   </div>
+  @include('modal.projects.card');
+
 @endsection

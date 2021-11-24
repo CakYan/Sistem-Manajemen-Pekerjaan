@@ -16,12 +16,12 @@ class KaryawanController extends Controller
 
     public function daftar_karyawan()
     {
-        $karyawans = Karyawan::all();
-        return view('karyawans', compact('karyawans'));
+        $karyawans = Karyawan::with('role')->get();
+        return view('karyawan.index', compact('karyawans'));
     }
 
     public function add_karyawan(){
-        return view('add_karyawan');
+        return view('karyawan.add_karyawan');
     }
 
     public function add(Request $request)
@@ -55,38 +55,35 @@ class KaryawanController extends Controller
         }
     }
 
-    public function update(Request $request, $id){
-        $karyawan = Karyawan::find($id);
-        $karyawan->update($request->all());
-        return redirect('/daftar_karyawan')->with('success', 'Data berhasil diupdate');
+    public function update(Request $request){
         
-        // $request->validate([
-        //     'nik' => 'required|unique:karyawans',
-        //     'nama' => 'required',
-        //     'username' => 'required|unique:karyawans',
-        //     'alamat' => 'required',
-        //     'email' => 'required|email|unique:karyawans',
-        //     'no_telp' => 'required',
-        //     'unit' => 'required',
-        //     'jabatan' => 'required'
-        // ]);
+        $request->validate([
+            'nik' => 'required',
+            'nama' => 'required',
+            'username' => 'required',
+            'alamat' => 'required',
+            'email' => 'required',
+            'no_telp' => 'required',
+            'unit' => 'required',
+            'jabatan' => 'required'
+        ]);
 
-        // $query = DB::table('karyawans')->where('id', $id)->update([
-        //     'nik' => $request->input('nik'),
-        //     'nama' => $request->input('nama'),
-        //     'username' => $request->input('username'),
-        //     'alamat' => $request->input('alamat'),
-        //     'email' => $request->input('email'),
-        //     'unit' => $request->input('unit'),
-        //     'no_telp' => $request->input('no_telp'),
-        //     'jabatan' => $request->input('jabatan')
-        // ]);
+        $karyawan = Karyawan::where('id', $request->input('id'))->update([
+            'nik' => $request->input('nik'),
+            'nama' => $request->input('nama'),
+            'username' => $request->input('username'),
+            'alamat' => $request->input('alamat'),
+            'email' => $request->input('email'),
+            'unit' => $request->input('unit'),
+            'no_telp' => $request->input('no_telp'),
+            'jabatan' => $request->input('jabatan')
+        ]);
 
-        // if ($query) {
-        //     return back()->with('success', 'Data telah ditambahkan');
-        // } else {
-        //     return back()->with('fail', 'Ada sesuatu yang salah');
-        // }
+        if ($karyawan) {
+            return back()->with('success', 'Data telah ditambahkan');
+        } else {
+            return back()->with('fail', 'Ada sesuatu yang salah');
+        }
     }
 }
 

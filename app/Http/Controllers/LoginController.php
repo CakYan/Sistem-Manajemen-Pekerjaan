@@ -28,11 +28,12 @@ class LoginController extends Controller
             ->where('password', "=", $request->input('password'))->first();
 
         if ($cek) {
-            // if ($request->session()->has('username')) {
-            //     $request->session()->get('username');
-            // }
             $karyawans = Karyawan::all();
-            return view('index', ['karyawans' => $karyawans]);
+            $karyawan = Karyawan::where('username', $request->username)->first();
+
+            $a = session(['username' => $request->input('username'), 'nama' => $karyawan->nama]);
+
+            return view('index', compact('karyawans', 'karyawan'));
         } else {
             return back()->with('loginError', 'Username atau Password Salah');
         }

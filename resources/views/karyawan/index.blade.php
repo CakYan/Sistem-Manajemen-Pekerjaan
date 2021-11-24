@@ -54,7 +54,7 @@
                           <th>Username</th>
                           <th>Email</th>
                           <th>Unit</th>
-                          <th>Jabatan</th>
+                          <th>Hak Akses</th>
                           <th></th>
                         </tr>
                       </thead>
@@ -66,7 +66,7 @@
                             <td>{{ $karyawan->username }}</td>
                             <td>{{ $karyawan->email }}</td>
                             <td>{{ $karyawan->unit }}</td>
-                            <td>{{ $karyawan->jabatan }}</td>
+                            <td>{{ $karyawan->role->hak_akses }}</td>
                             <td>
                               <div class="row d-flex justify-content-center">
                                 <a href="" class="btn btn-sm btn-warning" data-toggle="modal"

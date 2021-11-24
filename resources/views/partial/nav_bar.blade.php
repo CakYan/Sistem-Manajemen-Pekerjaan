@@ -15,7 +15,7 @@
       </div>
       <div class="profile_info">
         <span>Selamat Datang,</span>
-        <h2>Firmansyah</h2>
+        <h2>{{ session('nama') }}</h2>
       </div>
     </div>
     <!-- /menu profile quick info -->

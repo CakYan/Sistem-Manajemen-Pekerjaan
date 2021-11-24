@@ -11,7 +11,7 @@ class FormController extends Controller
 {
     public function index()
     {
-        return view('form');
+        return view('proyek.form');
     }
 
     public function add_proyek(Request $request)
@@ -57,7 +57,7 @@ class FormController extends Controller
     {
         $proyek = DB::table('proyeks')->where('id', $id)->first();
         $karyawans = Karyawan::first();
-        return view('/edit_proyek', ['proyeks' => $proyek], compact('karyawans'));
+        return view('/proyek.edit_proyek', ['proyeks' => $proyek], compact('karyawans'));
     }
 
     public function update_proyek(Request $request)
@@ -72,19 +72,6 @@ class FormController extends Controller
             'tgl_akhir' => 'required'
         ]);
 
-        // $proyek = Proyek::find($id);
-        // $proyek->nama_proyek = $request->nama_proyek;
-        // $proyek->ketua_tim = $request->ketua_tim;
-        // $proyek->anggota = $request->anggota;
-        // $proyek->unit_pengaju = $request->unit_pengaju;
-        // $proyek->deskripsi = $request->deskripsi;
-        // $proyek->tgl_mulai = $request->tgl_mulai;
-        // $proyek->tgl_akhir = $request->tgl_akhir;
-        // $proyek->updated_at = now();
-        // $proyek->save();
-
-        // return redirect('projects');
-
         $proyek = Proyek::where('id', $request->input('id'))->update([
             'nama_proyek' => $request->input('nama_proyek'),
             'ketua_tim' => $request->input('ketua_tim'),
@@ -93,7 +80,6 @@ class FormController extends Controller
             'deskripsi' => $request->input('deskripsi'),
             'tgl_mulai' => $request->input('tgl_mulai'),
             'tgl_akhir' => $request->input('tgl_akhir')
-            // 'updated_at' => now()
         ]);
         // if($proyek){
         //     return "sukses";

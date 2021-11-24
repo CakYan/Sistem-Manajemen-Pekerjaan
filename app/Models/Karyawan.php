@@ -15,4 +15,8 @@ class Karyawan extends Model
     public function proyek(){
         return $this->hasMany(Proyek::class);
     }
+
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
 }

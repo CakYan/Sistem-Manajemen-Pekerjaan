@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Proyek;
 use Illuminate\Http\Request;
 
 class ProdetController extends Controller
 {
     //
-    public function index()
+    public function index($id)
     {
-        return view('projects_detail');
+        $prodet = Proyek::where('id', $id)->first();
+        return view('proyek.projects_detail', ['proyeks' => $prodet]);
     }
 }

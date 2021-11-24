@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\hakAkses;
 use App\Models\User;
 use App\Models\Karyawan;
 use App\Models\Proyek;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 
 
@@ -27,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'no_telp' => '081554253947',
             'email' => 'akhdan@email.com',
             'password' => 'admin123',
-            'hak_akses' => '0',
+            'role_id' => '2',
             'unit' => 'SIRS',
             'jabatan' => 'Magang'
         ]);
@@ -40,7 +42,7 @@ class DatabaseSeeder extends Seeder
             'no_telp' => '081236475869',
             'email' => 'firman@email.com',
             'password' => 'user1',
-            'hak_akses' => '1',
+            'role_id' => '3',
             'unit' => 'SIRS',
             'jabatan' => 'Magang'
         ]);
@@ -53,20 +55,20 @@ class DatabaseSeeder extends Seeder
             'no_telp' => '081236475121',
             'email' => 'evi@email.com',
             'password' => 'user2',
-            'hak_akses' => '2',
+            'role_id' => '4',
             'unit' => 'SIRS',
             'jabatan' => 'Magang'
         ]);
 
         Karyawan::create([
-            'nik' => '1911501019',
-            'nama' => 'Asep',
-            'username' => '4s3p',
+            'nik' => '0000000001',
+            'nama' => 'admin',
+            'username' => 'admin',
             'alamat' => 'Jl. Merpati 10/09 Lamongan',
             'no_telp' => '081236471233',
             'email' => 'asep@email.com',
-            'password' => 'user3',
-            'hak_akses' => '3',
+            'password' => 'admin',
+            'role_id' => '1',
             'unit' => 'IGD',
             'jabatan' => 'Kabag'
         ]);
@@ -81,6 +83,19 @@ class DatabaseSeeder extends Seeder
             'deskripsi' => 'Sistem Manajemen Pekerjaan adalah ...',
             'tgl_mulai' => '2021-10-04',
             'tgl_akhir' => '2022-02-12'
+        ]);
+
+        Role::create([
+            'hak_akses' => 'admin'
+        ]);
+        Role::create([
+            'hak_akses' => 'Direktur'
+        ]);
+        Role::create([
+            'hak_akses' => 'Ketua Tim'
+        ]);
+        Role::create([
+            'hak_akses' => 'Anggota Tim'
         ]);
     }
 }

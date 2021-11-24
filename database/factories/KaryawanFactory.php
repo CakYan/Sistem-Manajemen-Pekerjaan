@@ -29,8 +29,8 @@ class KaryawanFactory extends Factory
             'alamat' => $this->faker->address(),
             'no_telp' => $this->faker->phoneNumber(),
             'email' => $this->faker->unique()->email(),
-            'password' => 'admin',
-            'hak_akses' => '1',
+            'password' => 'user',
+            'role_id' => '3',
             'unit' => 'IGD',
             'jabatan' => 'Magang'
         ];
