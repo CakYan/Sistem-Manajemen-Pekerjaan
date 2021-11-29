@@ -33,7 +33,7 @@ class LoginController extends Controller
 
             $a = session(['username' => $request->input('username'), 'nama' => $karyawan->nama]);
 
-            return view('index', compact('karyawans', 'karyawan'));
+            return redirect('/home');
         } else {
             return back()->with('loginError', 'Username atau Password Salah');
         }

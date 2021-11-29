@@ -14,4 +14,8 @@ class Proyek extends Model
     public function karyawan(){
         return $this->hasMany(Karyawan::class);
     }
+
+    public function task(){
+        return $this->hasMany(Task::class);
+    }
 }

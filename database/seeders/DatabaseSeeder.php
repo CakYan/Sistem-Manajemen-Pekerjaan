@@ -5,8 +5,10 @@ namespace Database\Seeders;
 use App\Models\hakAkses;
 use App\Models\User;
 use App\Models\Karyawan;
+use App\Models\Kelas;
 use App\Models\Proyek;
 use App\Models\Role;
+use App\Models\Task;
 use Illuminate\Database\Seeder;
 
 
@@ -96,6 +98,23 @@ class DatabaseSeeder extends Seeder
         ]);
         Role::create([
             'hak_akses' => 'Anggota Tim'
+        ]);
+
+        Kelas::create([
+            'kelas' => 'Tugas'
+        ]);
+
+        Kelas::create([
+            'kelas' => 'Progres'
+        ]);
+
+        Kelas::create([
+            'kelas' => 'Selesai'
+        ]);
+
+        Task::create([
+            'nama_task' => 'Tugas 1',
+            'kelas_id' => '1',
         ]);
     }
 }

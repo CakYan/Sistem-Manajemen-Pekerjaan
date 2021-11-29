@@ -90,7 +90,7 @@
     </div>
   </div>
 
-  @include('modal.edit_karyawan')
+  @include('modal.karyawan.edit_karyawan')
 
-  @include('modal.create_karyawan')
+  @include('modal.karyawan.create_karyawan')
 @endsection

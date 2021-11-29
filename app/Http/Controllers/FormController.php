@@ -79,7 +79,8 @@ class FormController extends Controller
             'unit_pengaju' => $request->input('unit_pengaju'),
             'deskripsi' => $request->input('deskripsi'),
             'tgl_mulai' => $request->input('tgl_mulai'),
-            'tgl_akhir' => $request->input('tgl_akhir')
+            'tgl_akhir' => $request->input('tgl_akhir'),
+            'updated_at' => now()
         ]);
         // if($proyek){
         //     return "sukses";

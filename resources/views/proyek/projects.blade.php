@@ -30,7 +30,6 @@
             <div class="clearfix"></div>
           </div>
           <div class="x_content">
-            <p>List proyek dan tim</p>
             <!-- start project list -->
             <table class="table table-striped projects">
               <thead>
@@ -44,7 +43,7 @@
                 <th>Tgl_Selesai</th>
                 <th>Progres</th>
                 <th>Status</th>
-                <th>Edit</th>
+                <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -103,8 +102,10 @@
                         class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View
                       </a>
                       <br>
-                      <a href="/edit_proyek/{{ $proyek->id }}" class="btn btn-info btn-xs"
-                        style="width: 95%"><i class="fa fa-pencil"></i> Edit </a>
+                      {{-- <a href="/edit_proyek/{{ $proyek->id }}" class="btn btn-info btn-xs" style="width: 95%"><i class="fa fa-pencil"></i> Edit </a> --}}
+                      <a href="" class="btn btn-info btn-xs" style="width: 95%" data-toggle="modal"
+                        data-target="#modal-card{{ $proyek->id }}"><i class="fa fa-pencil"></i>
+                        Edit </a>
                       <br>
                       <a href="/delete_proyek/{{ $proyek->id }}" class="btn btn-danger btn-xs"
                         onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i>
@@ -121,4 +122,5 @@
     </div>
   </div>
   <!-- /page content -->
+  @include('modal.projects.edit_proyek')
 @endsection

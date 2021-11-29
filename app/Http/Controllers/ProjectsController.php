@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tugas;
 use App\Models\Proyek;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Task;
 
 class ProjectsController extends Controller
 {
@@ -21,8 +21,8 @@ class ProjectsController extends Controller
 
     public function prodet($id)
     {
-        $tugas = Tugas::all();
+        $tasks = Task::with('kelas')->get();
         $prodet = Proyek::where('id', $id)->first();
-        return view('proyek.projects_detail', ['proyeks' => $prodet], ['tugas' => $tugas]);
+        return view('proyek.projects_detail', ['proyeks' => $prodet], ['tasks' => $tasks]);
     }
 }

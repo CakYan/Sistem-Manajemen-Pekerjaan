@@ -43,14 +43,8 @@
             <br />
             {{-- FORM --}}
             <form action="{{ route('update_proyek') }}" method="POST" id="demo-form2">
-              {{-- data-parsley-validate
-              class="form-horizontal form-label-left" --}}
-
               @csrf
-              {{-- {{ method_field('PUT') }} --}}
-
               <input type="hidden" name="id" value="{{ $proyeks->id }}">
-
               <div class="item form-group">
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="nama-proyek">Nama
                   Proyek<span class="required">:</span>

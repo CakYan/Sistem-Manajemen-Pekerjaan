@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tugas;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 
-class TugasController extends Controller
+class KelasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,24 +36,15 @@ class TugasController extends Controller
     public function store(Request $request)
     {
         //
-        $request -> validate([
-            'card' => 'required'
-        ]);
-        $card = Tugas::insert([
-            'card' => $request->input('card')
-        ]);
-        if ($card) {
-            return back();
-        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tugas  $tugas
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function show(Tugas $tugas)
+    public function show(Kelas $kelas)
     {
         //
     }
@@ -61,10 +52,10 @@ class TugasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tugas  $tugas
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tugas $tugas)
+    public function edit(Kelas $kelas)
     {
         //
     }
@@ -73,10 +64,10 @@ class TugasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tugas  $tugas
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tugas $tugas)
+    public function update(Request $request, Kelas $kelas)
     {
         //
     }
@@ -84,10 +75,10 @@ class TugasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tugas  $tugas
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tugas $tugas)
+    public function destroy(Kelas $kelas)
     {
         //
     }

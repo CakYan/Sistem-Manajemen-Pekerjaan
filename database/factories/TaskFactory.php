@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Tugas;
+use App\Models\Task;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TugasFactory extends Factory
+class TaskFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Tugas::class;
+    protected $model = Task::class;
 
     /**
      * Define the model's default state.

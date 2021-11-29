@@ -4,12 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProdetController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KalenderController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProjectsController;
-
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +44,10 @@ Route::get('/inbox', [InboxController::class, 'index']);
 Route::get('/projects', [ProjectsController::class, 'index']);
 Route::get('/projects/projects_detail/{id}', [ProjectsController::class, 'prodet']);
 Route::get('/detail_tugas', [ProjectsController::class, 'detail_tugas']);
-Route::post('/add_card', [TugasController::class, 'store'])->name('add_card');
+
+Route::post('/add_tugas', [TaskController::class, 'store']);
+Route::post('/add_progres', [TaskController::class, 'add_progres']);
+Route::post('/add_selesai', [TaskController::class, 'add_selesai']);
+Route::get('/delete_task/{id}', [TaskController::class, 'destroy']);
 
 Route::get('/calendar', [KalenderController::class, 'index']);
