@@ -24,6 +24,7 @@ class CreateKaryawansTable extends Migration
             $table->string('password')->nullable();
             $table->bigInteger('role_id')->nullable();
             $table->string('unit');
+            $table->string('profil_img')->nullable();
             $table->string('jabatan');
             $table->timestamps();
         });

@@ -34,7 +34,8 @@ class KaryawanController extends Controller
             'email' => 'required|email|unique:karyawans',
             'no_telp' => 'required',
             'unit' => 'required',
-            'jabatan' => 'required'
+            'jabatan' => 'required',
+            'role_id' => 'required'
         ]);
 
         $query = DB::table('karyawans')->insert([
@@ -45,11 +46,15 @@ class KaryawanController extends Controller
             'email' => $request->input('email'),
             'unit' => $request->input('unit'),
             'no_telp' => $request->input('no_telp'),
-            'jabatan' => $request->input('jabatan')
+            'jabatan' => $request->input('jabatan'),
+            'role_id' => $request->input('role_id')
         ]);
 
+        // if ($query) {
+        //     dd($query);
+        // }
         if ($query) {
-            return back()->with('success', 'Data telah ditambahkan');
+            return back()->with('berhasil', 'Data telah ditambahkan');
         } else {
             return back()->with('fail', 'Ada sesuatu yang salah');
         }
@@ -65,7 +70,7 @@ class KaryawanController extends Controller
             'email' => 'required',
             'no_telp' => 'required',
             'unit' => 'required',
-            'jabatan' => 'required'
+            'jabatan' => 'required',
         ]);
 
         $karyawan = Karyawan::where('id', $request->input('id'))->update([
@@ -76,14 +81,19 @@ class KaryawanController extends Controller
             'email' => $request->input('email'),
             'unit' => $request->input('unit'),
             'no_telp' => $request->input('no_telp'),
-            'jabatan' => $request->input('jabatan')
+            'jabatan' => $request->input('jabatan'),
         ]);
 
         if ($karyawan) {
-            return back()->with('success', 'Data telah ditambahkan');
+            return back()->with('berhasil', 'Data telah ditambahkan');
         } else {
             return back()->with('fail', 'Ada sesuatu yang salah');
         }
+    }
+
+    public function delete($id){
+        Karyawan::where('id', $id)->delete();
+        return back();
     }
 }
 

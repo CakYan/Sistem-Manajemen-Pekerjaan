@@ -34,7 +34,7 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         //
         $request->validate([
@@ -46,7 +46,7 @@ class TaskController extends Controller
         $query = Task::insert([
             'nama_task' => $request->input('nama_task'),
             'kelas_id' => '1',
-            // 'proyek_id' => $proyek_id,
+            'proyek_id' => $id,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -56,7 +56,7 @@ class TaskController extends Controller
         }
     }
 
-    public function add_progres(Request $request){
+    public function add_progres(Request $request, $id){
 
         $request->validate([
             'nama_task' => 'required'
@@ -65,6 +65,7 @@ class TaskController extends Controller
         $query = Task::insert([
             'nama_task' => $request->input('nama_task'),
             'kelas_id' => '2',
+            'proyek_id' => $id,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -74,7 +75,7 @@ class TaskController extends Controller
         }
     }
 
-    public function add_selesai(Request $request){
+    public function add_selesai(Request $request, $id){
 
         $request->validate([
             'nama_task' => 'required'
@@ -83,6 +84,7 @@ class TaskController extends Controller
         $query = Task::insert([
             'nama_task' => $request->input('nama_task'),
             'kelas_id' => '3',
+            'proyek_id' => $id,
             'created_at' => now(),
             'updated_at' => now()
         ]);

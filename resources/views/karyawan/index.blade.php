@@ -14,9 +14,9 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 ">
           <div class="x_panel">
-            @if (Session::get('success'))
+            @if (Session::get('berhasil'))
               <div class="alert alert-success">
-                {{ Session::get('success') }}
+                {{ Session::get('berhasil') }}
               </div>
             @endif
             @if (Session::get('fail'))
@@ -71,7 +71,9 @@
                               <div class="row d-flex justify-content-center">
                                 <a href="" class="btn btn-sm btn-warning" data-toggle="modal"
                                   data-target="#modal-edit{{ $karyawan->id }}"> Ubah</a>
-                                <a href="" class="btn btn-sm btn-danger"> Hapus</a>
+                                <a href="/delete/{{ $karyawan->id }}" class="btn btn-sm btn-danger"
+                                  onclick="return confirm('Are you sure?')">
+                                  Hapus</a>
                               </div>
                             </td>
                           </tr>

@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin123',
             'role_id' => '2',
             'unit' => 'SIRS',
+            'profil_img' => '1.jpg',
             'jabatan' => 'Magang'
         ]);
 
@@ -46,6 +47,7 @@ class DatabaseSeeder extends Seeder
             'password' => 'user1',
             'role_id' => '3',
             'unit' => 'SIRS',
+            'profil_img' => '2.jpg',
             'jabatan' => 'Magang'
         ]);
 
@@ -59,6 +61,7 @@ class DatabaseSeeder extends Seeder
             'password' => 'user2',
             'role_id' => '4',
             'unit' => 'SIRS',
+            'profil_img' => '3.jpg',
             'jabatan' => 'Magang'
         ]);
 
@@ -72,6 +75,7 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin',
             'role_id' => '1',
             'unit' => 'IGD',
+            'profil_img' => '4.jpg',
             'jabatan' => 'Kabag'
         ]);
 
@@ -110,11 +114,6 @@ class DatabaseSeeder extends Seeder
 
         Kelas::create([
             'kelas' => 'Selesai'
-        ]);
-
-        Task::create([
-            'nama_task' => 'Tugas 1',
-            'kelas_id' => '1',
         ]);
     }
 }

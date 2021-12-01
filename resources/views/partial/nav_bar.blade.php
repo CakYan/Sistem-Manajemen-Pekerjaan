@@ -11,7 +11,8 @@
     <!-- menu profile quick info -->
     <div class="profile clearfix">
       <div class="profile_pic">
-        <img src="{{ asset('images/foto.jpg') }}" alt="..." class="img-circle profile_img">
+        <img src="{{ asset('storage/' . session('foto')) }}" alt="..."
+          class="img-circle profile_img">
       </div>
       <div class="profile_info">
         <span>Selamat Datang,</span>

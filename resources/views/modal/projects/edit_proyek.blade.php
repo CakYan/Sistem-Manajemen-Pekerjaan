@@ -31,8 +31,16 @@
                   Tim<span class="required">:</span>
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                  <input type="text" name="ketua_tim" value="{{ $item->ketua_tim }}" id="ketua_tim"
-                    required="required" class="form-control "><span style="color:red">@error('ketua
+                  {{-- <input type="text" name="ketua_tim" value="{{ $item->ketua_tim }}" id="ketua_tim"
+                    required="required" class="form-control "> --}}
+                  <select class="form-control select2-data" name="ketua_tim">
+                    {{-- multiple="multiple"> --}}
+                    {{-- <option value="">Pilih Karyawan</option> --}}
+                    @foreach ($karyawans as $karyawan)
+                      <option value="">{{ $karyawan->nama }}</option>
+                    @endforeach
+                  </select>
+                  <span style="color:red">@error('ketua
                       tim'){{ $message }}@enderror</span>
                   </div>
                 </div>
@@ -125,6 +133,22 @@
 
                       <div class="modal-footer">
                       </div>
+
+                      <script>
+                        // $(document).ready(function() {
+                        //   $('.select2-data').select2();
+                        // });
+                        $(function() {
+                          $('.select2-data').select2();
+                        });
+                      </script>
+
+                      {{-- <script>
+                        $('#ketua_tim').select2({
+                          dropdownParent: $('#modal-card{id}')
+                        });
+                      </script> --}}
+
                     </div>
                   </div>
                 </div>

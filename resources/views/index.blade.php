@@ -5,182 +5,74 @@
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3><small>Daftar karyawan yang telah ditambahkan</small></h3>
+          <h3><small>Home</small></h3>
         </div>
       </div>
-      <div class="clearfix"></div>
-      <div class="row">
-        <div class="col-md-12 col-sm-12 ">
-          <div class="x_panel">
-            <div class="x_title">
-              <h2>Karyawan <small>Users</small></h2>
-              <ul class="nav navbar-right panel_toolbox">
-                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                    aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Settings 1</a>
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">User Profile</h1>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Pengguna</h6>
+          </div>
+          <div class="row">
+            <div class="col mt-2 ml-2">
+              <div class="card card-small mb-4 pt-3 border-0">
+                <div class="card-header border-bottom text-center">
+                  <div class="mb-3 mx-auto">
+                    <img class="rounded-circle" src="img/foto.jpg" alt="Firmansyah" width="110">
                   </div>
-                </li>
-                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                </li>
-              </ul>
-              <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="card-box table-responsive">
-                    <div class="table-wrapper">
-                      <table id="datatable" class="table table-striped table-bordered"
-                        style="width:100%">
-                        <thead>
-                          <tr>
-                            <th>NIK</th>
-                            <th>Nama</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Unit</th>
-                            <th>Jabatan</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          @foreach ($karyawans as $karyawan)
-                            <tr>
-                              <td>{{ $karyawan->id }}</td>
-                              <td>{{ $karyawan->nama }}</td>
-                              <td>{{ $karyawan->username }}</td>
-                              <td>{{ $karyawan->email }}</td>
-                              <td>{{ $karyawan->unit }}</td>
-                              <td>{{ $karyawan->jabatan }}</td>
-                            </tr>
-                          @endforeach
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+                  <h4 class="mb-0">Firmansyah</h4>
+                  <span class="text-muted d-block mb-2">Project Manager</span>
+                  <a class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2" data-toggle="modal"
+                    data-target="#modal-edit">
+                    <i class="material-icons mr-1">Edit Profile</i></a>
                 </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item p-4">
+                    <strong class="text-muted d-block mb-2">Biografi</strong>
+                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem,
+                      commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum
+                      assumenda eligendi cumque?</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="card card-small mb-4 mt-2 mr-2 border-0">
+                <div class="card-header border-bottom mb-3 mt-3">
+                  <h6 class="m-0">Aktivitas</h6>
+                </div>
+                <table class="table table-bordered table-striped table-hover mt-5" id="datatables"
+                  width="100%" cellspacing="0">
+                  <thead class="bg-primary" style="color: white">
+                    <tr>
+                      <th scope="col">No</th>
+                      <th scope="col">Proyek Saya</th>
+                      <th scope="col">Client</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Opsi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row"> 1</th>
+                      <td>simker</td>
+                      <td>sirs</td>
+                      <td>progres</td>
+                      <td>
+                        <a href="" class="btn btn-primary btn-sm" data-toggle="modal"
+                          data-target="#Status"><i class=" fa fa-edit"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12 col-sm-12 ">
-        <div class="x_panel">
-          <div class="x_title">
-            <h2>Menambahan Karyawan</h2>
-            <ul class="nav navbar-right panel_toolbox">
-              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                  aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a class="dropdown-item" href="#">Settings 1</a>
-                  </li>
-                </ul>
-              </li>
-              <li><a class="close-link"><i class="fa fa-close"></i></a>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-          </div>
-          <div class="x_content">
-            <br />
-            @if (Session::get('success'))
-              <div class="alert alert-success">
-                {{ Session::get('success') }}
-              </div>
-            @endif
-            @if (Session::get('fail'))
-              <div class="alert alert-danger">
-                {{ Session::get('fail') }}
-              </div>
-            @endif
-            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
-              action="add" method="POST">
-              @csrf
-              <div class="item form-group">
-                <label class="col-form-label col-md-3 col-sm-3 label-align">NIK <span
-                    class="required">:</span>
-                </label>
-                <div class="col-md-6 col-sm-6 ">
-                  <input type="text" id="first-name" required="required" name='id'
-                    class="form-control ">
-                  <span style="color:red">@error('nik'){{ $message }}@enderror</span>
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="member">Nama<span
-                      class="required">:</span>
-                  </label>
-                  <div class="col-md-6 col-sm-6 ">
-                    <input type="text" id="first-name" required="required" name='nama'
-                      class="form-control ">
-                    <span style="color:red">@error('nama'){{ $message }}@enderror</span>
-                    </div>
-                  </div>
-
-                  <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="member">Username<span
-                        class="required">:</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 ">
-                      <input type="text" id="first-name" required="required" name='username'
-                        class="form-control ">
-                      <span style="color:red">@error('username'){{ $message }}@enderror</span>
-                      </div>
-                    </div>
-
-                    <div class="item form-group">
-                      <label class="col-form-label col-md-3 col-sm-3 label-align" for="member">Email<span
-                          class="required">:</span>
-                      </label>
-                      <div class="col-md-6 col-sm-6 ">
-                        <input type="text" id="first-name" required="required" name='email'
-                          class="form-control ">
-                        <span style="color:red">@error('email'){{ $message }}@enderror</span>
-                        </div>
-                      </div>
-
-                      <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align"
-                          for="nama-proyek">Unit<span class="required">:</span>
-                        </label>
-                        <div class="col-md-6 col-sm-61 ">
-                          <input type="text" id="first-name" required="required" name='unit'
-                            class="form-control ">
-                          <span style="color:red">@error('unit'){{ $message }}@enderror</span>
-                          </div>
-                        </div>
-
-                        <div class="item form-group2">
-                          <label class="col-form-label col-md-3 col-sm-3 label-align" for="member">Jabatan<span
-                              class="required">:</span>
-                          </label>
-                          <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="first-name" required="required" name='jabatan'
-                              class="form-control ">
-                            <span style="color:red">@error('jabatan'){{ $message }}@enderror</span>
-                            </div>
-                          </div>
-
-                          <div class="ln_solid"></div>
-                          <div class="item form-group">
-                            <div class="col-md-6 col-sm-6 offset-md-3">
-                              <button class="btn btn-primary" type="reset">Reset</button>
-                              <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            @endsection
+  </div>
+@endsection

@@ -14,12 +14,12 @@ class LoginMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
-        if ($request->input('username')) {
-            # code...
+        if (session('success') !=1) {
+            return redirect('/');
         }
-
-        return $next($request);
+        
+        return $next($request); 
     }
 }

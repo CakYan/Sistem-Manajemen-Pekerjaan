@@ -42,6 +42,10 @@
   <link rel="stylesheet" type="text/css"
     href="{{ asset('//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css') }}">
 
+  <!-- Multi-select box -->
+  <link type="text/css"
+    href="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css') }}"
+    rel="stylesheet" />
 
 </head>
 
@@ -68,6 +72,9 @@
 
   <!-- jQuery -->
   <script type="text/javascript" src="{{ asset('../vendors/jquery/dist/jquery.min.js') }}">
+  </script>
+  <!-- Multi-select box -->
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js">
   </script>
   <!-- Bootstrap -->
   <script type="text/javascript"

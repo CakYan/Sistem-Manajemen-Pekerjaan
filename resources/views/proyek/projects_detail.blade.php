@@ -39,7 +39,7 @@
                     <table id="datatable" class="table table-striped" style="width:100%">
                       <tbody>
                         @foreach ($tasks as $tugas)
-                          @if ($tugas->kelas_id == '1')
+                          @if ($tugas->kelas_id == '1' && $tugas->proyek_id == $proyeks->id)
                             <tr>
                               <!-- <td><input type="checkbox" name="pilih"></td> -->
                               <td><input type="checkbox" name="pilih">
@@ -58,7 +58,7 @@
                 </div>
               </div>
               <div class="card-composer">
-                <form action="/add_tugas" method="POST">
+                <form action="/add_tugas/{{ $proyeks->id }}" method="POST">
                   @csrf
                   <div class="list-card">
                     <div class="list-card-details">
@@ -75,8 +75,7 @@
                         <button class="btn btn-light mr-5" href="#"><i class="fa fa-plus-square-o"></i>
                           Tambah
                           Task</button>
-                        <button class="btn btn-light ml-3" href="#"><i
-                            class="fa fa-trash"></i></button>
+                        <a class="btn btn-light ml-3" href="#"><i class="fa fa-trash"></i></a>
                       </div>
                     </div>
                   </form>
@@ -113,7 +112,7 @@
                       <table id="datatable" class="table table-striped" style="width:100%">
                         <tbody>
                           @foreach ($tasks as $progres)
-                            @if ($progres->kelas_id == '2')
+                            @if ($progres->kelas_id == '2' && $progres->proyek_id == $proyeks->id)
                               <tr>
                                 <td><input type="checkbox" name="pilih">
                                   <a href="" data-toggle="modal"
@@ -134,7 +133,7 @@
                 </div>
                 <div class="card-composer">
                   <div class="cc-controls">
-                    <form action="/add_progres" method="POST">
+                    <form action="/add_progres/{{ $proyeks->id }}" method="POST">
                       @csrf
                       <div class="list-card">
                         <div class="list-card-details">
@@ -152,8 +151,7 @@
                                 class="fa fa-plus-square-o"></i>
                               Tambah
                               Task</button>
-                            <button class="btn btn-light ml-3" href="#"><i
-                                class="fa fa-trash"></i></button>
+                            <a class="btn btn-light ml-3" href="#"><i class="fa fa-trash"></i></a>
                           </div>
                         </div>
                       </form>
@@ -191,7 +189,7 @@
                         <table id="datatable" class="table table-striped" style="width:100%">
                           <tbody>
                             @foreach ($tasks as $selesai)
-                              @if ($selesai->kelas_id == '3')
+                              @if ($selesai->kelas_id == '3' && $selesai->proyek_id == $proyeks->id)
                                 <tr>
                                   <td><input type="checkbox" name="pilih">
                                     <a href="" data-toggle="modal"
@@ -219,7 +217,7 @@
                       </div>
                     </div>
                     <div class="cc-controls">
-                      <form action="/add_selesai" method="POST">
+                      <form action="/add_selesai/{{ $proyeks->id }}" method="POST">
                         @csrf
                         <div class="list-card">
                           <div class="list-card-details">
@@ -237,8 +235,7 @@
                                   class="fa fa-plus-square-o"></i>
                                 Tambah
                                 Task</button>
-                              <button class="btn btn-light ml-3" href="#"><i
-                                  class="fa fa-trash"></i></button>
+                              <a class="btn btn-light ml-3" href="#"><i class="fa fa-trash"></i></a>
                             </div>
                           </div>
                         </form>

@@ -32,6 +32,7 @@ class KaryawanFactory extends Factory
             'password' => 'user',
             'role_id' => '3',
             'unit' => 'IGD',
+            'profil_img' => '1.jpg',
             'jabatan' => 'Magang'
         ];
     }

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use \App\Models\Karyawan;
 
+use \App\Models\Karyawan;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller; 
 use Illuminate\Support\Facades\Auth;
+
 
 
 class LoginController extends Controller
@@ -14,7 +17,10 @@ class LoginController extends Controller
     {
         // $a = Karyawan::get();
         // echo $a;
-        return view('login');
+        if (session('success') !=1) {
+            return view('login');
+        }
+        return redirect('/home');
     }
 
     public function authenticate(Request $request)
@@ -28,14 +34,22 @@ class LoginController extends Controller
             ->where('password', "=", $request->input('password'))->first();
 
         if ($cek) {
+            // if ($request->session()->has('username')) {
+            //     $request->session()->get('username');
+            // }
             $karyawans = Karyawan::all();
             $karyawan = Karyawan::where('username', $request->username)->first();
 
-            $a = session(['username' => $request->input('username'), 'nama' => $karyawan->nama]);
+            session(['success' => true,'username' => $request->input('username'), 
+            'nama' => $karyawan->nama, 'foto' => $karyawan->profil_img]);
 
             return redirect('/home');
         } else {
-            return back()->with('loginError', 'Username atau Password Salah');
+            return back()->with('Login Gagal', 'Username atau Password Salah');
         }
+    }
+    public function logout(){
+        Session ::flush();
+        return redirect('/');
     }
 }
