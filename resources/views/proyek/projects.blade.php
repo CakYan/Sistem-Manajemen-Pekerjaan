@@ -11,6 +11,16 @@
     <div class="row">
       <div class="col-md-12">
         <div class="x_panel">
+          @if (Session::get('update'))
+            <div class="alert alert-success">
+              {{ Session::get('update') }}
+            </div>
+          @endif
+          @if (Session::get('gagal_update'))
+            <div class="alert alert-danger">
+              {{ Session::get('gagal_update') }}
+            </div>
+          @endif
           <div class="x_title">
             <h2>List Projek</h2>
             <ul class="nav navbar-right panel_toolbox">
@@ -95,7 +105,26 @@
                       <small>0% Complete</small>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-success btn-xs">Success</button>
+                      @if ($proyek->status_id == '1')
+                        <button type="button"
+                          class="btn btn-secondary btn-xs">{{ $proyek->status->nama_status }}</button>
+                      @endif
+                      @if ($proyek->status_id == '2')
+                        <button type="button"
+                          class="btn btn-info btn-xs">{{ $proyek->status->nama_status }}</button>
+                      @endif
+                      @if ($proyek->status_id == '3')
+                        <button type="button"
+                          class="btn btn-danger btn-xs">{{ $proyek->status->nama_status }}</button>
+                      @endif
+                      @if ($proyek->status_id == '4')
+                        <button type="button"
+                          class="btn btn-warning btn-xs">{{ $proyek->status->nama_status }}</button>
+                      @endif
+                      @if ($proyek->status_id == '5')
+                        <button type="button"
+                          class="btn btn-success btn-xs">{{ $proyek->status->nama_status }}</button>
+                      @endif
                     </td>
                     <td>
                       <a href="/projects/projects_detail/{{ $proyek->id }}"

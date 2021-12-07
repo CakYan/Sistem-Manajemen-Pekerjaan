@@ -34,6 +34,7 @@ class FormController extends Controller
             'anggota' => $request->input('anggota'),
             'unit_pengaju' => $request->input('unit_pengaju'),
             'deskripsi' => $request->input('deskripsi'),
+            'status_id' =>'1',
             'tgl_mulai' => $request->input('tgl_mulai'),
             'tgl_akhir' => $request->input('tgl_akhir'),
             'created_at' => now(),
@@ -41,7 +42,7 @@ class FormController extends Controller
         ]);
 
         if ($query) {
-            return back()->with('success', 'Proyek baru telah ditambahkan');
+            return back()->with('berhasil', 'Proyek baru telah ditambahkan');
         } else {
             return back()->with('fail', 'Ada sesuatu yang salah');
         }
@@ -68,6 +69,7 @@ class FormController extends Controller
             'anggota' => 'required',
             'unit_pengaju' => 'required',
             'deskripsi' => 'required',
+            'status_id' => 'required',
             'tgl_mulai' => 'required',
             'tgl_akhir' => 'required'
         ]);
@@ -78,6 +80,7 @@ class FormController extends Controller
             'anggota' => $request->input('anggota'),
             'unit_pengaju' => $request->input('unit_pengaju'),
             'deskripsi' => $request->input('deskripsi'),
+            'status_id' => $request->input('status_id'),
             'tgl_mulai' => $request->input('tgl_mulai'),
             'tgl_akhir' => $request->input('tgl_akhir'),
             'updated_at' => now()
@@ -87,21 +90,11 @@ class FormController extends Controller
         // }else{
         //     return "gagal";
         // }
+
         if ($proyek) {
-            return redirect('/projects')->with('success', 'Data telah diperbarui');
+            return back()->with('update', 'Data telah diperbarui');
         } else {
-            return back()->with('fail', 'Gagal memperbarui data');
+            return back()->with('gagal_update', 'Gagal memperbarui data');
         }
-        
-        
-        // $query = DB::table('proyeks')
-        // ->where('nama_proyek', $nama_proyek)->update(['nama_proyek' => $request->nama_proyek]);
-        // dd($query);
-        
-        // if($query){
-        //     return redirect('/projects');
-        // }else{
-        //     return back()->with('fail', 'Ada sesuatu yang salah');
-        // }
     }
 }

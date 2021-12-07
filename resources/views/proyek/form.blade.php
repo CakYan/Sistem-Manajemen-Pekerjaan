@@ -28,9 +28,9 @@
             </div>
             <div class="x_content">
               <br />
-              @if (Session::get('success'))
+              @if (Session::get('berhasil'))
                 <div class="alert alert-success">
-                  {{ Session::get('success') }}
+                  {{ Session::get('berhasil') }}
                 </div>
               @endif
               @if (Session::get('fail'))

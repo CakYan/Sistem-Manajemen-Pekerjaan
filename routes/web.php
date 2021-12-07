@@ -50,6 +50,7 @@ Route::group(['middleware' => 'user.session'], function () {
     Route::post('/add_progres/{id}', [TaskController::class, 'add_progres']);
     Route::post('/add_selesai/{id}', [TaskController::class, 'add_selesai']);
     Route::get('/delete_task/{id}', [TaskController::class, 'destroy']);
+    Route::post('/update_task', [TaskController::class, 'update'])->name('update_task');
 
     Route::get('/calendar', [KalenderController::class, 'index']);
 

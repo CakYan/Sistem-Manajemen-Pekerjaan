@@ -107,16 +107,15 @@
                               Akses<span class="required">:</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                              {{-- <select name="role_id" required="required" class="form-control">
+                              <select name="role_id" required="required" class="form-control">
                                 <option value="{{ old('role_id') }}">-- Pilih --</option>
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                                <option value="">4</option>
-                              </select> --}}
-                              <input type="text" id="first-name" required="required" name='role_id'
-                                class="form-control ">
-                              <span style="color:red">@error('jabatan'){{ $message }}@enderror</span>
+                                @foreach ($roles as $role)
+                                  <option value="{{ $role->id }}">{{ $role->hak_akses }}</option>
+                                @endforeach
+                              </select>
+                              {{-- <input type="text" id="first-name" required="required" name='role_id'
+                                class="form-control "> --}}
+                              <span style="color:red">@error('hak akses'){{ $message }}@enderror</span>
                               </div>
                             </div>
 

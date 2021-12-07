@@ -24,6 +24,16 @@
                 {{ Session::get('fail') }}
               </div>
             @endif
+            @if (Session::get('update'))
+              <div class="alert alert-success">
+                {{ Session::get('update') }}
+              </div>
+            @endif
+            @if (Session::get('gagal_update'))
+              <div class="alert alert-danger">
+                {{ Session::get('gagal_update') }}
+              </div>
+            @endif
             <div class="x_title">
               <h2>Karyawan <small>Users</small></h2>
               <ul class="nav navbar-right panel_toolbox">

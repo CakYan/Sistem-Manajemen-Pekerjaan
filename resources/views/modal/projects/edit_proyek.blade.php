@@ -33,11 +33,14 @@
                 <div class="col-md-6 col-sm-6 ">
                   {{-- <input type="text" name="ketua_tim" value="{{ $item->ketua_tim }}" id="ketua_tim"
                     required="required" class="form-control "> --}}
-                  <select class="form-control select2-data" name="ketua_tim">
+                  <select class="form-control select2-data" name="ketua_tim"
+                    value="{{ $item->ketua_tim }}">
                     {{-- multiple="multiple"> --}}
-                    {{-- <option value="">Pilih Karyawan</option> --}}
+                    <option value="{{ $item->ketua_tim }}">{{ $item->ketua_tim }}
+                      {{ $item->unit }}</option>
                     @foreach ($karyawans as $karyawan)
-                      <option value="">{{ $karyawan->nama }}</option>
+                      <option value="{{ $karyawan->id }}">{{ $karyawan->nama }}
+                        {{ $karyawan->unit }}</option>
                     @endforeach
                   </select>
                   <span style="color:red">@error('ketua
@@ -78,36 +81,35 @@
                         </div>
                       </div>
 
+                      {{-- STATUS --}}
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Tanggal Mulai <span
-                            class="required">:</span>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                          for="nama-proyek">Status<span class="required">:</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 ">
-                          <input id="date" class="date-picker form-control" name="tgl_mulai" placeholder=""
-                            value="{{ $item->tgl_mulai }}" type="text" required="required" type="text"
-                            {{-- onfocus="this.type='date'" --}} onmouseover="this.type='date'" onclick="this.type='date'"
-                            {{-- onblur="this.type='text'" --}} onmouseout="timeFunctionLong(this)">
-                          <span style="color:red">@error('tgl_mulai'){{ $message }}@enderror</span>
-                            <script>
-                              function timeFunctionLong(input) {
-                                setTimeout(function() {
-                                  input.type = 'text';
-                                }, 60000);
-                              }
-                            </script>
+                        <div class="col-md-6 col-sm-61 ">
+                          <select class="form-control" name="status_id" value="{{ $item->status_id }}">
+                            <option value="{{ $item->status_id }}">{{ $item->status->nama_status }}
+                            </option>
+                            @foreach ($status as $s)
+                              <option value="{{ $s->id }}">
+                                {{ $s->nama_status }}
+                              </option>
+                            @endforeach
+                          </select><span
+                            style="color:red">@error('status_id'){{ $message }}@enderror</span>
                           </div>
                         </div>
 
                         <div class="item form-group">
-                          <label class="col-form-label col-md-3 col-sm-3 label-align">Tanggal Selesai <span
+                          <label class="col-form-label col-md-3 col-sm-3 label-align">Tanggal Mulai <span
                               class="required">:</span>
                           </label>
                           <div class="col-md-6 col-sm-6 ">
-                            <input id="date" class="date-picker form-control" name="tgl_akhir" placeholder=""
-                              value="{{ $item->tgl_akhir }}" type="text" required="required" type="text"
-                              {{-- onfocus="this.type='date'" --}} onmouseover="this.type='date'" onclick="this.type='date'"
+                            <input id="date" class="date-picker form-control" name="tgl_mulai" placeholder=""
+                              value="{{ $item->tgl_mulai }}" type="text" required="required" type="text"
+                              onfocus="this.type='date'" {{-- onmouseover="this.type='date'" --}} onclick="this.type='date'"
                               {{-- onblur="this.type='text'" --}} onmouseout="timeFunctionLong(this)">
-                            <span style="color:red">@error('tgl_akhir'){{ $message }}@enderror</span>
+                            <span style="color:red">@error('tgl_mulai'){{ $message }}@enderror</span>
                               <script>
                                 function timeFunctionLong(input) {
                                   setTimeout(function() {
@@ -118,39 +120,50 @@
                             </div>
                           </div>
 
-                          <div class="ln_solid"></div>
                           <div class="item form-group">
-                            <div class="col-md-6 col-sm-6 offset-md-3">
-                              {{-- <a href="/projects" class="btn btn-primary" type="reset">Kembali</a> --}}
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                              <button type="submit" class="btn btn-success">Submit</button>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Tanggal Selesai <span
+                                class="required">:</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                              <input id="date" class="date-picker form-control" name="tgl_akhir" placeholder=""
+                                value="{{ $item->tgl_akhir }}" type="text" required="required" type="text"
+                                onfocus="this.type='date'" {{-- onmouseover="this.type='date'" --}} onclick="this.type='date'"
+                                {{-- onblur="this.type='text'" --}} onmouseout="timeFunctionLong(this)">
+                              <span style="color:red">@error('tgl_akhir'){{ $message }}@enderror</span>
+                                <script>
+                                  function timeFunctionLong(input) {
+                                    setTimeout(function() {
+                                      input.type = 'text';
+                                    }, 60000);
+                                  }
+                                </script>
+                              </div>
                             </div>
-                          </div>
-                        </form>
-                        {{-- END of FORM --}}
 
-                      </div>
+                            <div class="ln_solid"></div>
+                            <div class="item form-group">
+                              <div class="col-md-6 col-sm-6 offset-md-3">
+                                {{-- <a href="/projects" class="btn btn-primary" type="reset">Kembali</a> --}}
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                              </div>
+                            </div>
+                          </form>
+                          {{-- END of FORM --}}
 
-                      <div class="modal-footer">
-                      </div>
+                        </div>
 
-                      <script>
-                        // $(document).ready(function() {
-                        //   $('.select2-data').select2();
-                        // });
-                        $(function() {
-                          $('.select2-data').select2();
-                        });
-                      </script>
+                        <div class="modal-footer">
+                        </div>
 
-                      {{-- <script>
+                        {{-- <script>
                         $('#ketua_tim').select2({
                           dropdownParent: $('#modal-card{id}')
                         });
                       </script> --}}
 
+                      </div>
                     </div>
                   </div>
-                </div>
 
-              @endforeach
+                @endforeach

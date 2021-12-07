@@ -123,9 +123,20 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request)
     {
         //
+        $request -> validate([
+            'kelas_id' => 'required'
+        ]);
+
+        $task = Task::where('id', $request->input('id'))->update([
+            'kelas_id' => $request->input('kelas_id')
+        ]);
+
+        if ($task) {
+            return back();
+        }
     }
 
     /**

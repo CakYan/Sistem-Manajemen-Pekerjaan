@@ -21,9 +21,10 @@
               <div class="card card-small mb-4 pt-3 border-0">
                 <div class="card-header border-bottom text-center">
                   <div class="mb-3 mx-auto">
-                    <img class="rounded-circle" src="img/foto.jpg" alt="Firmansyah" width="110">
+                    <img class="rounded-circle" src="{{ asset('storage/' . session('foto')) }}"
+                      alt="{{ session('nama') }}" width="110">
                   </div>
-                  <h4 class="mb-0">Firmansyah</h4>
+                  <h4 class="mb-0">{{ session('nama') }}</h4>
                   <span class="text-muted d-block mb-2">Project Manager</span>
                   <a class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2" data-toggle="modal"
                     data-target="#modal-edit">

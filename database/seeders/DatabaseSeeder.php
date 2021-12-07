@@ -8,6 +8,7 @@ use App\Models\Karyawan;
 use App\Models\Kelas;
 use App\Models\Proyek;
 use App\Models\Role;
+use App\Models\Status;
 use App\Models\Task;
 use Illuminate\Database\Seeder;
 
@@ -75,7 +76,7 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin',
             'role_id' => '1',
             'unit' => 'IGD',
-            'profil_img' => '4.jpg',
+            'profil_img' => 'user.png',
             'jabatan' => 'Kabag'
         ]);
 
@@ -87,6 +88,7 @@ class DatabaseSeeder extends Seeder
             'anggota' => 'Firmansyah, Evi',
             'unit_pengaju' => 'SIRS',
             'deskripsi' => 'Sistem Manajemen Pekerjaan adalah ...',
+            'status_id' => '1',
             'tgl_mulai' => '2021-10-04',
             'tgl_akhir' => '2022-02-12'
         ]);
@@ -104,6 +106,10 @@ class DatabaseSeeder extends Seeder
             'hak_akses' => 'Anggota Tim'
         ]);
 
+        Role::create([
+            'hak_akses' => 'Input Master'
+        ]);
+
         Kelas::create([
             'kelas' => 'Tugas'
         ]);
@@ -114,6 +120,26 @@ class DatabaseSeeder extends Seeder
 
         Kelas::create([
             'kelas' => 'Selesai'
+        ]);
+
+        Status::create([
+            'nama_status' => 'Not On Progress'
+        ]);
+        
+        Status::create([
+            'nama_status' => 'On Progress'
+        ]);
+
+        Status::create([
+            'nama_status' => 'Cancel'
+        ]);
+
+        Status::create([
+            'nama_status' => 'Pending'
+        ]);
+
+        Status::create([
+            'nama_status' => 'Done'
         ]);
     }
 }

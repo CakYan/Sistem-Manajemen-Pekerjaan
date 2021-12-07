@@ -21,6 +21,7 @@ class CreateProyeksTable extends Migration
             $table->string('unit_pengaju');
             $table->text('deskripsi');
             $table->string('progress')->nullable();
+            $table->bigInteger('status_id');
             $table->dateTime('tgl_mulai')->nullable();
             $table->dateTime('tgl_akhir')->nullable();
             $table->timestamps();

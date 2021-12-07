@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Karyawan;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +18,8 @@ class KaryawanController extends Controller
     public function daftar_karyawan()
     {
         $karyawans = Karyawan::with('role')->get();
-        return view('karyawan.index', compact('karyawans'));
+        $roles = Role::all();
+        return view('karyawan.index', compact('karyawans'), compact('roles'));
     }
 
     public function add_karyawan(){
@@ -50,9 +52,6 @@ class KaryawanController extends Controller
             'role_id' => $request->input('role_id')
         ]);
 
-        // if ($query) {
-        //     dd($query);
-        // }
         if ($query) {
             return back()->with('berhasil', 'Data telah ditambahkan');
         } else {
@@ -85,7 +84,7 @@ class KaryawanController extends Controller
         ]);
 
         if ($karyawan) {
-            return back()->with('berhasil', 'Data telah ditambahkan');
+            return back()->with('update', 'Data telah diperbarui');
         } else {
             return back()->with('fail', 'Ada sesuatu yang salah');
         }

@@ -39,6 +39,8 @@
 
   <!-- Custom Theme Style -->
   <link href="{{ asset('../build/css/custom.min.css') }}" type="text/css" rel="stylesheet">
+
+  <!-- dataTables -->
   <link rel="stylesheet" type="text/css"
     href="{{ asset('//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css') }}">
 
@@ -73,8 +75,15 @@
   <!-- jQuery -->
   <script type="text/javascript" src="{{ asset('../vendors/jquery/dist/jquery.min.js') }}">
   </script>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <!-- Multi-select box -->
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js">
+  <script type="text/javascript"
+    src="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js') }}">
+  </script>
+  <script>
+    $(function() {
+      $('select2-data').select2();
+    });
   </script>
   <!-- Bootstrap -->
   <script type="text/javascript"
