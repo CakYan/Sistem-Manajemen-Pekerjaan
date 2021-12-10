@@ -35,13 +35,14 @@
               <li><a href="/form">Tambah Proyek</a></li>
             </ul>
           </li>
-          <li><a><i class="fa fa-desktop"></i> Kepala TIM <span
+          <li><a><i class="fa fa-desktop"></i> Kepala Proyek <span
                 class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="/calendar">Calendar</a></li>
             </ul>
           </li>
-          <li><a><i class="fa fa-table"></i> TIM <span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-table"></i> Anggota Proyek <span
+                class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="/projects">Proyek</a></li>
             </ul>

@@ -19,6 +19,11 @@
           <div class="row">
             <div class="col mt-2 ml-2">
               <div class="card card-small mb-4 pt-3 border-0">
+                @if (Session::get('gagal'))
+                  <div class="alert alert-danger">
+                    {{ Session::get('gagal') }}
+                  </div>
+                @endif
                 <div class="card-header border-bottom text-center">
                   <div class="mb-3 mx-auto">
                     <img class="rounded-circle" src="{{ asset('storage/' . session('foto')) }}"

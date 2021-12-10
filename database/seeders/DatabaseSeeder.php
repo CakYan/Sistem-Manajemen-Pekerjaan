@@ -110,6 +110,10 @@ class DatabaseSeeder extends Seeder
             'hak_akses' => 'Input Master'
         ]);
 
+        Role::create([
+            'hak_akses' => 'Kabag'
+        ]);
+
         Kelas::create([
             'kelas' => 'Tugas'
         ]);

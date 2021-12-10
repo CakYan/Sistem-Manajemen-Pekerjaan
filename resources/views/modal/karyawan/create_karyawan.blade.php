@@ -10,7 +10,7 @@
       </div>
 
       <div class="modal-body">
-        <form action="add" method="POST">
+        <form action="add_karyawan" method="POST">
           @csrf
 
           <div class="item form-group">

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class CekLogin
+class KetuaProyek
 {
     /**
      * Handle an incoming request.
@@ -14,12 +14,12 @@ class CekLogin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        if (session('success') !=1) {
-            return redirect('/');
+        if (session('hak_akses') == 3) {
+            return $next($request);
+            # code...
         }
-        // return redirect('/home');
-        return $next($request); 
+        return back()->with('alert', 'Anda tidak memiliki hak akses pada halaman ini');
     }
 }

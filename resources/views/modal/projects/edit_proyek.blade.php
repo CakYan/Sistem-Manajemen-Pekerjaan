@@ -39,8 +39,9 @@
                     <option value="{{ $item->ketua_tim }}">{{ $item->ketua_tim }}
                       {{ $item->unit }}</option>
                     @foreach ($karyawans as $karyawan)
-                      <option value="{{ $karyawan->id }}">{{ $karyawan->nama }}
-                        {{ $karyawan->unit }}</option>
+                      <option value="{{ $karyawan->nama }}">{{ $karyawan->nama }},
+                        <i>{{ $karyawan->unit }}</i>
+                      </option>
                     @endforeach
                   </select>
                   <span style="color:red">@error('ketua

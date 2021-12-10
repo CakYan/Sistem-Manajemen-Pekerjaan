@@ -17,11 +17,23 @@ class ProjectsController extends Controller
         $status = Status::all();
         $karyawans = Karyawan::all();
         $proyeks = Proyek::with('status')->get();
-        return view('proyek.projects', compact('proyeks'), compact('karyawans'))->with('status', $status);
+        return view('proyek.projects', compact('proyeks', 'karyawans', 'status'));
     }
 
     public function detail_tugas(){
         return view('proyek.detail_tugas');
+    }
+
+    public function homeDireksi()
+    {
+        $proyeks = Proyek::with('status')->get();
+        return view('home.home_direksi', compact('proyeks'));
+    }
+
+    public function ketuaProyek()
+    {
+        $proyeks = Proyek::with('status')->get();
+        return view('home.ketua_proyek', compact('proyeks'));
     }
 
     public function prodet($id)
@@ -29,6 +41,6 @@ class ProjectsController extends Controller
         $kelas = Kelas::all();
         $tasks = Task::with('kelas')->get();
         $prodet = Proyek::where('id', $id)->first();
-        return view('proyek.projects_detail', ['proyeks' => $prodet], ['tasks' => $tasks])->with('kelas', $kelas);
+        return view('proyek.projects_detail', ['proyeks' => $prodet, 'tasks' => $tasks, 'kelas' => $kelas]);
     }
 }

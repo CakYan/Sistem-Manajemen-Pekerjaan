@@ -15,8 +15,6 @@ class LoginController extends Controller
 {
     public function index()
     {
-        // $a = Karyawan::get();
-        // echo $a;
         if (session('success') !=1) {
             return view('login');
         }
@@ -34,16 +32,23 @@ class LoginController extends Controller
             ->where('password', "=", $request->input('password'))->first();
 
         if ($cek) {
-            // if ($request->session()->has('username')) {
-            //     $request->session()->get('username');
-            // }
-            $karyawans = Karyawan::all();
             $karyawan = Karyawan::where('username', $request->username)->first();
 
             session(['success' => true,'username' => $request->input('username'), 
-            'nama' => $karyawan->nama, 'foto' => $karyawan->profil_img]);
+            'nama' => $karyawan->nama, 'foto' => $karyawan->profil_img, 'hak_akses' => $karyawan->role_id]);
 
-            return redirect('/home');
+            if ($karyawan->role_id == 1) {
+                # code...
+                return redirect('/home');
+            }elseif ($karyawan->role_id == 2){
+                return redirect('/homeDireksi');
+            }elseif ($karyawan->role_id == 3){
+                return redirect('/home');
+            }elseif ($karyawan->role_id == 4){
+                return redirect('/home');
+            }elseif ($karyawan->role_id == 5){
+                return redirect('/daftar_karyawan');
+            }
         } else {
             return back()->with('Login Gagal', 'Username atau Password Salah');
         }

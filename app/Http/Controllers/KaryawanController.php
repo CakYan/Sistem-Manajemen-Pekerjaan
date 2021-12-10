@@ -22,10 +22,6 @@ class KaryawanController extends Controller
         return view('karyawan.index', compact('karyawans'), compact('roles'));
     }
 
-    public function add_karyawan(){
-        return view('karyawan.add_karyawan');
-    }
-
     public function add(Request $request)
     {
         $request->validate([

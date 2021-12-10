@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class LoginMiddleware
+class AnggotaProyek
 {
     /**
      * Handle an incoming request.
@@ -14,12 +14,12 @@ class LoginMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        if (session('success') !=1) {
-            return redirect('/');
+        if (session('hak_akses') == 4) {
+            return $next($request);
+            # code...
         }
-        
-        return $next($request); 
+        return back()->with('alert', 'Anda tidak memiliki hak akses pada halaman ini');
     }
 }
