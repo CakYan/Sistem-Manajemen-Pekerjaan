@@ -61,6 +61,12 @@
             </div>
           @endif
 
+          @if (session()->has('alert'))
+            <div class="alert alert-danger alert-dismissable fade show" role="alert">
+              {{ session('alert') }}
+            </div>
+          @endif
+
           {{-- login form --}}
           <form action="/login_cek" method="POST">
             @csrf

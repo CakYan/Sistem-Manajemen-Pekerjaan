@@ -1,9 +1,21 @@
 <div class="col-md-3 left_col">
   <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
-      <a href="/home" class="site_title"> <img src="{{ asset('images/rs.png') }}" width="40"
-          height="40">
-        <span>SIMKER</span></a>
+      @if (session('hak_akses') == 1)
+        <a href="/home" class="site_title"> <img src="{{ asset('images/rs.png') }}" width="40"
+            height="40">
+          <span>SIMKER</span></a>
+      @endif
+      @if (session('hak_akses') == 2)
+        <a href="/homeDireksi" class="site_title"> <img src="{{ asset('images/rs.png') }}"
+            width="40" height="40">
+          <span>SIMKER</span></a>
+      @endif
+      @if (session('hak_akses') == 3)
+        <a href="/homeKetuaProyek" class="site_title"> <img src="{{ asset('images/rs.png') }}"
+            width="40" height="40">
+          <span>SIMKER</span></a>
+      @endif
     </div>
 
     <div class="clearfix"></div>
@@ -12,7 +24,7 @@
     <div class="profile clearfix">
       <div class="profile_pic">
         <img src="{{ asset('storage/' . session('foto')) }}" alt="..."
-          class="img-circle profile_img">
+          class="img-circle profile_img" width="60" height="60">
       </div>
       <div class="profile_info">
         <span>Selamat Datang,</span>

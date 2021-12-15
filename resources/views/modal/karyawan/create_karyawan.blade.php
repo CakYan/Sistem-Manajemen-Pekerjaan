@@ -107,7 +107,7 @@
                               Akses<span class="required">:</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                              <select name="role_id" required="required" class="form-control">
+                              <select name="role_id" multiple required="required" class="form-control">
                                 <option value="{{ old('role_id') }}">-- Pilih --</option>
                                 @foreach ($roles as $role)
                                   <option value="{{ $role->id }}">{{ $role->hak_akses }}</option>

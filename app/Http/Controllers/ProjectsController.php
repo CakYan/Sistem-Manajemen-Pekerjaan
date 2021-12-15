@@ -27,13 +27,14 @@ class ProjectsController extends Controller
     public function homeDireksi()
     {
         $proyeks = Proyek::with('status')->get();
-        return view('home.home_direksi', compact('proyeks'));
+        return view('home.direksi', compact('proyeks'));
     }
 
     public function ketuaProyek()
     {
+        $karyawans = Karyawan::all();
         $proyeks = Proyek::with('status')->get();
-        return view('home.ketua_proyek', compact('proyeks'));
+        return view('home.ketua_proyek', compact('proyeks', 'karyawans'));
     }
 
     public function prodet($id)

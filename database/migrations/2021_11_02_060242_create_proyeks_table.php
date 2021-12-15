@@ -17,7 +17,7 @@ class CreateProyeksTable extends Migration
             $table->id();
             $table->string('nama_proyek')->unique();
             $table->string('ketua_tim');
-            $table->string('anggota')->nullable();
+            $table->string('anggota')->nullable()->toArray();
             $table->string('unit_pengaju');
             $table->text('deskripsi');
             $table->string('progress')->nullable();

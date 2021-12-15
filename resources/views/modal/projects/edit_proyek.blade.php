@@ -33,10 +33,11 @@
                 <div class="col-md-6 col-sm-6 ">
                   {{-- <input type="text" name="ketua_tim" value="{{ $item->ketua_tim }}" id="ketua_tim"
                     required="required" class="form-control "> --}}
-                  <select class="form-control select2-data" name="ketua_tim"
+                  <select class="form-control" name="ketua_tim" data-live-search="true"
                     value="{{ $item->ketua_tim }}">
                     {{-- multiple="multiple"> --}}
-                    <option value="{{ $item->ketua_tim }}">{{ $item->ketua_tim }}
+                    <option value="{{ $item->ketua_tim }} {{ $item->unit }}">
+                      {{ $item->ketua_tim }},
                       {{ $item->unit }}</option>
                     @foreach ($karyawans as $karyawan)
                       <option value="{{ $karyawan->nama }}">{{ $karyawan->nama }},
@@ -54,9 +55,18 @@
                     tim<span class="required">:</span>
                   </label>
                   <div class="col-md-6 col-sm-61 ">
-                    <input type="text" name="anggota" value="{{ $item->anggota }}" id="first-name"
-                      required="required" class="form-control "><span
-                      style="color:red">@error('anggota'){{ $message }}@enderror</span>
+                    <select class="form-control " name="anggota[]" multiple data-live-search="true"
+                      value="{{ $item->anggota }}">
+                      {{-- multiple="multiple"> --}}
+                      <option value="{{ $item->id }}">{{ $item->anggota }}
+                        {{ $item->unit }}</option>
+                      @foreach ($karyawans as $karyawan)
+                        <option value="{{ $karyawan->nama }}">{{ $karyawan->nama }},
+                          <i>{{ $karyawan->unit }}</i>
+                        </option>
+                      @endforeach
+                    </select>
+                    <span style="color:red">@error('anggota'){{ $message }}@enderror</span>
                     </div>
                   </div>
 

@@ -65,22 +65,33 @@
 
                     <div class="item form-group">
                       <label class="col-form-label col-md-3 col-sm-3 label-align" for="member">Ketua
-                        TIM<span class="required">:</span>
+                        Proyek<span class="required">:</span>
                       </label>
                       <div class="col-md-6 col-sm-6 ">
-                        <input type="text" id="first-name" name="ketua_tim" required="required"
-                          class="form-control" value="">
+                        <select class="form-control" data-live-search="true" name="ketua_tim">
+                          <option value="">-- Pilih --</option>
+                          @foreach ($karyawans as $karyawan)
+                            <option value="{{ $karyawan->nama }}">{{ $karyawan->nama }},
+                              <i>{{ $karyawan->unit }}</i>
+                            </option>
+                          @endforeach
+                        </select>
                         <span style="color:red">@error('ketua_tim'){{ $message }}@enderror</span>
                         </div>
                       </div>
 
                       <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="leader">Anggota
-                          TIM<span class="required">:</span>
+                          Proyek<span class="required">:</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                          <input type="text" id="project-name" name="anggota" required="required"
-                            class="form-control">
+                          <select class="form-control" data-live-search="true" multiple name="anggota[]">
+                            @foreach ($karyawans as $karyawan)
+                              <option value="{{ $karyawan->nama }}">{{ $karyawan->nama }},
+                                <i>{{ $karyawan->unit }}</i>
+                              </option>
+                            @endforeach
+                          </select>
                           <span style="color:red">@error('anggota'){{ $message }}@enderror</span>
                           </div>
                         </div>

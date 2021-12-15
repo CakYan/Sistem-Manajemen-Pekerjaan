@@ -37,6 +37,7 @@
                           <th>Nama Proyek</th>
                           <th>Nama Ketua</th>
                           <th>Progres</th>
+                          <th>Unit Pengaju</th>
                           <th>Status</th>
                         </tr>
                       </thead>
@@ -48,6 +49,7 @@
                             </td>
                             <td>{{ $proyek->ketua_tim }}</td>
                             <td>{{ $proyek->progres }}</td>
+                            <td>{{ $proyek->unit_pengaju }}</td>
                             <td>{{ $proyek->status->nama_status }}</td>
                           </tr>
                         @endforeach

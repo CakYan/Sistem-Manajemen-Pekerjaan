@@ -11,13 +11,12 @@ class FormController extends Controller
 {
     public function index()
     {
-        return view('proyek.form');
+        $karyawans = Karyawan::all();
+        return view('proyek.form', compact('karyawans'));
     }
 
     public function add_proyek(Request $request)
     {
-        $karyawans = Karyawan::all();
-
         $request->validate([
             'nama_proyek' => 'required|unique:proyeks',
             'ketua_tim' => 'required',
@@ -28,10 +27,15 @@ class FormController extends Controller
             'tgl_akhir' => 'required'
         ]);
 
+        foreach ($request->input('anggota') as $anggota) {
+            $anggotanya [] = $anggota;
+        }
+
+        $anggotaMulti = implode(",",$anggotanya);
         $query = DB::table('proyeks')->insert([
             'nama_proyek' => $request->input('nama_proyek'),
             'ketua_tim' => $request->input('ketua_tim'),
-            'anggota' => $request->input('anggota'),
+            'anggota' => $anggotaMulti,
             'unit_pengaju' => $request->input('unit_pengaju'),
             'deskripsi' => $request->input('deskripsi'),
             'status_id' =>'1',
@@ -85,12 +89,7 @@ class FormController extends Controller
             'tgl_akhir' => $request->input('tgl_akhir'),
             'updated_at' => now()
         ]);
-        // if($proyek){
-        //     return "sukses";
-        // }else{
-        //     return "gagal";
-        // }
-
+        
         if ($proyek) {
             return back()->with('update', 'Data telah diperbarui');
         } else {

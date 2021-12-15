@@ -18,7 +18,18 @@ class LoginController extends Controller
         if (session('success') !=1) {
             return view('login');
         }
-        return redirect('/home');
+        if (session('hak_akses')==1) {
+            return redirect('/home');
+            # code...
+        }elseif(session('hak_akses')==2){
+            return redirect('/homeDireksi');
+        }elseif(session('hak_akses')==3){
+            return redirect('/homeKetuaProyek');
+        }elseif(session('hak_akses')==4){
+            return redirect('/home');
+        }elseif(session('hak_akses')==5){
+            return redirect('/daftar_karyawan');
+        }
     }
 
     public function authenticate(Request $request)
@@ -35,7 +46,7 @@ class LoginController extends Controller
             $karyawan = Karyawan::where('username', $request->username)->first();
 
             session(['success' => true,'username' => $request->input('username'), 
-            'nama' => $karyawan->nama, 'foto' => $karyawan->profil_img, 'hak_akses' => $karyawan->role_id]);
+            'nama' => $karyawan->nama, 'nik' => $karyawan->nik, 'foto' => $karyawan->profil_img, 'hak_akses' => $karyawan->role_id]);
 
             if ($karyawan->role_id == 1) {
                 # code...
@@ -43,7 +54,7 @@ class LoginController extends Controller
             }elseif ($karyawan->role_id == 2){
                 return redirect('/homeDireksi');
             }elseif ($karyawan->role_id == 3){
-                return redirect('/home');
+                return redirect('/homeKetuaProyek');
             }elseif ($karyawan->role_id == 4){
                 return redirect('/home');
             }elseif ($karyawan->role_id == 5){

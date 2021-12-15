@@ -12,14 +12,14 @@ class KaryawanController extends Controller
     public function index()
     {
         $karyawans = Karyawan::all();
-        return view('index', compact('karyawans'));
+        return view('home.index', compact('karyawans'));
     }
 
     public function daftar_karyawan()
     {
         $karyawans = Karyawan::with('role')->get();
         $roles = Role::all();
-        return view('karyawan.index', compact('karyawans'), compact('roles'));
+        return view('karyawan.index', compact('karyawans', 'roles'));
     }
 
     public function add(Request $request)
@@ -42,10 +42,14 @@ class KaryawanController extends Controller
             'username' => $request->input('username'),
             'alamat' => $request->input('alamat'),
             'email' => $request->input('email'),
+            'password' => $request->input('username'),
             'unit' => $request->input('unit'),
             'no_telp' => $request->input('no_telp'),
             'jabatan' => $request->input('jabatan'),
-            'role_id' => $request->input('role_id')
+            'role_id' => $request->input('role_id'),
+            'profil_img' => 'user.png',
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
 
         if ($query) {

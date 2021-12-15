@@ -19,15 +19,15 @@
           <div class="row">
             <div class="col mt-2 ml-2">
               <div class="card card-small mb-4 pt-3 border-0">
-                @if (Session::get('gagal'))
+                @if (Session::get('alert'))
                   <div class="alert alert-danger">
-                    {{ Session::get('gagal') }}
+                    {{ Session::get('alert') }}
                   </div>
                 @endif
                 <div class="card-header border-bottom text-center">
                   <div class="mb-3 mx-auto">
                     <img class="rounded-circle" src="{{ asset('storage/' . session('foto')) }}"
-                      alt="{{ session('nama') }}" width="110">
+                      alt="{{ session('nama') }}" width="110" height="110">
                   </div>
                   <h4 class="mb-0">{{ session('nama') }}</h4>
                   <span class="text-muted d-block mb-2">Project Manager</span>
