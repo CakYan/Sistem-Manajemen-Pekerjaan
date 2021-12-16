@@ -16,6 +16,16 @@
             width="40" height="40">
           <span>SIMKER</span></a>
       @endif
+      @if (session('hak_akses') == 4)
+        <a href="/homeAnggotaProyek" class="site_title"> <img
+            src="{{ asset('images/rs.png') }}" width="40" height="40">
+          <span>SIMKER</span></a>
+      @endif
+      @if (session('hak_akses') == 5)
+        <a href="/daftar_karyawan" class="site_title"> <img src="{{ asset('images/rs.png') }}"
+            width="40" height="40">
+          <span>SIMKER</span></a>
+      @endif
     </div>
 
     <div class="clearfix"></div>

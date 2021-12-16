@@ -20,6 +20,6 @@ class AnggotaProyek
             return $next($request);
             # code...
         }
-        return back()->with('alert', 'Anda tidak memiliki hak akses pada halaman ini');
+        return redirect('/error');
     }
 }

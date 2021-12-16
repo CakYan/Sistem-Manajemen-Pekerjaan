@@ -20,6 +20,6 @@ class Direksi
             # code...
             return $next($request);
         }
-        return back()->with('alert', 'Anda tidak memiliki hak akses pada halaman ini');
+        return redirect('/error');
     }
 }

@@ -30,7 +30,7 @@ class KaryawanFactory extends Factory
             'no_telp' => $this->faker->phoneNumber(),
             'email' => $this->faker->unique()->email(),
             'password' => 'user',
-            'role_id' => '4',
+            'role_id' => $this->faker->numberBetween(2, 4),
             'unit' => 'IGD',
             'profil_img' => 'user.png',
             'jabatan' => 'Magang'

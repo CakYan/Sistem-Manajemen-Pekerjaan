@@ -71,7 +71,8 @@
                         <select class="form-control" data-live-search="true" name="ketua_tim">
                           <option value="">-- Pilih --</option>
                           @foreach ($karyawans as $karyawan)
-                            <option value="{{ $karyawan->nama }}">{{ $karyawan->nama }},
+                            <option value="{{ $karyawan->nama }}">
+                              {{ $karyawan->nama }},
                               <i>{{ $karyawan->unit }}</i>
                             </option>
                           @endforeach

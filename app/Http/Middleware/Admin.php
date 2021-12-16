@@ -20,6 +20,6 @@ class Admin
         if(session('hak_akses') == 1){
             return $next($request);
         }
-        return back()->with('alert', 'Anda tidak memiliki hak akses pada halaman ini');
+        return redirect('/error');
     }
 }

@@ -23,7 +23,21 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // User::factory(10)->create();
-
+        
+        Karyawan::create([
+            'nik' => '0000000001',
+            'nama' => 'admin',
+            'username' => 'admin',
+            'alamat' => 'Jl. Merpati 10/09 Lamongan',
+            'no_telp' => '081236471233',
+            'email' => 'asep@email.com',
+            'password' => 'admin',
+            'role_id' => '1',
+            'unit' => 'IGD',
+            'profil_img' => 'user.png',
+            'jabatan' => 'Kabag'
+        ]);
+        
         Karyawan::create([
             'nik' => '1911501012',
             'nama' => 'Febryan Akhdani',
@@ -66,16 +80,17 @@ class DatabaseSeeder extends Seeder
             'jabatan' => 'Magang'
         ]);
 
+
         Karyawan::create([
-            'nik' => '0000000001',
-            'nama' => 'admin',
-            'username' => 'admin',
+            'nik' => '0000000002',
+            'nama' => 'Input Master',
+            'username' => 'ipman',
             'alamat' => 'Jl. Merpati 10/09 Lamongan',
-            'no_telp' => '081236471233',
-            'email' => 'asep@email.com',
-            'password' => 'admin',
-            'role_id' => '1',
-            'unit' => 'IGD',
+            'no_telp' => '081236471244',
+            'email' => 'ipman@email.com',
+            'password' => 'ipman',
+            'role_id' => '5',
+            'unit' => 'SDI',
             'profil_img' => 'user.png',
             'jabatan' => 'Kabag'
         ]);
@@ -100,10 +115,10 @@ class DatabaseSeeder extends Seeder
             'hak_akses' => 'Direktur'
         ]);
         Role::create([
-            'hak_akses' => 'Ketua Tim'
+            'hak_akses' => 'Ketua Proyek'
         ]);
         Role::create([
-            'hak_akses' => 'Anggota Tim'
+            'hak_akses' => 'Anggota Proyek'
         ]);
 
         Role::create([

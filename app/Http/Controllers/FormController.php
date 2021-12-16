@@ -60,9 +60,8 @@ class FormController extends Controller
 
     public function edit_proyek($id)
     {
-        $proyek = DB::table('proyeks')->where('id', $id)->first();
-        $karyawans = Karyawan::first();
-        return view('/proyek.edit_proyek', ['proyeks' => $proyek], compact('karyawans'));
+        $proyek = DB::table('proyeks')
+        ->join('karyawans', 'proyeks.anggota', '=', 'karyawans.id')->get();
     }
 
     public function update_proyek(Request $request)

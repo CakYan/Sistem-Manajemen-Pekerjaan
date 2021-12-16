@@ -21,6 +21,6 @@ class InputMaster
             return $next($request);
             // return redirect('/daftar_karyawan');
         }
-        return back()->with('alert', 'Anda tidak memiliki hak akses pada halaman ini');
+        return redirect('/error');
     }
 }

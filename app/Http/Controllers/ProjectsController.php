@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\Kelas;
 use App\Models\Proyek;
 use App\Models\Status;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Kelas;
 
 class ProjectsController extends Controller
 {
     public function index()
     {
+        // $proyeks = DB::table('proyeks')->join('karyawans', 'proyeks.anggota', '=', 'karyawans.id')->get();
         $status = Status::all();
         $karyawans = Karyawan::all();
         $proyeks = Proyek::with('status')->get();
@@ -35,6 +37,13 @@ class ProjectsController extends Controller
         $karyawans = Karyawan::all();
         $proyeks = Proyek::with('status')->get();
         return view('home.ketua_proyek', compact('proyeks', 'karyawans'));
+    }
+
+    public function anggotaProyek()
+    {
+        $karyawans = Karyawan::all();
+        $proyeks = Proyek::with('status')->get();
+        return view('home.anggota_proyek', compact('proyeks', 'karyawans'));
     }
 
     public function prodet($id)
