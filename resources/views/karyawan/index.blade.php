@@ -62,7 +62,7 @@
                           <th>NIK</th>
                           <th>Nama</th>
                           <th>Username</th>
-                          <th>Email</th>
+                          <th>Jabatan</th>
                           <th>Unit</th>
                           <th>Hak Akses</th>
                           <th></th>
@@ -74,10 +74,10 @@
                             <td>{{ $karyawan->nik }}</td>
                             <td>{{ $karyawan->nama }}</td>
                             <td>{{ $karyawan->username }}</td>
-                            <td>{{ $karyawan->email }}</td>
+                            <td>{{ $karyawan->jabatan->jabatan }}</td>
                             <td>{{ $karyawan->unit }}</td>
                             <td>{{ $karyawan->role->hak_akses }}</td>
-                            <td>
+                            <td style="width: 1%">
                               <div class="row d-flex justify-content-center">
                                 <a href="" class="btn btn-sm btn-warning" data-toggle="modal"
                                   data-target="#modal-edit{{ $karyawan->id }}"> Ubah</a>

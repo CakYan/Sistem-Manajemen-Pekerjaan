@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Role;
+use App\Models\Proyek;
+use App\Models\Jabatan;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Karyawan extends Model
 {
@@ -18,5 +21,9 @@ class Karyawan extends Model
 
     public function role(){
         return $this->belongsTo(Role::class);
+    }
+
+    public function jabatan(){
+        return $this->belongsTo(Jabatan::class);
     }
 }

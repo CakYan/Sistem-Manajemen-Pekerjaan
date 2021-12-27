@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Karyawan;
 use App\Models\Role;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\Jabatan;
 
 class KaryawanController extends Controller
 {
@@ -17,9 +19,10 @@ class KaryawanController extends Controller
 
     public function daftar_karyawan()
     {
-        $karyawans = Karyawan::with('role')->get();
+        $karyawans = Karyawan::with('role', 'jabatan')->get();
+        $jabatans = Jabatan::all();
         $roles = Role::all();
-        return view('karyawan.index', compact('karyawans', 'roles'));
+        return view('karyawan.index', compact('karyawans', 'roles', 'jabatans'));
     }
 
     public function add(Request $request)

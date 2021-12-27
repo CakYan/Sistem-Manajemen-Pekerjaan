@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Proyek;
 use Illuminate\Http\Request;
 
 class KalenderController extends Controller
@@ -9,6 +10,7 @@ class KalenderController extends Controller
     //
     public function index()
     {
-        return view('calendar');
+        $proyek = Proyek::all();
+        return view('calendar', compact('proyek'));
     }
 }

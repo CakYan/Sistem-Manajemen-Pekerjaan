@@ -50,25 +50,29 @@
       <div class="menu_section">
         <h3>Umum</h3>
         <ul class="nav side-menu">
-          <li><a><i class="fa fa-edit"></i> Direksi <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="/daftar_karyawan">Karyawan</a></li>
-              <li><a href="/inbox">Chat</a></li>
-              <li><a href="/form">Tambah Proyek</a></li>
-            </ul>
-          </li>
-          <li><a><i class="fa fa-desktop"></i> Kepala Proyek <span
-                class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="/calendar">Calendar</a></li>
-            </ul>
-          </li>
-          <li><a><i class="fa fa-table"></i> Anggota Proyek <span
-                class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="/projects">Proyek</a></li>
-            </ul>
-          </li>
+          @if (session('hak_akses') == 1)
+            <li><a href="/daftar_karyawan"><i class="fa fa-edit"></i> Data Karyawan</a></li>
+            <li><a href="/inbox"><i class="fa fa-comments"></i> Chat</a></li>
+            <li><a href="/calendar"><i class="fa fa-calendar"></i> Calendar</a></li>
+            <li><a href="/form"><i class="fa fa-plus"></i> Tambah Proyek</a></li>
+            <li><a href="/projects"><i class="fa fa-tasks"></i> List Proyek</a></li>
+          @endif
+          @if (session('hak_akses') == 2)
+            <li><a href="/inbox"><i class="fa fa-comments"></i> Chat</a></li>
+            <li><a href="/calendar"><i class="fa fa-calendar"></i> Calendar</a></li>
+            <li><a href="/form"><i class="fa fa-plus"></i> Tambah Proyek</a></li>
+            <li><a href="/projects"><i class="fa fa-tasks"></i> List Proyek</a></li>
+          @endif
+          @if (session('hak_akses') == 3)
+            <li><a href="/inbox"><i class="fa fa-comments"></i> Chat</a></li>
+            <li><a href="/calendar"><i class="fa fa-calendar"></i> Calendar</a></li>
+            <li><a href="/form"><i class="fa fa-plus"></i> Tambah Proyek</a></li>
+            <li><a href="/projects"><i class="fa fa-tasks"></i> List Proyek</a></li>
+          @endif
+          @if (session('hak_akses') == 4)
+            <li><a href="/inbox"><i class="fa fa-comments"></i> Chat</a></li>
+            <li><a href="/calendar"><i class="fa fa-calendar"></i> Calendar</a></li>
+          @endif
         </ul>
       </div>
 

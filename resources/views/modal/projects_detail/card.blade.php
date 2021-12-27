@@ -17,7 +17,7 @@
             <input type="hidden" name="id" value="{{ $item->id }}">
             <div class="row g-3 mb-3">
               <div class="col">
-                <select class="form-select form-select-sm border-0" style="color:gray; box-shadow:0;"
+                <select class="form-control border-0" style="color:gray; box-shadow:0;"
                   aria-label=".form-select-sm example" name="kelas_id">
                   <option value="{{ $item->kelas_id }}">{{ $item->kelas->kelas }}</option>
                   @foreach ($kelas as $item)

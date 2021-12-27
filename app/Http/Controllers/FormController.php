@@ -58,11 +58,11 @@ class FormController extends Controller
         return redirect('/projects');
     }
 
-    public function edit_proyek($id)
-    {
-        $proyek = DB::table('proyeks')
-        ->join('karyawans', 'proyeks.anggota', '=', 'karyawans.id')->get();
-    }
+    // public function edit_proyek($id)
+    // {
+    //     $proyek = DB::table('proyeks')
+    //     ->join('karyawans', 'proyeks.anggota', '=', 'karyawans.id')->get();
+    // }
 
     public function update_proyek(Request $request)
     {

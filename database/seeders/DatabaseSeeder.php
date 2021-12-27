@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\hakAkses;
+use App\Models\Jabatan;
 use App\Models\User;
 use App\Models\Karyawan;
 use App\Models\Kelas;
@@ -35,7 +36,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => '1',
             'unit' => 'IGD',
             'profil_img' => 'user.png',
-            'jabatan' => 'Kabag'
+            'jabatan_id' => '1'
         ]);
         
         Karyawan::create([
@@ -49,7 +50,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => '2',
             'unit' => 'SIRS',
             'profil_img' => '1.jpg',
-            'jabatan' => 'Magang'
+            'jabatan_id' => '2'
         ]);
 
         Karyawan::create([
@@ -63,7 +64,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => '3',
             'unit' => 'SIRS',
             'profil_img' => '2.jpg',
-            'jabatan' => 'Magang'
+            'jabatan_id' => '3'
         ]);
 
         Karyawan::create([
@@ -77,22 +78,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => '4',
             'unit' => 'SIRS',
             'profil_img' => '3.jpg',
-            'jabatan' => 'Magang'
-        ]);
-
-
-        Karyawan::create([
-            'nik' => '0000000002',
-            'nama' => 'Input Master',
-            'username' => 'ipman',
-            'alamat' => 'Jl. Merpati 10/09 Lamongan',
-            'no_telp' => '081236471244',
-            'email' => 'ipman@email.com',
-            'password' => 'ipman',
-            'role_id' => '5',
-            'unit' => 'SDI',
-            'profil_img' => 'user.png',
-            'jabatan' => 'Kabag'
+            'jabatan_id' => '4'
         ]);
 
         Karyawan::factory(100)->create();
@@ -119,10 +105,6 @@ class DatabaseSeeder extends Seeder
         ]);
         Role::create([
             'hak_akses' => 'Anggota Proyek'
-        ]);
-
-        Role::create([
-            'hak_akses' => 'Input Master'
         ]);
 
         Role::create([
@@ -159,6 +141,22 @@ class DatabaseSeeder extends Seeder
 
         Status::create([
             'nama_status' => 'Done'
+        ]);
+
+        Jabatan::create([
+            'jabatan' => 'Direktur'
+        ]);
+
+        Jabatan::create([
+            'jabatan' => 'Superviser'
+        ]);
+
+        Jabatan::create([
+            'jabatan' => 'Kabag'
+        ]);
+
+        Jabatan::create([
+            'jabatan' => 'Karyawan'
         ]);
     }
 }

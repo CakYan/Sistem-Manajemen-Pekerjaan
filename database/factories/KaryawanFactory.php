@@ -33,7 +33,7 @@ class KaryawanFactory extends Factory
             'role_id' => $this->faker->numberBetween(2, 4),
             'unit' => 'IGD',
             'profil_img' => 'user.png',
-            'jabatan' => 'Magang'
+            'jabatan_id' => $this->faker->numberBetween(1, 4)
         ];
     }
 }
