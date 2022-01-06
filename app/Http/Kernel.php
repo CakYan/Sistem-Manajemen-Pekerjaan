@@ -66,9 +66,11 @@ class Kernel extends HttpKernel
         'cekLogin' => \App\Http\Middleware\CekLogin::class,
         'admin' => \App\Http\Middleware\Admin::class,
         'direksi' => \App\Http\Middleware\Direksi::class,
+        'cekAkses' => \App\Http\Middleware\CekAkses::class,
+        'cekAkses2' => \App\Http\Middleware\CekAkses2::class,
+        'cekAkses3' => \App\Http\Middleware\CekAkses3::class,
         'ketuaProyek' => \App\Http\Middleware\KetuaProyek::class,
         'anggotaProyek' => \App\Http\Middleware\AnggotaProyek::class,
-        'inputMaster' => \App\Http\Middleware\InputMaster::class,
 
     ];
 }

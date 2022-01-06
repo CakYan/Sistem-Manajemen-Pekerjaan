@@ -35,7 +35,7 @@ class KaryawanController extends Controller
             'email' => 'required|email|unique:karyawans',
             'no_telp' => 'required',
             'unit' => 'required',
-            'jabatan' => 'required',
+            'jabatan_id' => 'required',
             'role_id' => 'required'
         ]);
 
@@ -48,7 +48,7 @@ class KaryawanController extends Controller
             'password' => $request->input('username'),
             'unit' => $request->input('unit'),
             'no_telp' => $request->input('no_telp'),
-            'jabatan' => $request->input('jabatan'),
+            'jabatan_id' => $request->input('jabatan_id'),
             'role_id' => $request->input('role_id'),
             'profil_img' => 'user.png',
             'created_at' => now(),
@@ -72,7 +72,7 @@ class KaryawanController extends Controller
             'email' => 'required',
             'no_telp' => 'required',
             'unit' => 'required',
-            'jabatan' => 'required',
+            'jabatan_id' => 'required',
         ]);
 
         $karyawan = Karyawan::where('id', $request->input('id'))->update([
@@ -83,7 +83,7 @@ class KaryawanController extends Controller
             'email' => $request->input('email'),
             'unit' => $request->input('unit'),
             'no_telp' => $request->input('no_telp'),
-            'jabatan' => $request->input('jabatan'),
+            'jabatan_id' => $request->input('jabatan_id'),
         ]);
 
         if ($karyawan) {

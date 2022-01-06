@@ -62,12 +62,6 @@
                         alt="foto-profil">
                     </div>
                     <div>
-                      <div class="text-truncate">
-                        <h6>Nama User</h6>
-                      </div>
-                      <div class="small text-gray-600">
-                        <p>Lorem ipsum dolor sit amet consectetur</p>
-                      </div>
                     </div>
                   </a>
                 </div>

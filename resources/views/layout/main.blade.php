@@ -42,11 +42,6 @@
   <link rel="stylesheet" type="text/css"
     href="{{ asset('//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css') }}">
 
-  <!-- Multi-select box -->
-  <link type="text/css"
-    href="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css') }}"
-    rel="stylesheet" />
-
   <!-- Select-picker -->
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
@@ -56,6 +51,7 @@
 <body class="nav-md">
   <div class="container body">
     <div class="main_container">
+
       @include('partial.nav_bar')
 
       <!-- top navigation -->
@@ -71,6 +67,10 @@
       <!-- footer content -->
       @include('partial.footer')
       <!-- /footer content -->
+
+      <!-- script -->
+
+      <!-- /script -->
     </div>
   </div>
 
@@ -78,15 +78,6 @@
   <script type="text/javascript" src="{{ asset('../vendors/jquery/dist/jquery.min.js') }}">
   </script>
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <!-- Multi-select box -->
-  <script type="text/javascript"
-    src="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js') }}">
-  </script>
-  <script>
-    $(function() {
-      $('select2-data').select2();
-    });
-  </script>
   <!-- Bootstrap -->
   <script type="text/javascript"
     src="{{ asset('../vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
@@ -167,13 +158,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js">
   </script>
 
-  {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js">
-  </script> --}}
-
   <script>
     $('select').selectpicker();
   </script>
-
 </body>
 
 </html>

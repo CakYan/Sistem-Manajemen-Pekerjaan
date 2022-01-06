@@ -166,13 +166,6 @@
 
                         <div class="modal-footer">
                         </div>
-
-                        {{-- <script>
-                        $('#ketua_tim').select2({
-                          dropdownParent: $('#modal-card{id}')
-                        });
-                      </script> --}}
-
                       </div>
                     </div>
                   </div>

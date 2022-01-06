@@ -28,7 +28,7 @@
             </div>
             <div class="x_content">
               <br />
-              @if (Session::get('berhasil'))
+              {{-- @if (Session::get('berhasil'))
                 <div class="alert alert-success">
                   {{ Session::get('berhasil') }}
                 </div>
@@ -37,7 +37,7 @@
                 <div class="alert alert-danger">
                   {{ Session::get('fail') }}
                 </div>
-              @endif
+              @endif --}}
               <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
                 action="add_proyek" method="POST">
                 @csrf

@@ -54,9 +54,17 @@
                       <div class="form-group">
                         <label class="control-label col-sm-2" for="jabatan">Jabatan</label>
                         <div class="col-sm-10 mb-1">
-                          <input type="text" name="jabatan" class="form-control" id="jabatan"
-                            value="{{ $k->jabatan }}"><span
-                            style="color:red">@error('jabatan'){{ $message }}@enderror</span>
+                          <select class="form-control " name="jabatan_id"
+                            value="{{ $k->jabatan->jabatan }}">
+                            <option value="{{ $k->jabatan->id }}">{{ $k->jabatan->nama_jabatan }}
+                            </option>
+                            @foreach ($jabatans as $jabatan)
+                              <option value="{{ $jabatan->id }}">
+                                {{ $jabatan->nama_jabatan }}
+                              </option>
+                            @endforeach
+                          </select>
+                          <span style="color:red">@error('jabatan_id'){{ $message }}@enderror</span>
                           </div>
                         </div>
 

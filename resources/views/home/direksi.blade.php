@@ -48,7 +48,7 @@
                                 href="/projects/projects_detail/{{ $proyek->id }}">{{ $proyek->nama_proyek }}</a>
                             </td>
                             <td>{{ $proyek->ketua_tim }}</td>
-                            <td>{{ $proyek->progres }}</td>
+                            <td>{{ $hasil }}%</td>
                             <td>{{ $proyek->unit_pengaju }}</td>
                             <td>{{ $proyek->status->nama_status }}</td>
                           </tr>

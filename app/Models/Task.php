@@ -14,6 +14,6 @@ class Task extends Model
     }
 
     public function proyek(){
-        return $this->hasMany(Proyek::class);
+        return $this->belongsTo(Proyek::class);
     }
 }

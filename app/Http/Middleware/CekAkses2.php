@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class InputMaster
+class CekAkses2
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,16 @@ class InputMaster
      */
     public function handle(Request $request, Closure $next)
     {
-        if (session('hak_akses')== 5) {
-            # code...
+        if (session('hak_akses') == 1) {
             return $next($request);
-            // return redirect('/daftar_karyawan');
+            # code...
+        } elseif (session('hak_akses') == 3) {
+            return $next($request);
+            # code...
+        }
+        elseif (session('hak_akses') == 4) {
+            return $next($request);
+            # code...
         }
         return redirect('/error');
     }

@@ -95,9 +95,14 @@
                               class="required">:</span>
                           </label>
                           <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="first-name" required="required" name='jabatan'
-                              class="form-control ">
-                            <span style="color:red">@error('jabatan'){{ $message }}@enderror</span>
+                            <select class="form-control " name="jabatan_id" value="">
+                              <option value="">--Pilih--</option>
+                              @foreach ($jabatans as $jabatan)
+                                <option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}
+                                </option>
+                              @endforeach
+                            </select>
+                            <span style="color:red">@error('jabatan_id'){{ $message }}@enderror</span>
                             </div>
                           </div>
                           <br>

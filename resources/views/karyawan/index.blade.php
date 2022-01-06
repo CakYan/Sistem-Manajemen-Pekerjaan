@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 ">
           <div class="x_panel">
-            @if (Session::get('berhasil'))
+            {{-- @if (Session::get('berhasil'))
               <div class="alert alert-success">
                 {{ Session::get('berhasil') }}
               </div>
@@ -33,7 +33,7 @@
               <div class="alert alert-danger">
                 {{ Session::get('gagal_update') }}
               </div>
-            @endif
+            @endif --}}
             <div class="x_title">
               <h2>Karyawan <small>Users</small></h2>
               <ul class="nav navbar-right panel_toolbox">
@@ -74,7 +74,7 @@
                             <td>{{ $karyawan->nik }}</td>
                             <td>{{ $karyawan->nama }}</td>
                             <td>{{ $karyawan->username }}</td>
-                            <td>{{ $karyawan->jabatan->jabatan }}</td>
+                            <td>{{ $karyawan->jabatan->nama_jabatan }}</td>
                             <td>{{ $karyawan->unit }}</td>
                             <td>{{ $karyawan->role->hak_akses }}</td>
                             <td style="width: 1%">

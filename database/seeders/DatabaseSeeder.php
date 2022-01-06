@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         
         Karyawan::create([
             'nik' => '0000000001',
-            'nama' => 'admin',
+            'nama' => 'Admin',
             'username' => 'admin',
             'alamat' => 'Jl. Merpati 10/09 Lamongan',
             'no_telp' => '081236471233',
@@ -39,6 +39,48 @@ class DatabaseSeeder extends Seeder
             'jabatan_id' => '1'
         ]);
         
+        Karyawan::create([
+            'nik' => '0000000002',
+            'nama' => 'Direksi',
+            'username' => 'direksi',
+            'alamat' => 'Jl. Made Mulyo 14/18 Lamongan',
+            'no_telp' => '081554253922',
+            'email' => 'direksi@email.com',
+            'password' => 'direksi',
+            'role_id' => '2',
+            'unit' => 'SIRS',
+            'profil_img' => '1.jpg',
+            'jabatan_id' => '2'
+        ]);
+
+        Karyawan::create([
+            'nik' => '0000000003',
+            'nama' => 'Ketua Proyek',
+            'username' => 'ketua proyek',
+            'alamat' => 'Serang, Banten',
+            'no_telp' => '081236475833',
+            'email' => 'ketuaProyek@email.com',
+            'password' => 'kp',
+            'role_id' => '3',
+            'unit' => 'SIRS',
+            'profil_img' => '2.jpg',
+            'jabatan_id' => '3'
+        ]);
+
+        Karyawan::create([
+            'nik' => '0000000004',
+            'nama' => 'Anggota Proyek',
+            'username' => 'anggota proyek',
+            'alamat' => 'Tidore, Maluku Utara',
+            'no_telp' => '081236475144',
+            'email' => 'anggotaProyek@email.com',
+            'password' => 'ap',
+            'role_id' => '4',
+            'unit' => 'SIRS',
+            'profil_img' => '3.jpg',
+            'jabatan_id' => '4'
+        ]);
+
         Karyawan::create([
             'nik' => '1911501012',
             'nama' => 'Febryan Akhdani',
@@ -85,8 +127,8 @@ class DatabaseSeeder extends Seeder
 
         Proyek::create([
             'nama_proyek' => 'Sistem Manajemen Pekerjaan',
-            'ketua_tim' => 'Febryan Akhdani',
-            'anggota' => 'Firmansyah, Evi',
+            'ketua_tim' => 'Firmansyah',
+            'anggota' => 'Febryan Akhdani, Evi',
             'unit_pengaju' => 'SIRS',
             'deskripsi' => 'Sistem Manajemen Pekerjaan adalah ...',
             'status_id' => '1',
@@ -144,19 +186,25 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Jabatan::create([
-            'jabatan' => 'Direktur'
+            'nama_jabatan' => 'Direktur'
         ]);
 
         Jabatan::create([
-            'jabatan' => 'Superviser'
+            'nama_jabatan' => 'Superviser'
         ]);
 
         Jabatan::create([
-            'jabatan' => 'Kabag'
+            'nama_jabatan' => 'Kabag'
         ]);
 
         Jabatan::create([
-            'jabatan' => 'Karyawan'
+            'nama_jabatan' => 'Karyawan'
+        ]);
+
+        Task::create([
+            'nama_task' => 'perancangan',
+            'kelas_id' => '3',
+            'proyek_id' => '1'
         ]);
     }
 }

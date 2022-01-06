@@ -47,17 +47,15 @@
           <div class="separator">
             <div class="clearfix"></div>
           </div>
-          @if (session()->has('success'))
+          {{-- @if (session()->has('success'))
             <div class="alert alert-success alert-dismissable fade show" role="alert">
               {{ session('success') }}
-              {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
             </div>
           @endif
 
           @if (session()->has('Login Gagal'))
             <div class="alert alert-danger alert-dismissable fade show" role="alert">
               {{ session('Login Gagal') }}
-              {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
             </div>
           @endif
 
@@ -65,7 +63,7 @@
             <div class="alert alert-danger alert-dismissable fade show" role="alert">
               {{ session('alert') }}
             </div>
-          @endif
+          @endif --}}
 
           {{-- login form --}}
           <form action="/login_cek" method="POST">
@@ -73,8 +71,8 @@
             <h1>Login</h1>
             {{-- username --}}
             <div>
-              <input type="text" name="username" class="form-control" @error('username')
-                is-invalid @enderror id="username" placeholder="Username" autofocus required=""
+              <input type="text" name="username" class="form-control" @error('username') is-invalid
+                @enderror id="username" placeholder="Username" autofocus required=""
                 value="{{ old('username') }}" />
               {{-- <label for="username"></label> --}}
               @error('username')

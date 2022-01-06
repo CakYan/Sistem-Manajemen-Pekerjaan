@@ -42,12 +42,12 @@
                           @if ($tugas->kelas_id == '1' && $tugas->proyek_id == $proyeks->id)
                             <tr>
                               <!-- <td><input type="checkbox" name="pilih"></td> -->
-                              <td><input type="checkbox" name="pilih">
-                                <a href="" data-toggle="modal"
-                                  data-target="#modal-card{{ $tugas->id }}"><strong>{{ $tugas->nama_task }}</strong></a>
-                                <a href="/delete_task/{{ $tugas->id }}"
-                                  class="btn btn-danger btn-sm" style="float: right"
-                                  onclick="return confirm('Are you sure?')">delete</a>
+                              {{-- <input type="checkbox" name="pilih"> --}}
+                              <a style="font-size: 12pt" href="" data-toggle="modal"
+                                data-target="#modal-card{{ $tugas->id }}"><strong>{{ $tugas->nama_task }}</strong></a>
+                              <a href="/delete_task/{{ $tugas->id }}" class="btn btn-danger btn-sm"
+                                style="float: right"
+                                onclick="return confirm('Are you sure?')">delete</a>
                               </td>
                             </tr>
                           @endif
@@ -75,7 +75,7 @@
                         <button class="btn btn-light mr-5" href="#"><i class="fa fa-plus-square-o"></i>
                           Tambah
                           Task</button>
-                        <a class="btn btn-light ml-3" href="#"><i class="fa fa-trash"></i></a>
+                        {{-- <a class="btn btn-light ml-3" href="#"><i class="fa fa-trash"></i></a> --}}
                       </div>
                     </div>
                   </form>
@@ -114,8 +114,9 @@
                           @foreach ($tasks as $progres)
                             @if ($progres->kelas_id == '2' && $progres->proyek_id == $proyeks->id)
                               <tr>
-                                <td><input type="checkbox" name="pilih">
-                                  <a href="" data-toggle="modal"
+                                <td>
+                                  {{-- <input type="checkbox" name="pilih"> --}}
+                                  <a style="font-size: 12pt" href="" data-toggle="modal"
                                     data-target="#modal-card{{ $progres->id }}"><strong>
                                       {{ $progres->nama_task }}
                                     </strong></a>
@@ -151,7 +152,7 @@
                                 class="fa fa-plus-square-o"></i>
                               Tambah
                               Task</button>
-                            <a class="btn btn-light ml-3" href="#"><i class="fa fa-trash"></i></a>
+                            {{-- <a class="btn btn-light ml-3" href="#"><i class="fa fa-trash"></i></a> --}}
                           </div>
                         </div>
                       </form>
@@ -186,13 +187,15 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="card-box table-responsive">
-                        <table id="datatable" class="table table-striped" style="width:100%">
+                        <table id="datatable" class="table table-striped"
+                          style="width: 100%; display: table; table-layout: fixed;">
                           <tbody>
                             @foreach ($tasks as $selesai)
                               @if ($selesai->kelas_id == '3' && $selesai->proyek_id == $proyeks->id)
                                 <tr>
-                                  <td><input type="checkbox" name="pilih">
-                                    <a href="" data-toggle="modal"
+                                  <td>
+                                    {{-- <input type="checkbox" name="pilih"> --}}
+                                    <a style="font-size: 12pt" href="" data-toggle="modal"
                                       data-target="#modal-card{{ $selesai->id }}"><strong>
                                         {{ $selesai->nama_task }}
                                       </strong></a>
@@ -235,7 +238,7 @@
                                   class="fa fa-plus-square-o"></i>
                                 Tambah
                                 Task</button>
-                              <a class="btn btn-light ml-3" href="#"><i class="fa fa-trash"></i></a>
+                              {{-- <a class="btn btn-light ml-3" href="#"><i class="fa fa-trash"></i></a> --}}
                             </div>
                           </div>
                         </form>

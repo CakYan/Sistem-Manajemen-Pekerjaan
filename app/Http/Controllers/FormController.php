@@ -46,9 +46,9 @@ class FormController extends Controller
         ]);
 
         if ($query) {
-            return back()->with('berhasil', 'Proyek baru telah ditambahkan');
+            return redirect('/form')->with('success', 'Task Created Successfully!');
         } else {
-            return back()->with('fail', 'Ada sesuatu yang salah');
+            return redirect('/form')->with('fail', 'Ada sesuatu yang salah');
         }
     }
 
@@ -88,9 +88,8 @@ class FormController extends Controller
             'tgl_akhir' => $request->input('tgl_akhir'),
             'updated_at' => now()
         ]);
-        
         if ($proyek) {
-            return back()->with('update', 'Data telah diperbarui');
+            return redirect('/projects')->with('success', 'Task Created Successfully!');
         } else {
             return back()->with('gagal_update', 'Gagal memperbarui data');
         }
