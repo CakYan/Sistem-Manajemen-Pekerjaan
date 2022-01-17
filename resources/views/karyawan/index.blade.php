@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 ">
           <div class="x_panel">
-            {{-- @if (Session::get('berhasil'))
+            @if (Session::get('berhasil'))
               <div class="alert alert-success">
                 {{ Session::get('berhasil') }}
               </div>
@@ -33,7 +33,7 @@
               <div class="alert alert-danger">
                 {{ Session::get('gagal_update') }}
               </div>
-            @endif --}}
+            @endif
             <div class="x_title">
               <h2>Karyawan <small>Users</small></h2>
               <ul class="nav navbar-right panel_toolbox">
@@ -55,6 +55,8 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="card-box table-responsive">
+                    <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-add"
+                      style="width: 10%; float:right">Tambah</button>
                     <table id="datatable" class="table table-striped table-bordered"
                       style="width:100%">
                       <thead>
@@ -90,8 +92,6 @@
                         @endforeach
                       </tbody>
                     </table>
-                    <button class="btn btn-sm btn-danger" data-toggle="modal"
-                      data-target="#modal-add">Tambah</button>
                   </div>
                 </div>
               </div>

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Proyek;
+use App\Models\Pdf;
 use App\Models\Task;
+use App\Models\Proyek;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -134,7 +135,15 @@ class TaskController extends Controller
             'kelas_id' => $request->input('kelas_id')
         ]);
 
-        if ($task) {
+        if($request->hasFile('file')){
+            $pdfs=Pdf::all();
+            $pdfs=Pdf::create($request->all());
+            $request->file('file')->move('data_file/', $request->file('file')->getClientOriginalName());
+            $pdfs->file=$request->file('file')->getClientOriginalName();
+            $pdfs->save();
+        }
+
+        if ($task || $pdfs) {
             return back();
         }
     }

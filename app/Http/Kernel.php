@@ -71,6 +71,6 @@ class Kernel extends HttpKernel
         'cekAkses3' => \App\Http\Middleware\CekAkses3::class,
         'ketuaProyek' => \App\Http\Middleware\KetuaProyek::class,
         'anggotaProyek' => \App\Http\Middleware\AnggotaProyek::class,
-
+        'kabag' => \App\Http\Middleware\Kabag::class,
     ];
 }

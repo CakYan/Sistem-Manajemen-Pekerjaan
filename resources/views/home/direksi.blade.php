@@ -48,7 +48,13 @@
                                 href="/projects/projects_detail/{{ $proyek->id }}">{{ $proyek->nama_proyek }}</a>
                             </td>
                             <td>{{ $proyek->ketua_tim }}</td>
-                            <td>{{ $hasil }}%</td>
+                            @if ($proyek->finishedTask == 0)
+                              <td>0%</td>
+                            @else
+                              <td>
+                                {{ round(($proyek->finishedTask * 100) / $proyek->totalTask, 2) }}%
+                              </td>
+                            @endif
                             <td>{{ $proyek->unit_pengaju }}</td>
                             <td>{{ $proyek->status->nama_status }}</td>
                           </tr>

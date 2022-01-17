@@ -12,16 +12,20 @@
         </div>
 
         <div class="modal-body">
-          <form action="">
+        <form action="/upload/proses" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="id" value="{{ $item->id }}">
             <div class="row g-3 mb-3">
               <div class="col">
-                <select class="form-select form-select-sm border-0" style="color:gray; box-shadow:0;"
-                  aria-label=".form-select-sm example">
-                  <option value="1">Tugas</option>
-                  <option value="2">Proses</option>
-                  <option value="3">Selesai</option>
+                <select class="form-control border-0" style="color:gray; box-shadow:0;"
+                  aria-label=".form-select-sm example" name="kelas_id">
+                  <option value="{{ $item->kelas_id }}">{{ $item->kelas->kelas }}</option>
+                  @foreach ($kelas as $item)
+                    <option value="{{ $item->id }}">{{ $item->kelas }}</option>
+                  @endforeach
                 </select>
               </div>
+
               <div class="col">
                 <div class="form-floating">
                   <input type="text" class="form-control border-0" name="" id="floatingInput"
@@ -29,6 +33,7 @@
                   <label for="floatingInput">Masukan Nama </label>
                 </div>
               </div>
+
               <div class="col">
                 <div class="form-floating">
                   <input type="date" class="form-control border-0" name="" id="floatingInput"
@@ -37,52 +42,50 @@
                 </div>
               </div>
             </div>
+
             <h5><i class="bi bi-journal-text"></i> Notes</h5>
-            <div class="mb-3">
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <button class="btn btn-primary btn-sm" style="float: right"> simpan</button>
-            <div>
-              <input type="file" class="form-control-file mb-2">
+            <div class="card">
+            <div class="form-group">
+            <b>Note</b>
+            <textarea class="form-control" name="note"></textarea>
+          </div>
             </div>
             <div>
               <h5><i class="bi bi-stack-overflow"></i> Aktivitas</h5>
-              <div class="row g-3 mb-3 ml-3">
-                <div class="col">
-                  <div class="message_wrapper">
-                    <h6>Danur</h6>
-                  </div>
-                </div>
-                <div class="col">
-                  <h6> <a href="#"> <i class="fa fa-paperclip"></i> User Acceptance Test.doc </a></h6>
-                </div>
-                <div class="col">
-                  <div class="date-wrapper">
-                    <h6>16 Desember 2021</h6>
-                  </div>
-              </div>
+              @foreach ($pdfs as $p)
               <div class="card border-0">
                 <div class="card-body mx-3">
-                  <a class="dropdown-item d-flex" href="#">
-                    <div class="dropdown-list-image mr-3">
-                      <img class="img-profile rounded-circle" src="img/firmansyah.png"
-                        alt="foto-profil">
-                    </div>
-                    <div>
-                      <div class="text-truncate">
-                        <h6>Nama User</h6>
-                      </div>
-                      <div class="small text-gray-600">
-                        <p>Lorem ipsum dolor sit amet consectetur</p>
-                      </div>
-                    </div>
-                  </a>
+                <span class="image"><img src="http://127.0.0.1:8000/images/foto.jpg" widht="25" height="25" alt="Profile Image"></span>
+                <span>
+                  <span><b>{{ session('nama')}}</b></span>
+                  <span class="time">{{ $p->created_at->diffForHumans()}}</span>
+                </span><br/>
+                <span class="message">
+                  {{ $p->comment }}
+                </span><br/><br/>
+
+                <img src="https://pro.alchemdigital.com/api/extension-image/pdf">
+                
+                <span>'{{ $p->file }}'</span>
+                <span> <a href="/download" class="btn btn-primary btn-sm mt-1" style="float: right" ><i class="icon-download-alt" > </i> Download </a>
+                </span>
                 </div>
               </div>
+              
+              @endforeach
             </div>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-              placeholder="Comment"></textarea>
-            <button class="btn btn-primary btn-sm mt-1" style="float: right">Kirim</button>
+            <div class="form-group">
+            <b>Upload File</b><br/>
+            <input type="file" name="file">
+          </div>
+ 
+          
+
+          <div class="form-group">
+            <b>Comment</b>
+            <textarea class="form-control" name="comment"></textarea>
+          </div>
+            <button type="submit" class="btn btn-primary btn-sm mt-1" style="float: right">Simpan</button>
           </form>
         </div>
 

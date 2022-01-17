@@ -46,9 +46,9 @@ class FormController extends Controller
         ]);
 
         if ($query) {
-            return redirect('/form')->with('success', 'Task Created Successfully!');
+            return back()->with('berhasil', 'Proyek baru telah ditambahkan');
         } else {
-            return redirect('/form')->with('fail', 'Ada sesuatu yang salah');
+            return back()->with('fail', 'Ada sesuatu yang salah');
         }
     }
 
@@ -77,19 +77,25 @@ class FormController extends Controller
             'tgl_akhir' => 'required'
         ]);
 
+        foreach ($request->input('anggota') as $anggota) {
+            $anggotanya [] = $anggota;
+        }
+
+        $anggotaMulti = implode(",",$anggotanya);
         $proyek = Proyek::where('id', $request->input('id'))->update([
             'nama_proyek' => $request->input('nama_proyek'),
             'ketua_tim' => $request->input('ketua_tim'),
-            'anggota' => $request->input('anggota'),
+            'anggota' => $anggotaMulti,
             'unit_pengaju' => $request->input('unit_pengaju'),
             'deskripsi' => $request->input('deskripsi'),
             'status_id' => $request->input('status_id'),
             'tgl_mulai' => $request->input('tgl_mulai'),
             'tgl_akhir' => $request->input('tgl_akhir'),
+            'created_at' => now(),
             'updated_at' => now()
         ]);
         if ($proyek) {
-            return redirect('/projects')->with('success', 'Task Created Successfully!');
+            return back()->with('update', 'Proyek telah diupdate!');
         } else {
             return back()->with('gagal_update', 'Gagal memperbarui data');
         }

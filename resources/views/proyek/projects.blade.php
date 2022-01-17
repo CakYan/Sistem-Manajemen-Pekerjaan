@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="x_panel">
-          {{-- @if (Session::get('update'))
+          @if (Session::get('update'))
             <div class="alert alert-success">
               {{ Session::get('update') }}
             </div>
@@ -21,7 +21,7 @@
             <div class="alert alert-danger">
               {{ Session::get('gagal_update') }}
             </div>
-          @endif --}}
+          @endif
           <div class="x_title">
             <h2>List Projek</h2>
             <ul class="nav navbar-right panel_toolbox">
@@ -75,17 +75,10 @@
                       <td>
                         <ul class="list-inline">
                           <li>
-                            <img src="images/user.png" class="avatar" alt="Avatar">
-                            <small></small>
-                          </li>
-                          <li>
-                            <img src="images/user.png" class="avatar" alt="Avatar">
-                          </li>
-                          <li>
-                            <img src="images/user.png" class="avatar" alt="Avatar">
-                          </li>
-                          <li>
-                            <img src="images/user.png" class="avatar" alt="Avatar">
+                            @for ($i = 0; $i < 4; $i++)
+                              <img src="images/user.png" class="avatar" alt="Avatar"
+                                title="nama_anggota">
+                            @endfor
                           </li>
                         </ul>
                       </td>
@@ -98,37 +91,51 @@
                       <td>
                         <a>{{ $proyek->tgl_akhir }}</a>
                       </td>
-                      <td class="project_progress">
-                        <div class="progress progress_sm">
-                          <div class="progress-bar bg-green" role="progressbar"
-                            data-transitiongoal="{{ $hasil }}">
+                      @if ($proyek->finishedTask == 0)
+                        <td class="project_progress">
+                          <div class="progress progress_sm">
+                            <div class="progress-bar bg-green" role="progressbar"
+                              data-transitiongoal="0">
+                            </div>
                           </div>
-                        </div>
-                        <small>{{ $hasil }}%</small>
-                        <br>
-                        <small>{{ $totask_selesai }} dari {{ $total_task }} task yang sudah
-                          selesai</small>
-                      </td>
+                          <small>%</small>
+                          <br>
+                          <small>{{ $proyek->finishedTask }} dari {{ $proyek->totalTask }}
+                            task yang sudah selesai</small>
+                        </td>
+                      @else
+                        <td class="project_progress">
+                          <div class="progress progress_sm">
+                            <div class="progress-bar bg-green" role="progressbar"
+                              data-transitiongoal="{{ ($proyek->finishedTask * 100) / $proyek->totalTask }}">
+                            </div>
+                          </div>
+                          <small>{{ round(($proyek->finishedTask * 100) / $proyek->totalTask, 2) }}%</small>
+                          <br>
+                          <small>{{ $proyek->finishedTask }} dari {{ $proyek->totalTask }}
+                            task yang sudah selesai</small>
+                        </td>
+                      @endif
                       <td>
                         @if ($proyek->status_id == '1')
-                          <button type="button"
-                            class="btn btn-secondary btn-xs">{{ $proyek->status->nama_status }}</button>
+                          <button type="button" class="btn btn-secondary btn-xs"
+                            style="width:100%; color:white">{{ $proyek->status->nama_status }}</button>
                         @endif
                         @if ($proyek->status_id == '2')
-                          <button type="button"
-                            class="btn btn-info btn-xs">{{ $proyek->status->nama_status }}</button>
+                          <button type="button" class="btn btn-info btn-xs"
+                            style="width:100%; color:white">{{ $proyek->status->nama_status }}</button>
                         @endif
                         @if ($proyek->status_id == '3')
-                          <button type="button"
-                            class="btn btn-danger btn-xs">{{ $proyek->status->nama_status }}</button>
+                          <button type="button" class="btn btn-danger btn-xs"
+                            style="width:100%; color:white">{{ $proyek->status->nama_status }}</button>
                         @endif
                         @if ($proyek->status_id == '4')
-                          <button type="button"
-                            class="btn btn-warning btn-xs">{{ $proyek->status->nama_status }}</button>
+                          <button type="button" class="btn btn-warning btn-xs"
+                            style="width:100%; color:white">{{ $proyek->status->nama_status }}</button>
                         @endif
                         @if ($proyek->status_id == '5')
-                          <button type="button"
-                            class="btn btn-success btn-xs">{{ $proyek->status->nama_status }}</button>
+                          <button type="button" class="btn btn-success btn-xs"
+                            style="width:100%; color:white">{{ $proyek->status->nama_status }}</button>
                         @endif
                       </td>
                       <td style="width: 1%">
@@ -137,7 +144,7 @@
                             class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View
                           </a>
                           <br>
-                          <a href="" class="btn btn-info btn-xs" style="width: 95%"
+                          <a href="" class="btn btn-info btn-xs" style="width: 95%; color:white"
                             data-toggle="modal" data-target="#modal-card{{ $proyek->id }}"><i
                               class="fa fa-pencil"></i>
                             Edit </a>
@@ -147,10 +154,6 @@
                             Delete </a>
                         @endif
                         @if (session('hak_akses') == 2)
-                          <a href="/projects/projects_detail/{{ $proyek->id }}"
-                            class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View
-                          </a>
-                          <br>
                           <a href="/delete_proyek/{{ $proyek->id }}" class="btn btn-danger btn-xs"
                             onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i>
                             Delete </a>
@@ -181,7 +184,7 @@
               </table>
             @endif
 
-            <!-- start project list -->
+            <!-- start ketua project list -->
             @if (session('hak_akses') == 3)
               <table class="table table-striped projects">
                 <thead>
@@ -217,17 +220,10 @@
                         <td>
                           <ul class="list-inline">
                             <li>
-                              <img src="images/user.png" class="avatar" alt="Avatar">
-                              <small></small>
-                            </li>
-                            <li>
-                              <img src="images/user.png" class="avatar" alt="Avatar">
-                            </li>
-                            <li>
-                              <img src="images/user.png" class="avatar" alt="Avatar">
-                            </li>
-                            <li>
-                              <img src="images/user.png" class="avatar" alt="Avatar">
+                              @for ($i = 0; $i < 4; $i++)
+                                <img src="images/user.png" class="avatar" alt="Avatar"
+                                  title="nama_anggota">
+                              @endfor
                             </li>
                           </ul>
                         </td>
@@ -240,34 +236,53 @@
                         <td>
                           <a>{{ $proyek->tgl_akhir }}</a>
                         </td>
-                        <td class="project_progress">
-                          <div class="progress progress_sm">
-                            <div class="progress-bar bg-green" role="progressbar"
-                              data-transitiongoal="0">
+                        @if ($proyek->finishedTask == 0)
+                          <td class="project_progress">
+                            <div class="progress progress_sm">
+                              <div class="progress-bar bg-green" role="progressbar"
+                                data-transitiongoal="0">
+                              </div>
                             </div>
-                          </div>
-                          <small>0% Complete</small>
-                        </td>
+                            <small>%</small>
+                            <br>
+                            <small>{{ $proyek->finishedTask }} dari {{ $proyek->totalTask }}
+                              task yang sudah selesai</small>
+                          </td>
+                        @else
+                          <td class="project_progress">
+                            <div class="progress progress_sm">
+                              <div class="progress-bar bg-green" role="progressbar"
+                                data-transitiongoal="{{ round($proyek->finishedTask * 100) / $proyek->totalTask }}">
+                              </div>
+                            </div>
+                            <small>{{ round(($proyek->finishedTask * 100) / $proyek->totalTask, 2) }}%</small>
+                            <br>
+                            <small>{{ $proyek->finishedTask }} dari {{ $proyek->totalTask }}
+                              task
+                              yang sudah
+                              selesai</small>
+                          </td>
+                        @endif
                         <td>
                           @if ($proyek->status_id == '1')
-                            <button type="button"
-                              class="btn btn-secondary btn-xs">{{ $proyek->status->nama_status }}</button>
+                            <button type="button" class="btn btn-secondary btn-xs"
+                              style="width:100%">{{ $proyek->status->nama_status }}</button>
                           @endif
                           @if ($proyek->status_id == '2')
-                            <button type="button"
-                              class="btn btn-info btn-xs">{{ $proyek->status->nama_status }}</button>
+                            <button type="button" class="btn btn-info btn-xs"
+                              style="width:100%">{{ $proyek->status->nama_status }}</button>
                           @endif
                           @if ($proyek->status_id == '3')
-                            <button type="button"
-                              class="btn btn-danger btn-xs">{{ $proyek->status->nama_status }}</button>
+                            <button type="button" class="btn btn-danger btn-xs"
+                              style="width:100%">{{ $proyek->status->nama_status }}</button>
                           @endif
                           @if ($proyek->status_id == '4')
-                            <button type="button"
-                              class="btn btn-warning btn-xs">{{ $proyek->status->nama_status }}</button>
+                            <button type="button" class="btn btn-warning btn-xs"
+                              style="width:100%">{{ $proyek->status->nama_status }}</button>
                           @endif
                           @if ($proyek->status_id == '5')
-                            <button type="button"
-                              class="btn btn-success btn-xs">{{ $proyek->status->nama_status }}</button>
+                            <button type="button" class="btn btn-success btn-xs"
+                              style="width:100%">{{ $proyek->status->nama_status }}</button>
                           @endif
                         </td>
                         <td>

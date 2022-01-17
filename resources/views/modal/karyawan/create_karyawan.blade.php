@@ -19,7 +19,7 @@
             </label>
             <div class="col-md-6 col-sm-6 ">
               <input type="text" id="first-name" required="required" name='nik'
-                class="form-control ">
+                class="form-control" style="width: 100%">
               <span style="color:red">@error('nik'){{ $message }}@enderror</span>
               </div>
             </div>
@@ -90,7 +90,7 @@
                           </div>
                         </div>
 
-                        <div class="item form-group2">
+                        <div class="item form-group">
                           <label class="col-form-label col-md-3 col-sm-3 label-align" for="member">Jabatan<span
                               class="required">:</span>
                           </label>
@@ -105,38 +105,12 @@
                             <span style="color:red">@error('jabatan_id'){{ $message }}@enderror</span>
                             </div>
                           </div>
-                          <br>
 
-                          <div class="item form-group2">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="member">Hak
-                              Akses<span class="required">:</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 ">
-                              <select name="role_id" multiple required="required" class="form-control">
-                                <option value="{{ old('role_id') }}">-- Pilih --</option>
-                                @foreach ($roles as $role)
-                                  <option value="{{ $role->id }}">{{ $role->hak_akses }}</option>
-                                @endforeach
-                              </select>
-                              {{-- <input type="text" id="first-name" required="required" name='role_id'
-                                class="form-control "> --}}
-                              <span style="color:red">@error('hak akses'){{ $message }}@enderror</span>
-                              </div>
+                          <div class="modal-footer">
+                            <div class="btn" style="float: right;">
+                              <button type="submit" class="btn btn-primary btn-xs">Simpan</button>
+                              <button class="btn btn-danger btn-xs" data-dismiss="modal">Kembali</button>
                             </div>
-
-                            {{-- <div class="ln_solid"></div>
-                              <div class="item form-group">
-                                <div class="col-md-6 col-sm-6 offset-md-3">
-                                  <button class="btn btn-danger" type="reset">Reset</button>
-                                  <button type="submit" class="btn btn-success">Submit</button>
-                                </div>
-                            </div> --}}
-
-                            <div class="modal-footer">
-                              <div class="btn" style="float: right;">
-                                <button type="submit" class="btn btn-primary btn-xs">Simpan</button>
-                                <button class="btn btn-danger btn-xs" data-dismiss="modal">Kembali</button>
-                              </div>
-                            </div>
-                        </div>
+                          </div>
                       </div>
+                    </div>

@@ -5,8 +5,8 @@
     <div class="">
       <div class="page-title">
         <div class="title_right">
-          <input type="hidden" name="id" value="{{ $proyeks->id }}">
-          <h3>{{ $proyeks->nama_proyek }}</h3>
+          <input type="hidden" name="id" value="{{ $prodet->id }}">
+          <h3>{{ $prodet->nama_proyek }}</h3>
         </div>
       </div>
       <div class="clearfix"></div>
@@ -36,18 +36,18 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="card-box table-responsive">
-                    <table id="datatable" class="table table-striped" style="width:100%">
+                    <table id="datatable" class="table table-striped"
+                      style="width: 100%; display: table; table-layout: fixed;">
                       <tbody>
                         @foreach ($tasks as $tugas)
-                          @if ($tugas->kelas_id == '1' && $tugas->proyek_id == $proyeks->id)
+                          @if ($tugas->kelas_id == '1' && $tugas->proyek_id == $prodet->id)
                             <tr>
-                              <!-- <td><input type="checkbox" name="pilih"></td> -->
-                              {{-- <input type="checkbox" name="pilih"> --}}
-                              <a style="font-size: 12pt" href="" data-toggle="modal"
-                                data-target="#modal-card{{ $tugas->id }}"><strong>{{ $tugas->nama_task }}</strong></a>
-                              <a href="/delete_task/{{ $tugas->id }}" class="btn btn-danger btn-sm"
-                                style="float: right"
-                                onclick="return confirm('Are you sure?')">delete</a>
+                              <td style="text-wrap: normal; word-wrap: break-word">
+                                <a style="font-size: 12pt" href="" data-toggle="modal"
+                                  data-target="#modal-card{{ $tugas->id }}"><strong>{{ $tugas->nama_task }}</strong></a>
+                                <a href="/delete_task/{{ $tugas->id }}"
+                                  class="btn btn-danger btn-sm" style="float: right"
+                                  onclick="return confirm('Are you sure?')">delete</a>
                               </td>
                             </tr>
                           @endif
@@ -58,7 +58,7 @@
                 </div>
               </div>
               <div class="card-composer">
-                <form action="/add_tugas/{{ $proyeks->id }}" method="POST">
+                <form action="/add_tugas/{{ $prodet->id }}" method="POST">
                   @csrf
                   <div class="list-card">
                     <div class="list-card-details">
@@ -109,13 +109,13 @@
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="card-box table-responsive">
-                      <table id="datatable" class="table table-striped" style="width:100%">
+                      <table id="datatable" class="table table-striped"
+                        style="width: 100%; display: table; table-layout: fixed;">
                         <tbody>
                           @foreach ($tasks as $progres)
-                            @if ($progres->kelas_id == '2' && $progres->proyek_id == $proyeks->id)
+                            @if ($progres->kelas_id == '2' && $progres->proyek_id == $prodet->id)
                               <tr>
-                                <td>
-                                  {{-- <input type="checkbox" name="pilih"> --}}
+                                <td style="text-wrap: normal; word-wrap: break-word">
                                   <a style="font-size: 12pt" href="" data-toggle="modal"
                                     data-target="#modal-card{{ $progres->id }}"><strong>
                                       {{ $progres->nama_task }}
@@ -134,7 +134,7 @@
                 </div>
                 <div class="card-composer">
                   <div class="cc-controls">
-                    <form action="/add_progres/{{ $proyeks->id }}" method="POST">
+                    <form action="/add_progres/{{ $prodet->id }}" method="POST">
                       @csrf
                       <div class="list-card">
                         <div class="list-card-details">
@@ -191,10 +191,9 @@
                           style="width: 100%; display: table; table-layout: fixed;">
                           <tbody>
                             @foreach ($tasks as $selesai)
-                              @if ($selesai->kelas_id == '3' && $selesai->proyek_id == $proyeks->id)
+                              @if ($selesai->kelas_id == '3' && $selesai->proyek_id == $prodet->id)
                                 <tr>
-                                  <td>
-                                    {{-- <input type="checkbox" name="pilih"> --}}
+                                  <td style="text-wrap: normal; word-wrap: break-word">
                                     <a style="font-size: 12pt" href="" data-toggle="modal"
                                       data-target="#modal-card{{ $selesai->id }}"><strong>
                                         {{ $selesai->nama_task }}
@@ -220,7 +219,7 @@
                       </div>
                     </div>
                     <div class="cc-controls">
-                      <form action="/add_selesai/{{ $proyeks->id }}" method="POST">
+                      <form action="/add_selesai/{{ $prodet->id }}" method="POST">
                         @csrf
                         <div class="list-card">
                           <div class="list-card-details">

@@ -40,11 +40,11 @@
 
   <!-- dataTables -->
   <link rel="stylesheet" type="text/css"
-    href="{{ asset('//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css') }}">
+    href="{{ asset('../vendors/DataTables/DataTables-1.11.3/css/dataTables.bootstrap5.min.css') }}">
 
   <!-- Select-picker -->
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="{{ asset('../vendors/bootstrap-select-1.13.14/dist/css/bootstrap-select.min.css') }}">
 
 </head>
 
@@ -67,10 +67,6 @@
       <!-- footer content -->
       @include('partial.footer')
       <!-- /footer content -->
-
-      <!-- script -->
-
-      <!-- /script -->
     </div>
   </div>
 
@@ -137,25 +133,18 @@
 
   <!-- dataTables -->
   <script type="text/javascript"
-    src="{{ asset('//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js') }}">
+    src="{{ asset('../vendors/DataTables/DataTables-1.11.3/js/jquery.dataTables.min.js') }}">
+  </script>
+
+  <script>
     $(document).ready(function() {
       $('#datatable').DataTable();
     });
   </script>
 
-  <script type="text/javascript"
-    src="{{ asset('//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js') }}">
-    $(document).ready(function() {
-      $('#datatableKP').DataTable({
-        "order": [
-          [2, "desc"]
-        ]
-      });
-    });
-  </script>
-
   <!-- Select-picker -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js">
+  <script type="text/javascript"
+    src="{{ asset('../vendors/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js') }}">
   </script>
 
   <script>

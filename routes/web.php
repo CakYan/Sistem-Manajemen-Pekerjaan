@@ -99,4 +99,6 @@ Route::group(['middleware' => 'cekLogin'], function () {
     Route::get('/profile', [ProfileController::class, 'index']);
     Route::get('/edit_profile', [ProfileController::class, 'edit']);
     Route::get('/error', [LoginController::class, 'error']);
+    Route::post('/upload/proses', [ProjectsController::class, 'proses_upload']);
+    Route::get('/download/pdf/{id}', [ProjectsController::class, 'download']);
 });
