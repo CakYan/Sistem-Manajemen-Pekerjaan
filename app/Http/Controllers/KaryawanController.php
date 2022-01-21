@@ -36,7 +36,6 @@ class KaryawanController extends Controller
             'no_telp' => 'required',
             'unit' => 'required',
             'jabatan_id' => 'required',
-            'role_id' => 'required'
         ]);
 
         $query = DB::table('karyawans')->insert([
@@ -49,7 +48,7 @@ class KaryawanController extends Controller
             'unit' => $request->input('unit'),
             'no_telp' => $request->input('no_telp'),
             'jabatan_id' => $request->input('jabatan_id'),
-            'role_id' => $request->input('role_id'),
+            'role_id' => ('4'),
             'profil_img' => 'user.png',
             'created_at' => now(),
             'updated_at' => now()

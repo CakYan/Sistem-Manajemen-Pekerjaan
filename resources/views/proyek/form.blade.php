@@ -63,81 +63,74 @@
                       </div>
                     </div>
 
-                    <div class="item form-group">
-                      <label class="col-form-label col-md-3 col-sm-3 label-align" for="member">Ketua
-                        Proyek<span class="required">:</span>
-                      </label>
-                      <div class="col-md-6 col-sm-6 ">
-                        <select class="form-control" data-live-search="true" name="ketua_tim">
-                          <option value="">-- Pilih --</option>
-                          @foreach ($karyawans as $karyawan)
-                            <option value="{{ $karyawan->nama }}">
-                              {{ $karyawan->nama }},
-                              <i>{{ $karyawan->unit }}</i>
-                            </option>
-                          @endforeach
-                        </select>
-                        <span style="color:red">@error('ketua_tim'){{ $message }}@enderror</span>
-                        </div>
-                      </div>
-
+                    @if (session('hak_akses') == 3)
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="leader">Anggota
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="member">Ketua
                           Proyek<span class="required">:</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                          <select class="form-control" data-live-search="true" multiple name="anggota[]">
-                            @foreach ($karyawans as $karyawan)
-                              <option value="{{ $karyawan->nama }}">{{ $karyawan->nama }},
-                                <i>{{ $karyawan->unit }}</i>
-                              </option>
-                            @endforeach
-                          </select>
-                          <span style="color:red">@error('anggota'){{ $message }}@enderror</span>
+                          <input type="text" class="form-control" value="{{ session('nama') }}"
+                            readonly>
+                          <span style="color:red">@error('ketua_tim'){{ $message }}@enderror</span>
                           </div>
                         </div>
-
+                      @else
                         <div class="item form-group">
-                          <label class="col-form-label col-md-3 col-sm-3 label-align" for="leader">Deskripsi
+                          <label class="col-form-label col-md-3 col-sm-3 label-align" for="member">Ketua
                             Proyek<span class="required">:</span>
                           </label>
                           <div class="col-md-6 col-sm-6 ">
-                            <textarea id="descr" required="required" class="form-control"
-                              name="deskripsi"></textarea>
+                            <select class="form-control" data-live-search="true" name="ketua_tim">
+                              <option value="">-- Pilih --</option>
+                              @foreach ($karyawans as $karyawan)
+                                <option value="{{ $karyawan->nama }}">
+                                  {{ $karyawan->nama }},
+                                  <i>{{ $karyawan->unit }}</i>
+                                </option>
+                              @endforeach
+                            </select>
+                            <span style="color:red">@error('ketua_tim'){{ $message }}@enderror</span>
+                            </div>
                           </div>
-                        </div>
-
+                        @endif
 
                         <div class="item form-group">
-                          <label class="col-form-label col-md-3 col-sm-3 label-align">Tanggal Mulai <span
-                              class="required">:</span>
+                          <label class="col-form-label col-md-3 col-sm-3 label-align" for="leader">Anggota
+                            Proyek<span class="required">:</span>
                           </label>
                           <div class="col-md-6 col-sm-6 ">
-                            <input id="date" class="date-picker form-control" name="tgl_mulai" placeholder=""
-                              type="text" required="required" type="text" onfocus="this.type='date'"
-                              onmouseover="this.type='date'" onclick="this.type='date'"
-                              onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
-                            <span style="color:red">@error('tgl_mulai'){{ $message }}@enderror</span>
-                              <script>
-                                function timeFunctionLong(input) {
-                                  setTimeout(function() {
-                                    input.type = 'text';
-                                  }, 60000);
-                                }
-                              </script>
+                            <select class="form-control" data-live-search="true" multiple name="anggota[]">
+                              @foreach ($karyawans as $karyawan)
+                                <option value="{{ $karyawan->nama }}">{{ $karyawan->nama }},
+                                  <i>{{ $karyawan->unit }}</i>
+                                </option>
+                              @endforeach
+                            </select>
+                            <span style="color:red">@error('anggota'){{ $message }}@enderror</span>
                             </div>
                           </div>
 
                           <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Tanggal Selesai <span
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="leader">Deskripsi
+                              Proyek<span class="required">:</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                              <textarea id="descr" required="required" class="form-control"
+                                name="deskripsi"></textarea>
+                            </div>
+                          </div>
+
+
+                          <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Tanggal Mulai <span
                                 class="required">:</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                              <input id="date" class="date-picker form-control" name="tgl_akhir" placeholder=""
+                              <input id="date" class="date-picker form-control" name="tgl_mulai" placeholder=""
                                 type="text" required="required" type="text" onfocus="this.type='date'"
                                 onmouseover="this.type='date'" onclick="this.type='date'"
                                 onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
-                              <span style="color:red">@error('tgl_akhir'){{ $message }}@enderror</span>
+                              <span style="color:red">@error('tgl_mulai'){{ $message }}@enderror</span>
                                 <script>
                                   function timeFunctionLong(input) {
                                     setTimeout(function() {
@@ -148,19 +141,39 @@
                               </div>
                             </div>
 
-                            <div class="ln_solid"></div>
                             <div class="item form-group">
-                              <div class="col-md-6 col-sm-6 offset-md-3">
-                                <button class="btn btn-primary" type="reset">Reset</button>
-                                <button type="submit" class="btn btn-success">Submit</button>
+                              <label class="col-form-label col-md-3 col-sm-3 label-align">Tanggal Selesai <span
+                                  class="required">:</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 ">
+                                <input id="date" class="date-picker form-control" name="tgl_akhir" placeholder=""
+                                  type="text" required="required" type="text" onfocus="this.type='date'"
+                                  onmouseover="this.type='date'" onclick="this.type='date'"
+                                  onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                <span style="color:red">@error('tgl_akhir'){{ $message }}@enderror</span>
+                                  <script>
+                                    function timeFunctionLong(input) {
+                                      setTimeout(function() {
+                                        input.type = 'text';
+                                      }, 60000);
+                                    }
+                                  </script>
+                                </div>
                               </div>
-                            </div>
-                          </form>
+
+                              <div class="ln_solid"></div>
+                              <div class="item form-group">
+                                <div class="col-md-6 col-sm-6 offset-md-3">
+                                  <button class="btn btn-primary" type="reset">Reset</button>
+                                  <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <!-- /page content -->
-            @endsection
+                <!-- /page content -->
+              @endsection

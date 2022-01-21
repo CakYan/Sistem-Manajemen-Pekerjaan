@@ -10,7 +10,7 @@ class ProdetController extends Controller
     //
     public function index($id)
     {
-        $prodet = Proyek::where('id', $id)->first();
+        $prodet = Proyek::find('id', $id);
         return view('proyek.projects_detail', ['proyeks' => $prodet]);
     }
 }

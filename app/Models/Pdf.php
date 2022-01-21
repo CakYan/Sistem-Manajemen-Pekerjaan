@@ -11,5 +11,8 @@ class Pdf extends Model
 
     protected $guarded = ['id'];
 
+    public function task(){
+        return $this->belongsTo(Task::class);
+    }
     use HasFactory;
 }

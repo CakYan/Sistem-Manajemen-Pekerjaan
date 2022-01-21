@@ -11,6 +11,7 @@ use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\File;
 use Illuminate\Support\Facades\Response;
 
 class ProjectsController extends Controller
@@ -114,11 +115,12 @@ class ProjectsController extends Controller
 
     public function prodet($id)
     {
-        $pdfs=Pdf::all();
+        // $pdfs=Pdf::all();
+        $files = File::all();
         $kelas = Kelas::all();
         $tasks = Task::with('kelas')->get();
         $prodet = Proyek::where('id', $id)->first();
-        return view('proyek.projects_detail', compact('pdfs', 'kelas', 'tasks', 'prodet'));
+        return view('proyek.projects_detail', compact('files', 'kelas', 'tasks', 'prodet'));
     }
 
     public function getIconAttribute() {
@@ -130,22 +132,22 @@ class ProjectsController extends Controller
     ];
     return redirect($extensions, $this->extension,'unknown.png');
     }
-    
+
     public function proses_upload(Request $request){
-        $pdfs=Pdf::all();
-        $pdfs=Pdf::create($request->all());
+        $files=File::all();
+        $files=File::create($request->all());
 
         if($request->hasFile('file')){
             $request->file('file')->move('data_file/', $request->file('file')->getClientOriginalName());
-            $pdfs->file=$request->file('file')->getClientOriginalName();
-            $pdfs->save();
+            $files->file=$request->file('file')->getClientOriginalName();
+            $files->save();
         }
         return redirect()->back();
     }
 
     public function download($id){
-        $pdfs=Pdf::where('id', $id)->firstOrFail();
-        $file=public_path('data_file/'. $pdfs->file);
+        $files=File::where('id', $id)->firstOrFail();
+        $file=public_path('data_file/'. $files->file);
         return response()->download($file);
     }
 }

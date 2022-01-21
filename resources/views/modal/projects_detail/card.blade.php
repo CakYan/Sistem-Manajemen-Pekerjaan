@@ -1,5 +1,4 @@
 @foreach ($tasks as $item)
-
   <div class="modal fade" id="modal-card{{ $item->id }}" tabindex="-1"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -9,10 +8,10 @@
           <button type="button" class="btn-close" data-dismiss="modal"
             aria-label="Close"></button>
         </div>
-
         <div class="modal-body">
-          <form action="/update_task" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('update_task') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="id" value="{{ $item->id }}">
             <input type="hidden" name="task_id" value="{{ $item->id }}">
             <input type="hidden" name="nama_uploader" value="{{ session('nama') }}">
             <input type="hidden" name="foto_uploader" value="{{ session('foto') }}">
@@ -26,7 +25,6 @@
                   @endforeach
                 </select>
               </div>
-
               <div class="col">
                 <div class="form-floating">
                   <input type="text" class="form-control border-0" name="" id="floatingInput"
@@ -34,7 +32,6 @@
                   <label for="floatingInput">Masukan Nama </label>
                 </div>
               </div>
-
               <div class="col">
                 <div class="form-floating">
                   <input type="date" class="form-control border-0" name="" id="floatingInput"
@@ -43,7 +40,6 @@
                 </div>
               </div>
             </div>
-
             <h5><i class="bi bi-journal-text"></i> Notes</h5>
             <div class="card">
               <div class="form-group">
@@ -52,36 +48,33 @@
             </div>
             <div>
               <h5><i class="bi bi-stack-overflow"></i> Aktivitas</h5>
-              @foreach ($pdfs as $p)
-                @if ($p->task_id == $item->id)
-                  <div class="card border-0">
-                    <div class="card-body mx-3">
-                      <span class="image">
-                        <img src="{{ asset('storage/' . $p->foto_uploader) }}" widht="25"
-                          height="25" alt="Profile Image"></span>
-                      <span>
-                        <span><b>{{ $p->nama_uploader }}</b></span>
-                        <span class="time">{{ $p->created_at->diffForHumans() }}</span>
-                      </span><br />
-                      <span class="message">
-                        {{ $p->comment }}
-                      </span><br /><br />
-
-                      <a href="/download/pdf/{{ $p->id }}"><i
-                          class="fa fa-file"></i>{{ $p->file }}</a>
-                      </span>
-                    </div>
+              @foreach ($files as $file)
+                {{-- @if ($file->task_id == $item->id) --}}
+                <div class="card border-0">
+                  <div class="card-body mx-3">
+                    <span class="image">
+                      <img src="{{ asset('storage/' . $file->foto_uploader) }}" widht="25"
+                        height="25" alt="Profile Image"></span>
+                    <span>
+                      <span><b>{{ $item->id }}, {{ $file->nama_uploader }}</b></span>
+                      <span
+                        class="time">{{ $file->created_at->diffForHumans() }}</span>
+                    </span><br />
+                    <span class="message">
+                      {{ $file->comment }}
+                    </span><br /><br />
+                    <a href="/download/pdf/{{ $file->id }}"><i
+                        class="fa fa-file"></i>{{ $file->file }}</a>
+                    </span>
                   </div>
-                @endif
+                </div>
+                {{-- @endif --}}
               @endforeach
             </div>
             <div class="form-group">
               <b>Upload File</b><br />
               <input type="file" name="file">
             </div>
-
-
-
             <div class="form-group">
               <b>Comment</b>
               <textarea class="form-control" name="comment"></textarea>
@@ -90,12 +83,9 @@
               style="float: right">Simpan</button>
           </form>
         </div>
-
         <div class="modal-footer">
         </div>
-
       </div>
     </div>
   </div>
-
 @endforeach

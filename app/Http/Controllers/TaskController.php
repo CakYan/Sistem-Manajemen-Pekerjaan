@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pdf;
+use App\Models\File;
 use App\Models\Task;
 use App\Models\Proyek;
 use Illuminate\Http\Request;
@@ -134,16 +134,16 @@ class TaskController extends Controller
         $task = Task::where('id', $request->input('id'))->update([
             'kelas_id' => $request->input('kelas_id')
         ]);
-
+        
         if($request->hasFile('file')){
-            $pdfs=Pdf::all();
-            $pdfs=Pdf::create($request->all());
+            $files=File::all();
+            $files=File::create($request->all());
             $request->file('file')->move('data_file/', $request->file('file')->getClientOriginalName());
-            $pdfs->file=$request->file('file')->getClientOriginalName();
-            $pdfs->save();
+            $files->file=$request->file('file')->getClientOriginalName();
+            $files->save();
         }
 
-        if ($task || $pdfs) {
+        if ($task || $files) {
             return back();
         }
     }
