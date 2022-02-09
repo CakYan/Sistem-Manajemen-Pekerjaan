@@ -84,8 +84,13 @@
                             class="required">:</span>
                         </label>
                         <div class="col-md-6 col-sm-61 ">
-                          <input type="text" id="first-name" required="required" name='unit'
-                            class="form-control ">
+                          <select class="form-control " name="unit_id" value="">
+                            <option value="">--Pilih--</option>
+                            @foreach ($units as $unit)
+                              <option value="{{ $unit->id }}">{{ $unit->nama_unit }}
+                              </option>
+                            @endforeach
+                          </select>
                           <span style="color:red">@error('unit'){{ $message }}@enderror</span>
                           </div>
                         </div>

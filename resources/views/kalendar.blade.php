@@ -32,12 +32,7 @@
               <div class="clearfix"></div>
             </div>
             <div class="x_content">
-
               <div id='calendar'></div>
-              <a href="" class="btn btn-info btn-xs" style="width: 95%" data-toggle="modal"
-                data-target="#modal-card1"><i class="fa fa-pencil"></i>
-                Edit </a>
-
             </div>
           </div>
         </div>

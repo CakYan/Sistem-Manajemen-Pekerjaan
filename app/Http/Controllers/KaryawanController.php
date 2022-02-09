@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Models\Unit;
+use App\Models\Jabatan;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Jabatan;
 
 class KaryawanController extends Controller
 {
@@ -19,10 +20,11 @@ class KaryawanController extends Controller
 
     public function daftar_karyawan()
     {
-        $karyawans = Karyawan::with('role', 'jabatan')->get();
+        $karyawans = Karyawan::with('role', 'jabatan', 'unit')->get();
         $jabatans = Jabatan::all();
         $roles = Role::all();
-        return view('karyawan.index', compact('karyawans', 'roles', 'jabatans'));
+        $units = Unit::all();
+        return view('karyawan.index', compact('karyawans', 'roles', 'jabatans', 'units'));
     }
 
     public function add(Request $request)
@@ -34,7 +36,7 @@ class KaryawanController extends Controller
             'alamat' => 'required',
             'email' => 'required|email|unique:karyawans',
             'no_telp' => 'required',
-            'unit' => 'required',
+            'unit_id' => 'required',
             'jabatan_id' => 'required',
         ]);
 
@@ -45,7 +47,7 @@ class KaryawanController extends Controller
             'alamat' => $request->input('alamat'),
             'email' => $request->input('email'),
             'password' => $request->input('username'),
-            'unit' => $request->input('unit'),
+            'unit_id' => $request->input('unit_id'),
             'no_telp' => $request->input('no_telp'),
             'jabatan_id' => $request->input('jabatan_id'),
             'role_id' => ('4'),
@@ -69,8 +71,9 @@ class KaryawanController extends Controller
             'username' => 'required',
             'alamat' => 'required',
             'email' => 'required',
+            'password' => 'required',
             'no_telp' => 'required',
-            'unit' => 'required',
+            'unit_id' => 'required',
             'jabatan_id' => 'required',
         ]);
 
@@ -80,12 +83,14 @@ class KaryawanController extends Controller
             'username' => $request->input('username'),
             'alamat' => $request->input('alamat'),
             'email' => $request->input('email'),
-            'unit' => $request->input('unit'),
+            'password' => $request->input('password'),
+            'unit_id' => $request->input('unit_id'),
             'no_telp' => $request->input('no_telp'),
             'jabatan_id' => $request->input('jabatan_id'),
         ]);
 
         if ($karyawan) {
+            // dd($karyawan);
             return back()->with('update', 'Data telah diperbarui');
         } else {
             return back()->with('fail', 'Ada sesuatu yang salah');

@@ -46,6 +46,9 @@
   <link rel="stylesheet" type="text/css"
     href="{{ asset('../vendors/bootstrap-select-1.13.14/dist/css/bootstrap-select.min.css') }}">
 
+  <!-- fullcalendar css  -->
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.css' rel='stylesheet' />
+
 </head>
 
 <body class="nav-md">
@@ -150,6 +153,27 @@
   <script>
     $('select').selectpicker();
   </script>
+
+  <!-- FullCalender -->
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        events: [],
+        selectOverlap: function(event) {
+          return event.rendering === 'background';
+        }
+      });
+
+      calendar.render();
+    });
+  </script>
+
 </body>
 
 </html>

@@ -53,25 +53,25 @@
           @if (session('hak_akses') == 1)
             <li><a href="/daftar_karyawan"><i class="fa fa-edit"></i> Data Karyawan</a></li>
             <li><a href="/inbox"><i class="fa fa-comments"></i> Chat</a></li>
-            <li><a href="/calendar"><i class="fa fa-calendar"></i> Calendar</a></li>
+            <li><a href="/kalendar"><i class="fa fa-calendar"></i> Kalendar</a></li>
             <li><a href="/form"><i class="fa fa-plus"></i> Tambah Proyek</a></li>
             <li><a href="/projects"><i class="fa fa-tasks"></i> List Proyek</a></li>
           @endif
           @if (session('hak_akses') == 2)
             <li><a href="/inbox"><i class="fa fa-comments"></i> Chat</a></li>
-            <li><a href="/calendar"><i class="fa fa-calendar"></i> Calendar</a></li>
+            <li><a href="/kalendar"><i class="fa fa-calendar"></i> Calendar</a></li>
             <li><a href="/form"><i class="fa fa-plus"></i> Tambah Proyek</a></li>
             <li><a href="/projects"><i class="fa fa-tasks"></i> List Proyek</a></li>
           @endif
           @if (session('hak_akses') == 3)
             <li><a href="/inbox"><i class="fa fa-comments"></i> Chat</a></li>
-            <li><a href="/calendar"><i class="fa fa-calendar"></i> Calendar</a></li>
+            <li><a href="/kalendar"><i class="fa fa-calendar"></i> Calendar</a></li>
             <li><a href="/form"><i class="fa fa-plus"></i> Tambah Proyek</a></li>
             <li><a href="/projects"><i class="fa fa-tasks"></i> List Proyek</a></li>
           @endif
           @if (session('hak_akses') == 4)
             <li><a href="/inbox"><i class="fa fa-comments"></i> Chat</a></li>
-            <li><a href="/calendar"><i class="fa fa-calendar"></i> Calendar</a></li>
+            <li><a href="/kalendar"><i class="fa fa-calendar"></i> Calendar</a></li>
           @endif
         </ul>
       </div>

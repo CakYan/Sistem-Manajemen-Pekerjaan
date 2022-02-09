@@ -23,7 +23,7 @@ class CreateKaryawansTable extends Migration
             $table->string('email')->unique();
             $table->string('password')->nullable();
             $table->bigInteger('role_id')->nullable();
-            $table->string('unit');
+            $table->bigInteger('unit_id');
             $table->string('profil_img')->nullable();
             $table->bigInteger('jabatan_id');
             $table->timestamps();

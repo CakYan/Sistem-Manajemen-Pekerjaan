@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pdf;
+use App\Models\File;
 use App\Models\Task;
+use App\Models\Unit;
 use App\Models\Kelas;
 use App\Models\Proyek;
 use App\Models\Status;
@@ -11,17 +13,16 @@ use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\File;
 use Illuminate\Support\Facades\Response;
 
 class ProjectsController extends Controller
 {
     public function index()
     {
-        $pdfs=Pdf::all();
+        $units = Unit::all();
         $status = Status::all();
         $karyawans = Karyawan::all();
-        $proyeks = Proyek::with(['status', 'task'])->get();
+        $proyeks = Proyek::with(['status', 'task', 'unit'])->get();
 
         for ($i=0; $i < count($proyeks) ; $i++) { 
             # code...
@@ -38,7 +39,7 @@ class ProjectsController extends Controller
             $proyeks[$i]['finishedTask'] = $finishedTask;
             $proyeks[$i]['totalTask'] = count($tasks);
         }
-        return view('proyek.projects', compact('proyeks', 'karyawans', 'status', 'pdfs'));
+        return view('proyek.projects', compact('proyeks', 'karyawans', 'status', 'units'));
     }
 
     public function detail_tugas(){

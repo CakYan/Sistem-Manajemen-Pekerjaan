@@ -2,15 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\hakAkses;
-use App\Models\Jabatan;
+use App\Models\Role;
+use App\Models\Task;
+use App\Models\Unit;
 use App\Models\User;
-use App\Models\Karyawan;
 use App\Models\Kelas;
 use App\Models\Proyek;
-use App\Models\Role;
 use App\Models\Status;
-use App\Models\Task;
+use App\Models\Jabatan;
+use App\Models\hakAkses;
+use App\Models\Karyawan;
 use Illuminate\Database\Seeder;
 
 
@@ -34,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'asep@email.com',
             'password' => 'admin',
             'role_id' => '1',
-            'unit' => 'IGD',
+            'unit_id' => '1',
             'profil_img' => 'user.png',
             'jabatan_id' => '1'
         ]);
@@ -48,7 +49,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'direksi@email.com',
             'password' => 'direksi',
             'role_id' => '2',
-            'unit' => 'SIRS',
+            'unit_id' => '2',
             'profil_img' => '1.jpg',
             'jabatan_id' => '2'
         ]);
@@ -62,7 +63,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'ketuaProyek@email.com',
             'password' => 'kp',
             'role_id' => '3',
-            'unit' => 'SIRS',
+            'unit_id' => '3',
             'profil_img' => '2.jpg',
             'jabatan_id' => '3'
         ]);
@@ -76,7 +77,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'anggotaProyek@email.com',
             'password' => 'ap',
             'role_id' => '4',
-            'unit' => 'SIRS',
+            'unit_id' => '4',
             'profil_img' => '3.jpg',
             'jabatan_id' => '4'
         ]);
@@ -90,7 +91,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'akhdan@email.com',
             'password' => 'admin123',
             'role_id' => '2',
-            'unit' => 'SIRS',
+            'unit_id' => '2',
             'profil_img' => '1.jpg',
             'jabatan_id' => '2'
         ]);
@@ -104,7 +105,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'firman@email.com',
             'password' => 'user1',
             'role_id' => '3',
-            'unit' => 'SIRS',
+            'unit_id' => '3',
             'profil_img' => '2.jpg',
             'jabatan_id' => '3'
         ]);
@@ -118,7 +119,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'evi@email.com',
             'password' => 'user2',
             'role_id' => '4',
-            'unit' => 'SIRS',
+            'unit_id' => '4',
             'profil_img' => '3.jpg',
             'jabatan_id' => '4'
         ]);
@@ -129,7 +130,7 @@ class DatabaseSeeder extends Seeder
             'nama_proyek' => 'Sistem Manajemen Pekerjaan',
             'ketua_tim' => 'Firmansyah',
             'anggota' => 'Febryan Akhdani, Evi',
-            'unit_pengaju' => 'SIRS',
+            'unit_id' => '1',
             'deskripsi' => 'Sistem Manajemen Pekerjaan adalah ...',
             'status_id' => '1',
             'tgl_mulai' => '2021-10-04',
@@ -205,6 +206,22 @@ class DatabaseSeeder extends Seeder
             'nama_task' => 'perancangan',
             'kelas_id' => '3',
             'proyek_id' => '1'
+        ]);
+
+        Unit::create([
+            'nama_unit' => 'SIRS'
+        ]);
+        
+        Unit::create([
+            'nama_unit' => 'MR'
+        ]);
+
+        Unit::create([
+            'nama_unit' => 'IPS'
+        ]);
+
+        Unit::create([
+            'nama_unit' => 'IGD'
         ]);
     }
 }

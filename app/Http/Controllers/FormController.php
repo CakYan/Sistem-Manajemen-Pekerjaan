@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Proyek;
 use App\Models\Karyawan;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,8 +12,9 @@ class FormController extends Controller
 {
     public function index()
     {
-        $karyawans = Karyawan::all();
-        return view('proyek.form', compact('karyawans'));
+        $units = Unit::all();
+        $karyawans = Karyawan::with('unit')->get();
+        return view('proyek.form', compact('karyawans', 'units'));
     }
 
     public function add_proyek(Request $request)
@@ -21,7 +23,7 @@ class FormController extends Controller
             'nama_proyek' => 'required|unique:proyeks',
             'ketua_tim' => 'required',
             'anggota' => 'required',
-            'unit_pengaju' => 'required',
+            'unit_id' => 'required',
             'deskripsi' => 'required',
             'tgl_mulai' => 'required',
             'tgl_akhir' => 'required'
@@ -36,7 +38,7 @@ class FormController extends Controller
             'nama_proyek' => $request->input('nama_proyek'),
             'ketua_tim' => $request->input('ketua_tim'),
             'anggota' => $anggotaMulti,
-            'unit_pengaju' => $request->input('unit_pengaju'),
+            'unit_id' => $request->input('unit_id'),
             'deskripsi' => $request->input('deskripsi'),
             'status_id' =>'1',
             'tgl_mulai' => $request->input('tgl_mulai'),
@@ -70,7 +72,7 @@ class FormController extends Controller
             'nama_proyek' => 'required',
             'ketua_tim' => 'required',
             'anggota' => 'required',
-            'unit_pengaju' => 'required',
+            'unit_id' => 'required',
             'deskripsi' => 'required',
             'status_id' => 'required',
             'tgl_mulai' => 'required',
@@ -86,7 +88,7 @@ class FormController extends Controller
             'nama_proyek' => $request->input('nama_proyek'),
             'ketua_tim' => $request->input('ketua_tim'),
             'anggota' => $anggotaMulti,
-            'unit_pengaju' => $request->input('unit_pengaju'),
+            'unit_id' => $request->input('unit_id'),
             'deskripsi' => $request->input('deskripsi'),
             'status_id' => $request->input('status_id'),
             'tgl_mulai' => $request->input('tgl_mulai'),

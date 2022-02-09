@@ -94,7 +94,8 @@ Route::group(['middleware' => 'cekLogin'], function () {
         Route::get('/homeAnggotaProyek', [ProjectsController::class, 'anggotaProyek']);
     });
     Route::get('/logout', [LoginController::class, 'logout']);
-    Route::get('/calendar', [KalenderController::class, 'index']);
+    Route::get('/kalendar', [KalenderController::class, 'index']);
+    Route::post('/add_kalender', [KalenderController::class, 'add']);
     Route::get('/inbox', [InboxController::class, 'index']);
     Route::get('/profile', [ProfileController::class, 'index']);
     Route::get('/edit_profile', [ProfileController::class, 'edit']);

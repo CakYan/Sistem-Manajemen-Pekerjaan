@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Role;
+use App\Models\Unit;
 use App\Models\Proyek;
 use App\Models\Jabatan;
 use Illuminate\Database\Eloquent\Model;
@@ -25,5 +26,9 @@ class Karyawan extends Model
 
     public function jabatan(){
         return $this->belongsTo(Jabatan::class);
+    }
+
+    public function unit(){
+        return $this->belongsTo(Unit::class);
     }
 }

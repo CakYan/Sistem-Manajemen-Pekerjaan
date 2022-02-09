@@ -45,9 +45,16 @@
                     <div class="form-group">
                       <label class="control-label col-sm-2" for="unit">Unit</label>
                       <div class="col-sm-10 mb-1">
-                        <input type="text" name="unit" class="form-control" id="unit"
-                          value="{{ $k->unit }}"><span
-                          style="color:red">@error('unit'){{ $message }}@enderror</span>
+                        <select class="form-control " name="unit_id" value="{{ $k->unit->nama_unit }}">
+                          <option value="{{ $k->unit->id }}">{{ $k->unit->nama_unit }}
+                          </option>
+                          @foreach ($units as $unit)
+                            <option value="{{ $unit->id }}">
+                              {{ $unit->nama_unit }}
+                            </option>
+                          @endforeach
+                        </select>
+                        <span style="color:red">@error('unit'){{ $message }}@enderror</span>
                         </div>
                       </div>
 
@@ -87,27 +94,36 @@
                             </div>
 
                             <div class="form-group">
-                              <label class="control-label col-sm-2" for="no_telp">No Telepon</label>
+                              <label class="control-label col-sm-2" for="password">Password</label>
                               <div class="col-sm-10 mb-1">
-                                <input type="text" name="no_telp" class="form-control" id="no_telp"
-                                  value="{{ $k->no_telp }}"><span
-                                  style="color:red">@error('no_telp'){{ $message }}@enderror</span>
+                                <input type="text" name="password" class="form-control" id="password"
+                                  value="{{ $k->password }}"><span
+                                  style="color:red">@error('password'){{ $message }}@enderror</span>
                                 </div>
                               </div>
 
-                              <div class="btn" style="float: right;">
-                                <button type="submit" class="btn btn-primary btn-xs">Simpan</button>
-                                <button class="btn btn-danger btn-xs" data-dismiss="modal">Kembali</button></a>
-                              </div>
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            {{-- <div class="btn" style="float: right;">
+                              <div class="form-group">
+                                <label class="control-label col-sm-2" for="no_telp">No Telepon</label>
+                                <div class="col-sm-10 mb-1">
+                                  <input type="text" name="no_telp" class="form-control" id="no_telp"
+                                    value="{{ $k->no_telp }}"><span
+                                    style="color:red">@error('no_telp'){{ $message }}@enderror</span>
+                                  </div>
+                                </div>
+
+                                <div class="btn" style="float: right;">
+                                  <button type="submit" class="btn btn-primary btn-xs">Simpan</button>
+                                  <button class="btn btn-danger btn-xs" data-dismiss="modal">Kembali</button></a>
+                                </div>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              {{-- <div class="btn" style="float: right;">
                             <button type="submit" class="btn btn-primary btn-xs">Simpan</button>
                             <button class="btn btn-danger btn-xs" data-dismiss="modal">Kembali</button></a>
                           </div> --}}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  @endforeach
+                    @endforeach

@@ -77,7 +77,7 @@
                             <td>{{ $karyawan->nama }}</td>
                             <td>{{ $karyawan->username }}</td>
                             <td>{{ $karyawan->jabatan->nama_jabatan }}</td>
-                            <td>{{ $karyawan->unit }}</td>
+                            <td>{{ $karyawan->unit->nama_unit }}</td>
                             <td>{{ $karyawan->role->hak_akses }}</td>
                             <td style="width: 1%">
                               <div class="row d-flex justify-content-center">

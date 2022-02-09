@@ -57,9 +57,15 @@
                       yang Mengajukan <span class="required"></span>
                     </label>
                     <div class="col-md-6 col-sm-6 ">
-                      <input type="text" id="first-name" name="unit_pengaju" required="required"
-                        class="form-control ">
-                      <span style="color:red">@error('unit_pengaju'){{ $message }}@enderror</span>
+                      <select class="form-control" data-live-search="true" name="unit_id">
+                        <option value="">-- Pilih --</option>
+                        @foreach ($units as $unit)
+                          <option value="{{ $unit->id }}">
+                            {{ $unit->nama_unit }}
+                          </option>
+                        @endforeach
+                      </select>
+                      <span style="color:red">@error('unit_id'){{ $message }}@enderror</span>
                       </div>
                     </div>
 
@@ -85,7 +91,7 @@
                               @foreach ($karyawans as $karyawan)
                                 <option value="{{ $karyawan->nama }}">
                                   {{ $karyawan->nama }},
-                                  <i>{{ $karyawan->unit }}</i>
+                                  <i>{{ $karyawan->unit->nama_unit }}</i>
                                 </option>
                               @endforeach
                             </select>
@@ -102,7 +108,7 @@
                             <select class="form-control" data-live-search="true" multiple name="anggota[]">
                               @foreach ($karyawans as $karyawan)
                                 <option value="{{ $karyawan->nama }}">{{ $karyawan->nama }},
-                                  <i>{{ $karyawan->unit }}</i>
+                                  <i>{{ $karyawan->unit->nama_unit }}</i>
                                 </option>
                               @endforeach
                             </select>

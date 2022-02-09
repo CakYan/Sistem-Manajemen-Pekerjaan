@@ -31,7 +31,7 @@ class KaryawanFactory extends Factory
             'email' => $this->faker->unique()->email(),
             'password' => 'user',
             'role_id' => $this->faker->numberBetween(2, 4),
-            'unit' => 'IGD',
+            'unit_id' => $this->faker->numberBetween(1, 4),
             'profil_img' => 'user.png',
             'jabatan_id' => $this->faker->numberBetween(1, 4)
         ];

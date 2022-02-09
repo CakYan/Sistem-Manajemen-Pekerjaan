@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Task;
+use App\Models\Unit;
+use App\Models\Status;
+use App\Models\Karyawan;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Proyek extends Model
 {
@@ -21,5 +25,9 @@ class Proyek extends Model
 
     public function status(){
         return $this->belongsTo(Status::class);
+    }
+
+    public function unit(){
+        return $this->belongsTo(Unit::class);
     }
 }

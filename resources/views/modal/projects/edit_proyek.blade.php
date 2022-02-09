@@ -36,12 +36,11 @@
                   <select class="form-control" name="ketua_tim" data-live-search="true"
                     value="{{ $item->ketua_tim }}">
                     {{-- multiple="multiple"> --}}
-                    <option value="{{ $item->ketua_tim }} {{ $item->unit }}">
-                      {{ $item->ketua_tim }},
-                      {{ $item->unit }}</option>
+                    <option value="{{ $item->ketua_tim }}">
+                      {{ $item->ketua_tim }}</option>
                     @foreach ($karyawans as $karyawan)
                       <option value="{{ $karyawan->nama }}">{{ $karyawan->nama }},
-                        <i>{{ $karyawan->unit }}</i>
+                        <i>{{ $karyawan->unit->nama_unit }}</i>
                       </option>
                     @endforeach
                   </select>
@@ -62,7 +61,7 @@
                       @foreach ($karyawans as $karyawan)
                         <option value="{{ $karyawan->nama }}"
                           {{ in_array($karyawan->nama, $selected) ? 'selected' : '' }}>
-                          {{ $karyawan->nama }} {{ $karyawan->unit }} </option>
+                          {{ $karyawan->nama }} {{ $karyawan->unit->nama_unit }} </option>
                       @endforeach
                     </select>
                   </div>
@@ -73,9 +72,16 @@
                     Pengaju<span class="required">:</span>
                   </label>
                   <div class="col-md-6 col-sm-61 ">
-                    <input type="text" name="unit_pengaju" value="{{ $item->unit_pengaju }}"
-                      id="first-name" required="required" class="form-control "><span
-                      style="color:red">@error('unit pengaju'){{ $message }}@enderror</span>
+                    <select class="form-control" data-live-search="true" name="unit_id">
+                      <option value="{{ $proyek->unit->id }}">
+                        {{ $proyek->unit->nama_unit }}</option>
+                      @foreach ($units as $unit)
+                        <option value="{{ $unit->id }}">
+                          {{ $unit->nama_unit }}
+                        </option>
+                      @endforeach
+                    </select>
+                    <span style="color:red">@error('unit pengaju'){{ $message }}@enderror</span>
                     </div>
                   </div>
 
