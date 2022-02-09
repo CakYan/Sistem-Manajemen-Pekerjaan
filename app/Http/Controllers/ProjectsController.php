@@ -42,10 +42,6 @@ class ProjectsController extends Controller
         return view('proyek.projects', compact('proyeks', 'karyawans', 'status', 'units'));
     }
 
-    public function detail_tugas(){
-        return view('proyek.detail_tugas');
-    }
-
     public function homeDireksi()
     {
         $proyeks = Proyek::with(['status', 'task'])->get();
@@ -116,34 +112,11 @@ class ProjectsController extends Controller
 
     public function prodet($id)
     {
-        // $pdfs=Pdf::all();
         $files = File::all();
         $kelas = Kelas::all();
         $tasks = Task::with('kelas')->get();
         $prodet = Proyek::where('id', $id)->first();
         return view('proyek.projects_detail', compact('files', 'kelas', 'tasks', 'prodet'));
-    }
-
-    public function getIconAttribute() {
-    $extensions = [
-        'jpg' => 'jpeg.png',
-        'png' => 'png.png',
-        'pdf' => 'pdfdocument.png',
-        'doc' => 'wordicon.jpg',
-    ];
-    return redirect($extensions, $this->extension,'unknown.png');
-    }
-
-    public function proses_upload(Request $request){
-        $files=File::all();
-        $files=File::create($request->all());
-
-        if($request->hasFile('file')){
-            $request->file('file')->move('data_file/', $request->file('file')->getClientOriginalName());
-            $files->file=$request->file('file')->getClientOriginalName();
-            $files->save();
-        }
-        return redirect()->back();
     }
 
     public function download($id){

@@ -35,7 +35,7 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function add_tugas(Request $request, $id)
     {
         //
         $request->validate([
@@ -146,6 +146,16 @@ class TaskController extends Controller
         if ($task || $files) {
             return back();
         }
+    }
+    
+    public function getIconAttribute() {
+    $extensions = [
+        'jpg' => 'jpeg.png',
+        'png' => 'png.png',
+        'pdf' => 'pdfdocument.png',
+        'doc' => 'wordicon.jpg',
+    ];
+    return redirect($extensions, $this->extension,'unknown.png');
     }
 
     /**
